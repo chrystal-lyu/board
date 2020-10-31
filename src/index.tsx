@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Board from "./components/Board";
 
-const App = () => <h1>My React and TypeScript App!!</h1>;
+const App = () => (
+  <div>
+    <Board />
+  </div>
+);
 
 ReactDOM.render(<App />, document.getElementById("root"));
