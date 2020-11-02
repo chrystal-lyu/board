@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { BlockPicker } from "react-color";
 import {
   Grid,
   Box,
@@ -16,7 +17,11 @@ const SideBar: React.FC = () => {
   );
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-
+  const [showColorSwatch, setShowColorSwatch] = useState(false);
+  const onClose = () => {
+    setOpen(false);
+    setShowColorSwatch(false);
+  }
   return (
     <React.Fragment>
       <Button color="primary" variant="contained" onClick={() => setOpen(true)}>
@@ -25,6 +30,7 @@ const SideBar: React.FC = () => {
       <SwipeableDrawer
         anchor="right"
         open={open}
+        hysteresis={1}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         BackdropProps={{ invisible: true }}
@@ -54,16 +60,23 @@ const SideBar: React.FC = () => {
                 label="Background Color"
                 variant="outlined"
                 onChange={(e) => dispatch(changeBgColor(e.target.value))}
+                onClick={() => setShowColorSwatch(true)}
               />
             </Grid>
           </Grid>
         </Box>
         <Box mx={2}>
+          {showColorSwatch && (
+            <BlockPicker
+              color={backgroundColor}
+              onChange={(color) => dispatch(changeBgColor(color.hex))}
+            />
+          )}
           <Button
             fullWidth={true}
             color="primary"
             variant="contained"
-            onClick={() => setOpen(false)}
+            onClick={onClose}
           >
             DONE
           </Button>

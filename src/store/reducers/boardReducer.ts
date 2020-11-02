@@ -7,7 +7,7 @@ import {
 
 const initialState: BoardState = {
   title: "My React app with TypeScript",
-  backgroundColor: "lavender",
+  backgroundColor: "#7bdcb5",
 };
 
 const boardReducer = (
