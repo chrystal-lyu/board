@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Grid,
   Box,
@@ -6,9 +7,16 @@ import {
   Button,
   SwipeableDrawer,
 } from "@material-ui/core";
+import { RootState } from "../../store/reducers/rootReducer";
+import { changeTitle, changeBgColor } from "../../store/actions";
 
 const SideBar: React.FC = () => {
+  const { title, backgroundColor } = useSelector(
+    (state: RootState) => state.board
+  );
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
+
   return (
     <React.Fragment>
       <Button color="primary" variant="contained" onClick={() => setOpen(true)}>
@@ -31,13 +39,21 @@ const SideBar: React.FC = () => {
             spacing={2}
           >
             <Grid item>
-              <TextField fullWidth label="Title" variant="outlined" />
+              <TextField
+                fullWidth
+                value={title}
+                label="Title"
+                variant="outlined"
+                onChange={(e) => dispatch(changeTitle(e.target.value))}
+              />
             </Grid>
             <Grid item>
               <TextField
                 fullWidth
+                value={backgroundColor}
                 label="Background Color"
                 variant="outlined"
+                onChange={(e) => dispatch(changeBgColor(e.target.value))}
               />
             </Grid>
           </Grid>

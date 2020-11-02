@@ -1,6 +1,6 @@
 import { CHANGE_TITLE, CHANGE_BG_COLOR, BoardActionTypes } from "./board.types";
 
-export const changTitle = (payload: string): BoardActionTypes => {
+export const changeTitle = (payload: string): BoardActionTypes => {
   return {
     type: CHANGE_TITLE,
     payload,
