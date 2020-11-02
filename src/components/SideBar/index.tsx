@@ -8,10 +8,11 @@ import {
   Button,
   SwipeableDrawer,
 } from "@material-ui/core";
+import { OwnProps } from "./types";
 import { RootState } from "../../store/reducers/rootReducer";
 import { changeTitle, changeBgColor } from "../../store/actions";
 
-const SideBar: React.FC = () => {
+const SideBar: React.FC<OwnProps> = (props) => {
   const { title, backgroundColor } = useSelector(
     (state: RootState) => state.board
   );
@@ -21,7 +22,7 @@ const SideBar: React.FC = () => {
   const onClose = () => {
     setOpen(false);
     setShowColorSwatch(false);
-  }
+  };
   return (
     <React.Fragment>
       <Button color="primary" variant="contained" onClick={() => setOpen(true)}>
@@ -36,7 +37,7 @@ const SideBar: React.FC = () => {
         BackdropProps={{ invisible: true }}
       >
         <Box m={2}>
-          <h1>Menu</h1>
+          <h1>{props.title ? props.title : "Menu"}</h1>
           <Grid
             container
             direction="column"
