@@ -1,18 +1,17 @@
 import React from "react";
 import { SelectorBox } from "../../styles/global";
-import { OwnProps } from "./types";
 import Editor from "../Editor";
 import useEditor from "../../hooks/useEditor";
 
-const Background: React.FC<OwnProps> = (props) => {
+const Container: React.FC = (props) => {
   const [isShowing, show, hide] = useEditor();
   return (
-    <SelectorBox p={2} height="100vh" onClick={show}>
-      <h1>Background</h1>
+    <SelectorBox p={2} onClick={show}>
+      <h1>Container</h1>
       {props.children}
-      <Editor title="Background" isShowing={isShowing} hide={hide} />
+      <Editor title="Container" isShowing={isShowing} hide={hide} />
     </SelectorBox>
   );
 };
 
-export default Background;
+export default Container;

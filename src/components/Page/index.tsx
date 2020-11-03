@@ -5,12 +5,12 @@ import Editor from "../Editor";
 import useEditor from "../../hooks/useEditor";
 
 const Page: React.FC<OwnProps> = (props) => {
-  const [isShowing, toggle] = useEditor();
+  const [isShowing, show, hide] = useEditor();
   return (
-    <SelectorBox p={2} onClick={toggle}>
+    <SelectorBox p={2} onClick={show}>
       <h1>Page</h1>
       {props.children}
-      <Editor title="Page" isShowing={isShowing} hide={toggle}/>
+      <Editor title="Page" isShowing={isShowing} hide={hide} />
     </SelectorBox>
   );
 };

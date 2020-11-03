@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 
-const useEditor = (): [boolean, (e: React.MouseEvent) => void] => {
+const useEditor = (): [
+  boolean,
+  (e: React.MouseEvent) => void,
+  (e: React.MouseEvent) => void
+] => {
   const [isShowing, setIsShowing] = useState(false);
-  const toggle = (e: React.MouseEvent) => {
+  const show = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsShowing(!isShowing);
+    setIsShowing(true);
   };
-  return [isShowing, toggle];
+  const hide = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsShowing(false);
+  };
+  return [isShowing, show, hide];
 };
 
 export default useEditor;
