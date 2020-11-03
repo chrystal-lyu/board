@@ -1,14 +1,16 @@
 import React from "react";
 import { SelectorBox } from "../../styles/global";
 import { OwnProps } from "./types";
-import SideBar from "../SideBar";
+import Editor from "../Editor";
+import useEditor from "../../hooks/useEditor";
 
 const Background: React.FC<OwnProps> = (props) => {
+  const [isShowing, toggle] = useEditor();
   return (
-    <SelectorBox p={2} height="100vh" onClick={() => console.log('clicked')}>
+    <SelectorBox p={2} height="100vh" onClick={toggle}>
       <h1>Background</h1>
       {props.children}
-      <SideBar title="Background" />
+      <Editor title="Background" isShowing={isShowing} hide={toggle} />
     </SelectorBox>
   );
 };

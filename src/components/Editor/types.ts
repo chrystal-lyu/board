@@ -1,0 +1,5 @@
+export interface OwnProps {
+  title?: string;
+  isShowing?: boolean;
+  hide(e: React.MouseEvent): void;
+}
