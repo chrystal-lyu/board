@@ -13,6 +13,7 @@ import { BlockPicker } from "react-color";
 import { OwnProps } from "./types";
 import { RootState } from "../../store/reducers/rootReducer";
 import { changeMainBg, changePageWidth } from "../../store/actions";
+import ColorPicker from "./ColorPicker";
 
 const Editor: React.FC<OwnProps> = ({
   isShowing,
@@ -57,16 +58,13 @@ const Editor: React.FC<OwnProps> = ({
               </Grid>
             )}
             {backgroundColor && (
-              <Grid item>
-                <TextField
-                  fullWidth
-                  value={backgroundColor}
-                  label="Background Color"
-                  variant="outlined"
-                  onChange={(e) => dispatch(changeMainBg(e.target.value))}
-                  onClick={() => setShowColorSwatch(true)}
-                />
-              </Grid>
+              <ColorPicker
+                value={backgroundColor}
+                handleClick={() => setShowColorSwatch(true)}
+                handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  dispatch(changeMainBg(e.target.value))
+                }
+              />
             )}
             {width && (
               <Grid item>
