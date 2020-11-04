@@ -1,22 +1,28 @@
 import React from "react";
-import styled from "styled-components";
-import { SelectorBox } from "../../styles/global";
-import { OwnProps } from "./types";
+import { ThemeProvider } from "styled-components";
 import Editor from "../Editor";
 import useEditor from "../../hooks/useEditor";
+import { OwnProps } from "./types";
+import { SelectorBox } from "../../styles/global";
+import { TextWrapper } from "./index.style";
 
 const Text: React.FC<OwnProps> = (props) => {
-  const TextWrapper = styled.div`
-    color: ${props.color};
-    font-size: ${props.fontSize}px;
-    font-weight: ${props.fontWeight};
-    letter-spacing: ${props.letterSpacing};
-    text-align: ${props.textAlign};
-  `;
   const [isShowing, show, hide] = useEditor();
+  const theme = {
+    fontSize: props.fontSize,
+    fontWeight: props.fontWeight,
+    letterSpacing: props.letterSpacing,
+    textAlign: props.textAlign,
+  };
   return (
     <SelectorBox p={2} onClick={show}>
-      <TextWrapper>{props.content}</TextWrapper>
+      <ThemeProvider theme={theme}>
+        <TextWrapper
+          color={props.color}
+        >
+          {props.content}
+        </TextWrapper>
+      </ThemeProvider>
       <Editor
         title="Text"
         isShowing={isShowing}
