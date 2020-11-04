@@ -2,7 +2,6 @@ import React from "react";
 import { Box } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import sample from "../../sample.json";
-import Board from "../Board";
 import Background from "../Background";
 import Page from "../Page";
 import Container from "../Container";
@@ -43,7 +42,6 @@ const App: React.FC = () => {
           })}
         </Page>
       </Background>
-      <Board />
     </Box>
   );
 };
