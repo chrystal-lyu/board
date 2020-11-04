@@ -15,7 +15,7 @@ const Background: React.FC<OwnProps> = (props) => {
       <BackgroundBox p={2} height="100vh" onClick={show}>
         <h1>Background</h1>
         {props.children}
-        <Editor title="Background" isShowing={isShowing} hide={hide} />
+        <Editor title="Background" isShowing={isShowing} hide={hide} backgroundColor={props.background} />
       </BackgroundBox>
     </ThemeProvider>
   );

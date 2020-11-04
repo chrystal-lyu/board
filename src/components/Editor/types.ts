@@ -3,4 +3,5 @@ export interface OwnProps {
   isShowing?: boolean;
   hide(e: React.MouseEvent): void;
   textContent?: string;
+  backgroundColor?: string;
 }

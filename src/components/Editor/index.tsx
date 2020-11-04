@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Drawer, TextField } from "@material-ui/core";
+import { Box, Button, Drawer, TextField, Grid } from "@material-ui/core";
 import { OwnProps } from "./types";
 
 const Editor: React.FC<OwnProps> = ({
@@ -7,6 +7,7 @@ const Editor: React.FC<OwnProps> = ({
   title,
   hide,
   textContent,
+  backgroundColor,
 }) => {
   return (
     <React.Fragment>
@@ -18,16 +19,34 @@ const Editor: React.FC<OwnProps> = ({
       >
         <Box m={2}>
           <h1>{title}</h1>
-          <Box>
-            {textContent && (
-              <TextField
-                fullWidth
-                value={textContent}
-                label="Content"
-                variant="outlined"
-              />
-            )}
-          </Box>
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+            spacing={2}
+          >
+            <Grid item>
+              {textContent && (
+                <TextField
+                  fullWidth
+                  value={textContent}
+                  label="Content"
+                  variant="outlined"
+                />
+              )}
+            </Grid>
+            <Grid item>
+              {backgroundColor && (
+                <TextField
+                  fullWidth
+                  value={backgroundColor}
+                  label="Background Color"
+                  variant="outlined"
+                />
+              )}
+            </Grid>
+          </Grid>
         </Box>
         <Box mx={2}>
           <Button
