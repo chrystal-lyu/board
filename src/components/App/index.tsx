@@ -16,24 +16,32 @@ const App: React.FC = () => {
         options={sample.background.style.options}
         background={sample.background.style.config.color}
       >
-        <Page width={sample.page.width}></Page>
-      </Background>
-      <hr />
-      <Background options="color">
-        <Page>
-          <Container>
-            <Text
-              color="#2ccce4"
-              content="Jane Doe"
-              fontSize={24}
-              fontWeight={600}
-            />
-            <Text content="A Full Stack Developer" />
-            <Text
-              color="#ba68c8"
-              content="Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum."
-            />
-          </Container>
+        <Page width={sample.page.width}>
+          {sample.page.components.map((component, i) => {
+            console.log(component);
+            if (component.type === "container") {
+              return (
+                <Container key={i}>
+                  {component.components.map((comp, j) => {
+                    switch (comp.type) {
+                      case "text":
+                        return (
+                          <Text
+                            key={j}
+                            content={comp.content}
+                            color={comp.color}
+                            fontSize={comp.fontSize}
+                            fontWeight={comp.fontWeight}
+                          />
+                        );
+                      default:
+                        return null;
+                    }
+                  })}
+                </Container>
+              );
+            }
+          })}
         </Page>
       </Background>
       <Board />

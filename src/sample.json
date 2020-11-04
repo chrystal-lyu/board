@@ -12,7 +12,7 @@
     "textAlign": "center",
     "components": [
       {
-        "type": "Container",
+        "type": "container",
         "components": [
           {
             "type": "text",
@@ -26,6 +26,38 @@
           {
             "type": "text",
             "content": "A Full Stack Developer",
+            "color": "black",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "textAlign": "center"
+          },
+          {
+            "type": "text",
+            "content": "Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum.",
+            "color": "#ba68c8",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "textAlign": "center"
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "components": [
+          {
+            "type": "text",
+            "content": "Contact Info",
+            "color": "#ba68c8",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "letterSpacing": 2,
+            "textAlign": "center"
+          },
+          {
+            "type": "text",
+            "content": "syyssie@gmail.com",
             "color": "black",
             "fontSize": 14,
             "fontWeight": 400,
