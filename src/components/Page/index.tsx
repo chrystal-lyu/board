@@ -10,7 +10,12 @@ const Page: React.FC<OwnProps> = (props) => {
   const [isShowing, show, hide] = useEditor();
   const { page } = useSelector((state: RootState) => state.app);
   return (
-    <PageBox p={2} width={page.width} onClick={show}>
+    <PageBox
+      p={2}
+      width={page.width}
+      onClick={show}
+      className={isShowing ? "active" : ""}
+    >
       <h1>Page</h1>
       {props.children}
       <Editor

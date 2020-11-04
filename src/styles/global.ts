@@ -3,9 +3,14 @@ import { Box } from "@material-ui/core";
 
 export const SelectorBox = styled(Box)`
   background-color: ${(props) => props.theme.backgroundColor};
-  border: 5px solid green;
+  cursor: pointer;
+  border: 2px dotted green;
+
   &:hover {
-    cursor: pointer;
-    border: 5px solid red;
+    border: 2px dotted red;
+  }
+
+  &.active {
+    border: 2px solid red;
   }
 `;

@@ -15,13 +15,9 @@ const Text: React.FC<OwnProps> = (props) => {
     textAlign: props.textAlign,
   };
   return (
-    <SelectorBox p={2} onClick={show}>
+    <SelectorBox p={2} onClick={show} className={isShowing ? "active" : ""}>
       <ThemeProvider theme={theme}>
-        <TextWrapper
-          color={props.color}
-        >
-          {props.content}
-        </TextWrapper>
+        <TextWrapper color={props.color}>{props.content}</TextWrapper>
       </ThemeProvider>
       <Editor
         title="Text"
