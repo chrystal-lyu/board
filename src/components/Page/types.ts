@@ -1,3 +1,3 @@
 export interface OwnProps {
-  width?: number;
+  width?: string;
 }

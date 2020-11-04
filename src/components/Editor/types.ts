@@ -4,4 +4,5 @@ export interface OwnProps {
   hide(e: React.MouseEvent): void;
   textContent?: string;
   backgroundColor?: string;
+  width?: string;
 }

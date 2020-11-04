@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Box, Button, Drawer, TextField, Grid } from "@material-ui/core";
 import { BlockPicker } from "react-color";
 import { OwnProps } from "./types";
-import { changeMainBg } from "../../store/actions";
+import { RootState } from "../../store/reducers/rootReducer";
+import { changeMainBg, changePageWidth } from "../../store/actions";
 
 const Editor: React.FC<OwnProps> = ({
   isShowing,
@@ -11,9 +12,11 @@ const Editor: React.FC<OwnProps> = ({
   hide,
   textContent,
   backgroundColor,
+  width,
 }) => {
   const dispatch = useDispatch();
   const [showColorSwatch, setShowColorSwatch] = useState(false);
+  const { page } = useSelector((state: RootState) => state.app);
   return (
     <React.Fragment>
       <Drawer
@@ -50,6 +53,17 @@ const Editor: React.FC<OwnProps> = ({
                   variant="outlined"
                   onChange={(e) => dispatch(changeMainBg(e.target.value))}
                   onClick={() => setShowColorSwatch(true)}
+                />
+              )}
+            </Grid>
+            <Grid item>
+              {width && (
+                <TextField
+                  fullWidth
+                  value={page.width}
+                  label="Width"
+                  variant="outlined"
+                  onChange={(e) => dispatch(changePageWidth(e.target.value))}
                 />
               )}
             </Grid>
