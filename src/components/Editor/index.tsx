@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, Button, Drawer, TextField, Grid } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Drawer,
+  TextField,
+  Grid,
+  Slider,
+} from "@material-ui/core";
 import { BlockPicker } from "react-color";
 import { OwnProps } from "./types";
 import { RootState } from "../../store/reducers/rootReducer";
@@ -17,6 +24,10 @@ const Editor: React.FC<OwnProps> = ({
   const dispatch = useDispatch();
   const [showColorSwatch, setShowColorSwatch] = useState(false);
   const { page } = useSelector((state: RootState) => state.app);
+
+  function valuetext(value: number) {
+    return `${value}px`;
+  }
   return (
     <React.Fragment>
       <Drawer
@@ -25,7 +36,7 @@ const Editor: React.FC<OwnProps> = ({
         onClose={hide}
         BackdropProps={{ invisible: true }}
       >
-        <Box m={2}>
+        <Box m={2} width={200}>
           <h1>{title}</h1>
           <Grid
             container
@@ -58,13 +69,20 @@ const Editor: React.FC<OwnProps> = ({
             </Grid>
             <Grid item>
               {width && (
-                <TextField
-                  fullWidth
-                  value={page.width}
-                  label="Width"
-                  variant="outlined"
-                  onChange={(e) => dispatch(changePageWidth(e.target.value))}
-                />
+                <Box width={200}>
+                  <Slider
+                    defaultValue={Number(page.width)}
+                    getAriaValueText={valuetext}
+                    aria-labelledby="continuous-slider"
+                    min={300}
+                    max={1200}
+                    step={50}
+                    valueLabelDisplay="auto"
+                    onChange={(e, newValue) =>
+                      dispatch(changePageWidth(newValue.toString()))
+                    }
+                  />
+                </Box>
               )}
             </Grid>
           </Grid>
