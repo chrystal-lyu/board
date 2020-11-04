@@ -24,7 +24,6 @@ const Page: React.FC<OwnProps> = (props) => {
       onMouseOut={removeHover}
     >
       <Box onMouseOver={removeHover} onMouseLeave={addHover}>
-        <Text content="Page" fontSize={28} fontWeight={600} />
         {props.children}
       </Box>
       <Editor
