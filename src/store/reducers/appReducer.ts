@@ -1,24 +1,33 @@
 import sample from "../../sample.json";
-import { MainState } from "../actions/app.types";
+import {
+  CHANGE_MAIN_BACKGROUND,
+  ChangeMainBgAction,
+  MainState,
+} from "../actions/app.types";
 
 const initialState: MainState = sample;
-console.log(initialState);
 
-const appReducer = (state = initialState): MainState => {
-  // switch (action.type) {
-  //   case CHANGE_TITLE:
-  //     return {
-  //       ...state,
-  //       title: action.payload,
-  //     };
-  //   case CHANGE_BG_COLOR:
-  //     return {
-  //       ...state,
-  //       backgroundColor: action.payload,
-  //     };
-  //   default:
-  return state;
-  // }
+const appReducer = (
+  state = initialState,
+  action: ChangeMainBgAction
+): MainState => {
+  switch (action.type) {
+    case CHANGE_MAIN_BACKGROUND:
+      return {
+        ...state,
+        background: {
+          ...state.background,
+          style: {
+            ...state.background.style,
+            config: {
+              color: action.payload,
+            },
+          },
+        },
+      };
+    default:
+      return state;
+  }
 };
 
 export default appReducer;

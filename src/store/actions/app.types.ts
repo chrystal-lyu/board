@@ -1,11 +1,11 @@
-export const CHANGE_MAIN_BACKGROUND = "CHANGE_MAIN_BACKGROUND";
+export const CHANGE_MAIN_BACKGROUND = 'CHANGE_MAIN_BACKGROUND';
 
 export interface ChangeMainBgAction {
   type: typeof CHANGE_MAIN_BACKGROUND;
   payload: string;
 }
 
-interface Text {
+type Text = {
   type: string;
   content?: string;
   color?: string;
@@ -15,32 +15,36 @@ interface Text {
   textAlign?: string;
 }
 
-interface Container {
+type Container = {
   type: string;
   components: Text[];
 }
 
-interface ColorOptions {
+type ColorConfig = {
   color?: string;
 }
 
-interface GradientOptions {
+type GradientConfig = {
+  color?: string;
   colorStop1?: string;
   stopPosition1?: number;
   colorStop2?: string;
   stopPosition2?: number;
 }
 
+type Config = ColorConfig | GradientConfig;
+type Components = Container[] | Text[];
+
 export interface MainState {
   background: {
     style: {
       options: string;
-      config: ColorOptions | GradientOptions;
+      config: Config;
     };
   };
   page: {
     width?: number;
     textAlign?: string;
-    components?: Container[] | Text[];
-  };
+    components?: Components;
+  }
 }

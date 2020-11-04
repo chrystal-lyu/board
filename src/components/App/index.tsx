@@ -18,7 +18,6 @@ const App: React.FC = () => {
       >
         <Page width={sample.page.width}>
           {sample.page.components.map((component, i) => {
-            console.log(component);
             if (component.type === "container") {
               return (
                 <Container key={i}>

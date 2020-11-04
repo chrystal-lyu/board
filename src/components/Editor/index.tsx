@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Box, Button, Drawer, TextField, Grid } from "@material-ui/core";
+import { BlockPicker } from "react-color";
 import { OwnProps } from "./types";
+import { changeMainBg } from "../../store/actions";
 
 const Editor: React.FC<OwnProps> = ({
   isShowing,
@@ -9,6 +12,8 @@ const Editor: React.FC<OwnProps> = ({
   textContent,
   backgroundColor,
 }) => {
+  const dispatch = useDispatch();
+  const [showColorSwatch, setShowColorSwatch] = useState(false);
   return (
     <React.Fragment>
       <Drawer
@@ -43,17 +48,28 @@ const Editor: React.FC<OwnProps> = ({
                   value={backgroundColor}
                   label="Background Color"
                   variant="outlined"
+                  onChange={(e) => dispatch(changeMainBg(e.target.value))}
+                  onClick={() => setShowColorSwatch(true)}
                 />
               )}
             </Grid>
           </Grid>
         </Box>
         <Box mx={2}>
+          {showColorSwatch && (
+            <BlockPicker
+              color={backgroundColor}
+              onChange={(color) => dispatch(changeMainBg(color.hex))}
+            />
+          )}
           <Button
             fullWidth={true}
             color="primary"
             variant="contained"
-            onClick={hide}
+            onClick={(e) => {
+              hide(e);
+              setShowColorSwatch(false);
+            }}
           >
             DONE
           </Button>
