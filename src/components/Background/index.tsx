@@ -16,8 +16,7 @@ const Background: React.FC<OwnProps> = (props) => {
   };
   return (
     <ThemeProvider theme={theme}>
-      <BackgroundBox p={2} height="100vh" onClick={show}>
-        <h1>Background</h1>
+      <BackgroundBox height="100vh" onClick={show}>
         {props.children}
         <Editor
           title="Background"

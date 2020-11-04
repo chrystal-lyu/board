@@ -2,15 +2,14 @@ import styled from "styled-components";
 import { Box } from "@material-ui/core";
 
 export const SelectorBox = styled(Box)`
-  background-color: ${(props) => props.theme.backgroundColor};
   cursor: pointer;
-  border: 2px dotted green;
+  position: relative;
 
-  &:hover {
-    border: 2px dotted red;
+  &.hover {
+    border: 1px dotted #33ada9;
   }
 
   &.active {
-    border: 2px solid red;
+    border: 2px solid #33ada9;
   }
 `;
