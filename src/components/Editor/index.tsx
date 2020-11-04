@@ -8,6 +8,7 @@ import {
   Grid,
   Slider,
 } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 import { BlockPicker } from "react-color";
 import { OwnProps } from "./types";
 import { RootState } from "../../store/reducers/rootReducer";
@@ -45,18 +46,18 @@ const Editor: React.FC<OwnProps> = ({
             alignItems="center"
             spacing={2}
           >
-            <Grid item>
-              {textContent && (
+            {textContent && (
+              <Grid item>
                 <TextField
                   fullWidth
                   value={textContent}
                   label="Content"
                   variant="outlined"
                 />
-              )}
-            </Grid>
-            <Grid item>
-              {backgroundColor && (
+              </Grid>
+            )}
+            {backgroundColor && (
+              <Grid item>
                 <TextField
                   fullWidth
                   value={backgroundColor}
@@ -65,11 +66,14 @@ const Editor: React.FC<OwnProps> = ({
                   onChange={(e) => dispatch(changeMainBg(e.target.value))}
                   onClick={() => setShowColorSwatch(true)}
                 />
-              )}
-            </Grid>
-            <Grid item>
-              {width && (
+              </Grid>
+            )}
+            {width && (
+              <Grid item>
                 <Box width={200}>
+                  <Typography id="continuous-slider" gutterBottom>
+                    Width
+                  </Typography>
                   <Slider
                     defaultValue={Number(page.width)}
                     getAriaValueText={valuetext}
@@ -83,8 +87,8 @@ const Editor: React.FC<OwnProps> = ({
                     }
                   />
                 </Box>
-              )}
-            </Grid>
+              </Grid>
+            )}
           </Grid>
         </Box>
         <Box mx={2}>
