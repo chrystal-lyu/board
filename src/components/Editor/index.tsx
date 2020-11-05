@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, Button, Drawer, TextField, Slider } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Drawer,
+  TextField,
+  Slider,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { BlockPicker } from "react-color";
 import { OwnProps } from "./types";
@@ -71,6 +81,21 @@ const Editor: React.FC<OwnProps> = ({
         <Box m={2} width={300}>
           <h1>{title}</h1>
           <Box>
+            {title === "Background" && (
+              <Box mb={4}>
+                <FormControl>
+                  <InputLabel htmlFor="age-native-simple">Style</InputLabel>
+                  <Select
+                    native
+                    value="color"
+                    onChange={() => {}}
+                  >
+                    <option value="color">Color</option>
+                    <option value="gradient">Gradient</option>
+                  </Select>
+                </FormControl>{" "}
+              </Box>
+            )}
             {renderBackgroundOptions()}
             {textContent && (
               <TextField
