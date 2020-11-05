@@ -1,8 +1,10 @@
 import sample from "../../sample.json";
 import {
   CHANGE_MAIN_BACKGROUND,
+  CHANGE_MAIN_BACKGROUND_STYLE,
   CHANGE_PAGE_WIDTH,
   ChangeMainBgAction,
+  ChangeMainBgStyleAction,
   ChangePageWidthAction,
   MainState,
 } from "../actions/app.types";
@@ -11,7 +13,7 @@ const initialState: MainState = sample;
 
 const appReducer = (
   state = initialState,
-  action: ChangeMainBgAction | ChangePageWidthAction
+  action: ChangeMainBgAction | ChangeMainBgStyleAction | ChangePageWidthAction
 ): MainState => {
   switch (action.type) {
     case CHANGE_MAIN_BACKGROUND:
@@ -24,6 +26,17 @@ const appReducer = (
             config: {
               color: action.payload,
             },
+          },
+        },
+      };
+    case CHANGE_MAIN_BACKGROUND_STYLE:
+      return {
+        ...state,
+        background: {
+          ...state.background,
+          style: {
+            ...state.background.style,
+            options: action.payload,
           },
         },
       };

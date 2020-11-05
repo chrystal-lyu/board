@@ -1,4 +1,5 @@
 export const CHANGE_MAIN_BACKGROUND = "CHANGE_MAIN_BACKGROUND";
+export const CHANGE_MAIN_BACKGROUND_STYLE = "CHANGE_MAIN_BACKGROUND_STYLE";
 export const CHANGE_PAGE_WIDTH = "CHANGE_PAGE_WIDTH";
 
 export interface ChangeMainBgAction {
@@ -8,6 +9,11 @@ export interface ChangeMainBgAction {
 
 export interface ChangePageWidthAction {
   type: typeof CHANGE_PAGE_WIDTH;
+  payload: string;
+}
+
+export interface ChangeMainBgStyleAction {
+  type: typeof CHANGE_MAIN_BACKGROUND_STYLE;
   payload: string;
 }
 

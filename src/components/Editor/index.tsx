@@ -9,15 +9,18 @@ import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem,
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { BlockPicker } from "react-color";
 import { OwnProps } from "./types";
 import { RootState } from "../../store/reducers/rootReducer";
-import { changeMainBg, changePageWidth } from "../../store/actions";
 import ColorPicker from "./ColorPicker";
 import GradientPicker from "./GradientPicker";
+import {
+  changeMainBg,
+  changeMainBgStyle,
+  changePageWidth,
+} from "../../store/actions";
 
 const Editor: React.FC<OwnProps> = ({
   isShowing,
@@ -31,6 +34,11 @@ const Editor: React.FC<OwnProps> = ({
   const dispatch = useDispatch();
   const [showColorSwatch, setShowColorSwatch] = useState(false);
   const { page } = useSelector((state: RootState) => state.app);
+
+  const valuetext = (value: number) => {
+    return `${value}px`;
+  };
+
   const renderBackgroundOptions = () => {
     switch (options) {
       case "color":
@@ -67,9 +75,6 @@ const Editor: React.FC<OwnProps> = ({
     }
   };
 
-  function valuetext(value: number) {
-    return `${value}px`;
-  }
   return (
     <React.Fragment>
       <Drawer
@@ -87,13 +92,15 @@ const Editor: React.FC<OwnProps> = ({
                   <InputLabel htmlFor="age-native-simple">Style</InputLabel>
                   <Select
                     native
-                    value="color"
-                    onChange={() => {}}
+                    value={options}
+                    onChange={(e) => {
+                      dispatch(changeMainBgStyle(e.target.value as string));
+                    }}
                   >
                     <option value="color">Color</option>
                     <option value="gradient">Gradient</option>
                   </Select>
-                </FormControl>{" "}
+                </FormControl>
               </Box>
             )}
             {renderBackgroundOptions()}
