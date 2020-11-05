@@ -1,31 +1,61 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Box,
-  Button,
-  Drawer,
-  TextField,
-  Grid,
-  Slider,
-} from "@material-ui/core";
+import { Box, Button, Drawer, TextField, Slider } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { BlockPicker } from "react-color";
 import { OwnProps } from "./types";
 import { RootState } from "../../store/reducers/rootReducer";
 import { changeMainBg, changePageWidth } from "../../store/actions";
 import ColorPicker from "./ColorPicker";
+import GradientPicker from "./GradientPicker";
 
 const Editor: React.FC<OwnProps> = ({
   isShowing,
   title,
   hide,
   textContent,
+  options,
   backgroundColor,
   width,
 }) => {
   const dispatch = useDispatch();
   const [showColorSwatch, setShowColorSwatch] = useState(false);
   const { page } = useSelector((state: RootState) => state.app);
+  const renderBackgroundOptions = () => {
+    switch (options) {
+      case "color":
+        if (backgroundColor !== undefined) {
+          return (
+            <Box>
+              <ColorPicker
+                value={backgroundColor}
+                handleClick={() => setShowColorSwatch(true)}
+                handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  dispatch(changeMainBg(e.target.value))
+                }
+              />
+              {showColorSwatch && (
+                <BlockPicker
+                  color={backgroundColor}
+                  onChange={(color) => dispatch(changeMainBg(color.hex))}
+                />
+              )}
+            </Box>
+          );
+        }
+      case "gradient":
+        return (
+          <GradientPicker
+            colorStop1="#FFC2B0"
+            stopPosition1={28}
+            colorStop2="#945374"
+            stopPosition2={97}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   function valuetext(value: number) {
     return `${value}px`;
@@ -38,64 +68,40 @@ const Editor: React.FC<OwnProps> = ({
         onClose={hide}
         BackdropProps={{ invisible: true }}
       >
-        <Box m={2} width={200}>
+        <Box m={2} width={300}>
           <h1>{title}</h1>
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-            spacing={2}
-          >
+          <Box>
+            {renderBackgroundOptions()}
             {textContent && (
-              <Grid item>
-                <TextField
-                  fullWidth
-                  value={textContent}
-                  label="Content"
-                  variant="outlined"
-                />
-              </Grid>
-            )}
-            {backgroundColor && (
-              <ColorPicker
-                value={backgroundColor}
-                handleClick={() => setShowColorSwatch(true)}
-                handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  dispatch(changeMainBg(e.target.value))
-                }
+              <TextField
+                fullWidth
+                value={textContent}
+                label="Content"
+                variant="outlined"
               />
             )}
             {width && (
-              <Grid item>
-                <Box width={200}>
-                  <Typography id="continuous-slider" gutterBottom>
-                    Width
-                  </Typography>
-                  <Slider
-                    defaultValue={Number(page.width)}
-                    getAriaValueText={valuetext}
-                    aria-labelledby="continuous-slider"
-                    min={300}
-                    max={1200}
-                    step={50}
-                    valueLabelDisplay="auto"
-                    onChange={(e, newValue) =>
-                      dispatch(changePageWidth(newValue.toString()))
-                    }
-                  />
-                </Box>
-              </Grid>
+              <Box width={300}>
+                <Typography id="continuous-slider" gutterBottom>
+                  Width
+                </Typography>
+                <Slider
+                  defaultValue={Number(page.width)}
+                  getAriaValueText={valuetext}
+                  aria-labelledby="continuous-slider"
+                  min={300}
+                  max={1200}
+                  step={50}
+                  valueLabelDisplay="auto"
+                  onChange={(e, newValue) =>
+                    dispatch(changePageWidth(newValue.toString()))
+                  }
+                />
+              </Box>
             )}
-          </Grid>
+          </Box>
         </Box>
         <Box mx={2}>
-          {showColorSwatch && (
-            <BlockPicker
-              color={backgroundColor}
-              onChange={(color) => dispatch(changeMainBg(color.hex))}
-            />
-          )}
           <Button
             fullWidth={true}
             color="primary"

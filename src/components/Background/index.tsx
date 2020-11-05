@@ -22,6 +22,7 @@ const Background: React.FC<OwnProps> = (props) => {
           title="Background"
           isShowing={isShowing}
           hide={hide}
+          options={background.style.options}
           backgroundColor={background.style.config.color}
         />
       </BackgroundBox>
