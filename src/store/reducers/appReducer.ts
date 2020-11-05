@@ -24,6 +24,7 @@ const appReducer = (
           style: {
             ...state.background.style,
             config: {
+              ...state.background.style.config,
               color: action.payload,
             },
           },

@@ -10,19 +10,28 @@ import { RootState } from "../../store/reducers/rootReducer";
 const Background: React.FC<OwnProps> = (props) => {
   const [isShowing, show, hide] = useEditor();
   const { background } = useSelector((state: RootState) => state.app);
-
+  const { options } = background.style;
   const theme = {
     background: background.style.config.color,
+    colorStop1: background.style.config.colorStop1,
+    stopPosition1: background.style.config.stopPosition1,
+    colorStop2: background.style.config.colorStop2,
+    stopPosition2: background.style.config.stopPosition2,
   };
+
   return (
     <ThemeProvider theme={theme}>
-      <BackgroundBox height="100vh" onClick={show}>
+      <BackgroundBox
+        height="100vh"
+        onClick={show}
+        className={options === "gradient" ? "gradient" : ""}
+      >
         {props.children}
         <Editor
           title="Background"
           isShowing={isShowing}
           hide={hide}
-          options={background.style.options}
+          options={options}
           backgroundColor={background.style.config.color}
         />
       </BackgroundBox>

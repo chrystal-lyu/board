@@ -7,13 +7,13 @@ export interface ChangeMainBgAction {
   payload: string;
 }
 
-export interface ChangePageWidthAction {
-  type: typeof CHANGE_PAGE_WIDTH;
+export interface ChangeMainBgStyleAction {
+  type: typeof CHANGE_MAIN_BACKGROUND_STYLE;
   payload: string;
 }
 
-export interface ChangeMainBgStyleAction {
-  type: typeof CHANGE_MAIN_BACKGROUND_STYLE;
+export interface ChangePageWidthAction {
+  type: typeof CHANGE_PAGE_WIDTH;
   payload: string;
 }
 
@@ -32,11 +32,7 @@ type Container = {
   components: Text[];
 };
 
-type ColorConfig = {
-  color?: string;
-};
-
-type GradientConfig = {
+type StyleConfig = {
   color?: string;
   colorStop1?: string;
   stopPosition1?: number;
@@ -44,14 +40,13 @@ type GradientConfig = {
   stopPosition2?: number;
 };
 
-type Config = ColorConfig | GradientConfig;
 type Components = Container[] | Text[];
 
 export interface MainState {
   background: {
     style: {
       options: string;
-      config: Config;
+      config: StyleConfig;
     };
   };
   page: {
