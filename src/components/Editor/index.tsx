@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BlockPicker } from "react-color";
 import {
   changeMainBg,
   changeColorStop1,
@@ -31,10 +30,8 @@ const Editor: React.FC<OwnProps> = ({
   title,
   hide,
   textContent,
-  width,
 }) => {
   const dispatch = useDispatch();
-  const [showColorSwatch, setShowColorSwatch] = useState(false);
   const { background, page } = useSelector((state: RootState) => state.app);
   const { config } = background.style;
   const { options } = background.style;
@@ -46,25 +43,14 @@ const Editor: React.FC<OwnProps> = ({
   const renderBackgroundOptions = () => {
     switch (options) {
       case "color":
-        if (config.color !== undefined) {
-          return (
-            <Box>
-              <ColorPicker
-                value={config.color}
-                handleClick={() => setShowColorSwatch(true)}
-                handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  dispatch(changeMainBg(e.target.value))
-                }
-              />
-              {showColorSwatch && (
-                <BlockPicker
-                  color={config.color}
-                  onChange={(color) => dispatch(changeMainBg(color.hex))}
-                />
-              )}
-            </Box>
-          );
-        }
+        return (
+          <ColorPicker
+            value={config.color}
+            handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              dispatch(changeMainBg(e.target.value))
+            }
+          />
+        );
       case "gradient":
         return (
           <GradientPicker
@@ -103,23 +89,25 @@ const Editor: React.FC<OwnProps> = ({
           <h1>{title}</h1>
           <Box>
             {title === "Background" && (
-              <Box mb={4}>
-                <FormControl>
-                  <InputLabel htmlFor="age-native-simple">Style</InputLabel>
-                  <Select
-                    native
-                    value={options}
-                    onChange={(e) => {
-                      dispatch(changeMainBgStyle(e.target.value as string));
-                    }}
-                  >
-                    <option value="color">Color</option>
-                    <option value="gradient">Gradient</option>
-                  </Select>
-                </FormControl>
+              <Box>
+                <Box mb={4}>
+                  <FormControl>
+                    <InputLabel htmlFor="age-native-simple">Style</InputLabel>
+                    <Select
+                      native
+                      value={options}
+                      onChange={(e) => {
+                        dispatch(changeMainBgStyle(e.target.value as string));
+                      }}
+                    >
+                      <option value="color">Color</option>
+                      <option value="gradient">Gradient</option>
+                    </Select>
+                  </FormControl>
+                </Box>
+                {renderBackgroundOptions()}
               </Box>
             )}
-            {renderBackgroundOptions()}
             {textContent && (
               <TextField
                 fullWidth
@@ -128,7 +116,7 @@ const Editor: React.FC<OwnProps> = ({
                 variant="outlined"
               />
             )}
-            {width && (
+            {page.width && (
               <Box width={300}>
                 <Typography id="continuous-slider" gutterBottom>
                   Width
@@ -149,15 +137,12 @@ const Editor: React.FC<OwnProps> = ({
             )}
           </Box>
         </Box>
-        <Box mx={2}>
+        <Box m={2}>
           <Button
             fullWidth={true}
             color="primary"
             variant="contained"
-            onClick={(e) => {
-              hide(e);
-              setShowColorSwatch(false);
-            }}
+            onClick={(e) => hide(e)}
           >
             DONE
           </Button>

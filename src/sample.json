@@ -4,9 +4,9 @@
       "options": "gradient",
       "config": {
         "color": "#697689",
-        "colorStop1": "rgb(255, 194, 176)",
+        "colorStop1": "#ffc2b0",
         "stopPosition1": 28,
-        "colorStop2": "rgb(148, 83, 116)",
+        "colorStop2": "#945374",
         "stopPosition2": 97
       }
     }
