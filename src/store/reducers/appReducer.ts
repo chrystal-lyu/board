@@ -1,4 +1,5 @@
 import sample from "../../sample.json";
+import produce from 'immer';
 import {
   CHANGE_MAIN_BACKGROUND,
   CHANGE_COLOR_STOP_1,
@@ -32,94 +33,33 @@ const appReducer = (
 ): MainState => {
   switch (action.type) {
     case CHANGE_MAIN_BACKGROUND:
-      return {
-        ...state,
-        background: {
-          ...state.background,
-          style: {
-            ...state.background.style,
-            config: {
-              ...state.background.style.config,
-              color: action.payload,
-            },
-          },
-        },
-      };
+      return produce(state, draft => {
+        draft.background.style.config.color = action.payload;
+      });
     case CHANGE_COLOR_STOP_1:
-      return {
-        ...state,
-        background: {
-          ...state.background,
-          style: {
-            ...state.background.style,
-            config: {
-              ...state.background.style.config,
-              colorStop1: action.payload,
-            },
-          },
-        },
-      };
+      return produce(state, draft => {
+        draft.background.style.config.colorStop1 = action.payload;
+      });
     case CHANGE_STOP_POSITION_1:
-      return {
-        ...state,
-        background: {
-          ...state.background,
-          style: {
-            ...state.background.style,
-            config: {
-              ...state.background.style.config,
-              stopPosition1: action.payload,
-            },
-          },
-        },
-      };
+      return produce(state, draft => {
+        draft.background.style.config.stopPosition1 = action.payload;
+      });
     case CHANGE_COLOR_STOP_2:
-      return {
-        ...state,
-        background: {
-          ...state.background,
-          style: {
-            ...state.background.style,
-            config: {
-              ...state.background.style.config,
-              colorStop2: action.payload,
-            },
-          },
-        },
-      };
+      return produce(state, draft => {
+        draft.background.style.config.colorStop2 = action.payload;
+      });
     case CHANGE_STOP_POSITION_2:
-      return {
-        ...state,
-        background: {
-          ...state.background,
-          style: {
-            ...state.background.style,
-            config: {
-              ...state.background.style.config,
-              stopPosition2: action.payload,
-            },
-          },
-        },
-      };
+      return produce(state, draft => {
+        draft.background.style.config.stopPosition2 = action.payload;
+      });
     case CHANGE_MAIN_BACKGROUND_STYLE:
-      return {
-        ...state,
-        background: {
-          ...state.background,
-          style: {
-            ...state.background.style,
-            options: action.payload,
-          },
-        },
-      };
+      return produce(state, draft => {
+        draft.background.style.options = action.payload;
+      });
     case CHANGE_PAGE_WIDTH:
-      return {
-        ...state,
-        page: {
-          ...state.page,
-          width: action.payload,
-        },
-      };
+      return produce(state, draft => {
+        draft.page.width = action.payload;
+      })
     default:
       return state;
   }
