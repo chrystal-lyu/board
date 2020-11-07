@@ -22,6 +22,7 @@ import {
 import Typography from "@material-ui/core/Typography";
 import ColorPicker from "./ColorPicker";
 import GradientPicker from "./GradientPicker";
+import TextEditor from "./TextEditor";
 import { OwnProps } from "./types";
 import { RootState } from "../../store/reducers/rootReducer";
 
@@ -81,8 +82,10 @@ const Editor: React.FC<OwnProps> = ({
         onClose={hide}
         BackdropProps={{ invisible: true }}
       >
-        <Box m={2} width={300}>
-          <h1>{title}</h1>
+        <Box m={4} width={300}>
+          <Typography variant="h5" gutterBottom>
+            {title}
+          </Typography>
           <Box>
             {title === "Background" && (
               <Box>
@@ -123,16 +126,11 @@ const Editor: React.FC<OwnProps> = ({
               </Box>
             )}
             {textContent && (
-              <TextField
-                fullWidth
-                value={textContent}
-                label="Content"
-                variant="outlined"
-              />
+              <TextEditor content={textContent} />
             )}
           </Box>
         </Box>
-        <Box m={2}>
+        <Box m={4}>
           <Button
             fullWidth={true}
             color="primary"
