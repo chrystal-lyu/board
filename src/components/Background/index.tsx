@@ -27,13 +27,7 @@ const Background: React.FC<OwnProps> = (props) => {
         className={options === "gradient" ? "gradient" : ""}
       >
         {props.children}
-        <Editor
-          title="Background"
-          isShowing={isShowing}
-          hide={hide}
-          options={options}
-          backgroundColor={background.style.config.color}
-        />
+        <Editor title="Background" isShowing={isShowing} hide={hide} />
       </BackgroundBox>
     </ThemeProvider>
   );

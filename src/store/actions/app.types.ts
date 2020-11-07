@@ -1,10 +1,34 @@
 export const CHANGE_MAIN_BACKGROUND = "CHANGE_MAIN_BACKGROUND";
+export const CHANGE_COLOR_STOP_1 = "CHANGE_COLOR_STOP_1";
+export const CHANGE_STOP_POSITION_1 = "CHANGE_STOP_POSITION_1";
+export const CHANGE_COLOR_STOP_2 = "CHANGE_COLOR_STOP_2";
+export const CHANGE_STOP_POSITION_2 = "CHANGE_STOP_POSITION_2";
 export const CHANGE_MAIN_BACKGROUND_STYLE = "CHANGE_MAIN_BACKGROUND_STYLE";
 export const CHANGE_PAGE_WIDTH = "CHANGE_PAGE_WIDTH";
 
 export interface ChangeMainBgAction {
   type: typeof CHANGE_MAIN_BACKGROUND;
   payload: string;
+}
+
+export interface ChangeColorStop1Action {
+  type: typeof CHANGE_COLOR_STOP_1;
+  payload: string;
+}
+
+export interface ChangeStopPosition1Action {
+  type: typeof CHANGE_STOP_POSITION_1;
+  payload: number;
+}
+
+export interface ChangeColorStop2Action {
+  type: typeof CHANGE_COLOR_STOP_2;
+  payload: string;
+}
+
+export interface ChangeStopPosition2Action {
+  type: typeof CHANGE_STOP_POSITION_2;
+  payload: number;
 }
 
 export interface ChangeMainBgStyleAction {

@@ -1,5 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { BlockPicker } from "react-color";
+import {
+  changeMainBg,
+  changeColorStop1,
+  changeStopPosition1,
+  changeColorStop2,
+  changeStopPosition2,
+  changeMainBgStyle,
+  changePageWidth,
+} from "../../store/actions";
 import {
   Box,
   Button,
@@ -11,29 +21,23 @@ import {
   Select,
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import { BlockPicker } from "react-color";
-import { OwnProps } from "./types";
-import { RootState } from "../../store/reducers/rootReducer";
 import ColorPicker from "./ColorPicker";
 import GradientPicker from "./GradientPicker";
-import {
-  changeMainBg,
-  changeMainBgStyle,
-  changePageWidth,
-} from "../../store/actions";
+import { OwnProps } from "./types";
+import { RootState } from "../../store/reducers/rootReducer";
 
 const Editor: React.FC<OwnProps> = ({
   isShowing,
   title,
   hide,
   textContent,
-  options,
-  backgroundColor,
   width,
 }) => {
   const dispatch = useDispatch();
   const [showColorSwatch, setShowColorSwatch] = useState(false);
-  const { page } = useSelector((state: RootState) => state.app);
+  const { background, page } = useSelector((state: RootState) => state.app);
+  const { config } = background.style;
+  const { options } = background.style;
 
   const valuetext = (value: number) => {
     return `${value}px`;
@@ -42,11 +46,11 @@ const Editor: React.FC<OwnProps> = ({
   const renderBackgroundOptions = () => {
     switch (options) {
       case "color":
-        if (backgroundColor !== undefined) {
+        if (config.color !== undefined) {
           return (
             <Box>
               <ColorPicker
-                value={backgroundColor}
+                value={config.color}
                 handleClick={() => setShowColorSwatch(true)}
                 handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   dispatch(changeMainBg(e.target.value))
@@ -54,7 +58,7 @@ const Editor: React.FC<OwnProps> = ({
               />
               {showColorSwatch && (
                 <BlockPicker
-                  color={backgroundColor}
+                  color={config.color}
                   onChange={(color) => dispatch(changeMainBg(color.hex))}
                 />
               )}
@@ -64,10 +68,22 @@ const Editor: React.FC<OwnProps> = ({
       case "gradient":
         return (
           <GradientPicker
-            colorStop1="#FFC2B0"
-            stopPosition1={28}
-            colorStop2="#945374"
-            stopPosition2={97}
+            colorStop1={config.colorStop1}
+            stopPosition1={config.stopPosition1}
+            colorStop2={config.colorStop2}
+            stopPosition2={config.stopPosition2}
+            handleChangeColorStop1={(e: React.ChangeEvent<HTMLInputElement>) =>
+              dispatch(changeColorStop1(e.target.value))
+            }
+            handleChangeStopPosition1={(value: number) =>
+              dispatch(changeStopPosition1(value))
+            }
+            handleChangeColorStop2={(e: React.ChangeEvent<HTMLInputElement>) =>
+              dispatch(changeColorStop2(e.target.value))
+            }
+            handleChangeStopPosition2={(value: number) =>
+              dispatch(changeStopPosition2(value))
+            }
           />
         );
       default:

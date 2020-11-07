@@ -12,6 +12,7 @@ const GradientPicker: React.FC<OwnProps> = (props) => {
           label="Color Stop #1"
           variant="outlined"
           value={props.colorStop1}
+          onChange={props.handleChangeColorStop1}
         />
       </Box>
       <Box mt={2}>
@@ -25,6 +26,7 @@ const GradientPicker: React.FC<OwnProps> = (props) => {
           max={100}
           step={1}
           valueLabelDisplay="auto"
+          onChange={(e, newValue) => props.handleChangeStopPosition1(newValue)}
         />
       </Box>
       <Box mt={2}>
@@ -33,6 +35,7 @@ const GradientPicker: React.FC<OwnProps> = (props) => {
           label="Color Stop #2"
           variant="outlined"
           value={props.colorStop2}
+          onChange={props.handleChangeColorStop2}
         />
       </Box>
       <Box mt={2}>
@@ -46,6 +49,7 @@ const GradientPicker: React.FC<OwnProps> = (props) => {
           max={100}
           step={1}
           valueLabelDisplay="auto"
+          onChange={(e, newValue) => props.handleChangeStopPosition2(newValue)}
         />
       </Box>
     </Box>
