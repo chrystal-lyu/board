@@ -1,6 +1,5 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { SelectorBox } from "../../styles/global";
 import { TextBox } from "./index.style";
 import Editor from "../Editor";
 import useEditor from "../../hooks/useEditor";

@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { PageBox } from "./index.style";
 import { Box } from "@material-ui/core";
 import { OwnProps } from "./types";
-import Text from "../Text";
 import Editor from "../Editor";
 import useEditor from "../../hooks/useEditor";
 import useHover from "../../hooks/useHover";
