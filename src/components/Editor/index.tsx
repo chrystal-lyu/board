@@ -36,10 +36,6 @@ const Editor: React.FC<OwnProps> = ({
   const { config } = background.style;
   const { options } = background.style;
 
-  const valuetext = (value: number) => {
-    return `${value}px`;
-  };
-
   const renderBackgroundOptions = () => {
     switch (options) {
       case "color":
@@ -108,22 +104,13 @@ const Editor: React.FC<OwnProps> = ({
                 {renderBackgroundOptions()}
               </Box>
             )}
-            {textContent && (
-              <TextField
-                fullWidth
-                value={textContent}
-                label="Content"
-                variant="outlined"
-              />
-            )}
-            {page.width && (
+            {title === "Page" && (
               <Box width={300}>
                 <Typography id="continuous-slider" gutterBottom>
                   Width
                 </Typography>
                 <Slider
                   defaultValue={Number(page.width)}
-                  getAriaValueText={valuetext}
                   aria-labelledby="continuous-slider"
                   min={300}
                   max={1200}
@@ -134,6 +121,14 @@ const Editor: React.FC<OwnProps> = ({
                   }
                 />
               </Box>
+            )}
+            {textContent && (
+              <TextField
+                fullWidth
+                value={textContent}
+                label="Content"
+                variant="outlined"
+              />
             )}
           </Box>
         </Box>
