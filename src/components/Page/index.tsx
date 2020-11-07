@@ -29,7 +29,6 @@ const Page: React.FC<OwnProps> = (props) => {
         title="Page"
         isShowing={isShowing}
         hide={hide}
-        width={props.width}
       />
     </PageBox>
   );
