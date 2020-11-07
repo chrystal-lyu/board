@@ -2,12 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { BackgroundBox } from "./index.style";
-import { OwnProps } from "./types";
 import Editor from "../Editor";
 import useEditor from "../../hooks/useEditor";
 import { RootState } from "../../store/reducers/rootReducer";
 
-const Background: React.FC<OwnProps> = (props) => {
+const Background: React.FC = (props) => {
   const [isShowing, show, hide] = useEditor();
   const { background } = useSelector((state: RootState) => state.app);
   const { options } = background.style;

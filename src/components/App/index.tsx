@@ -11,10 +11,7 @@ const App: React.FC = () => {
   return (
     <Box height="100vh">
       <CssBaseline />
-      <Background
-        options={sample.background.style.options}
-        background={sample.background.style.config.color}
-      >
+      <Background>
         <Page width={sample.page.width}>
           {sample.page.components.map((component, i) => {
             if (component.type === "container") {
