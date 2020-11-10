@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { TextBox } from "./index.style";
 import Editor from "../Editor";
@@ -7,8 +8,13 @@ import useHover from "../../hooks/useHover";
 import { selectorBoxClass } from "../../utils";
 import { OwnProps } from "./types";
 import { TextWrapper } from "./index.style";
+import {
+  setComponentId,
+  setContainerId,
+} from "../../store/actions/edit.action";
 
 const Text: React.FC<OwnProps> = (props) => {
+  const dispatch = useDispatch();
   const [isShowing, show, hide] = useEditor();
   const [hovered, addHover, removeHover] = useHover();
   const theme = {
@@ -17,10 +23,16 @@ const Text: React.FC<OwnProps> = (props) => {
     letterSpacing: props.letterSpacing,
     textAlign: props.textAlign,
   };
+  const handleClick = (e: React.MouseEvent) => {
+    show(e);
+    dispatch(setContainerId(props.parentId));
+    dispatch(setComponentId(props.id));
+  };
+
   return (
     <TextBox
       p={2}
-      onClick={show}
+      onClick={handleClick}
       className={selectorBoxClass(isShowing, hovered)}
       onMouseOver={addHover}
       onMouseOut={removeHover}

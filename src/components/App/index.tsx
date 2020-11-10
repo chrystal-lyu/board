@@ -24,6 +24,7 @@ const App: React.FC = () => {
                           <Text
                             key={component.id}
                             id={component.id}
+                            parentId={container.id}
                             content={component.content}
                             color={component.color}
                             fontSize={component.fontSize}
@@ -40,7 +41,8 @@ const App: React.FC = () => {
               return (
                 <Text
                   key={container.id}
-                  id={container.id}
+                  id={null}
+                  parentId={container.id}
                   content={container.content}
                   color={container.color}
                   fontSize={container.fontSize}

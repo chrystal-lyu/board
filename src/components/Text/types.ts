@@ -1,5 +1,6 @@
 export interface OwnProps {
-  id: number,
+  id: number | null;
+  parentId: number | null;
   content?: string;
   color?: string;
   fontSize?: number;
