@@ -14,7 +14,7 @@ const App: React.FC = () => {
       <Background>
         <Page width={sample.page.width}>
           {sample.page.containers.map((container) => {
-            if (container.type === "container") {
+            if (container.type === "container" && container.components) {
               return (
                 <Container key={container.id} id={container.id}>
                   {container.components.map((component) => {
@@ -35,6 +35,17 @@ const App: React.FC = () => {
                     }
                   })}
                 </Container>
+              );
+            } else if (container.type === "text") {
+              return (
+                <Text
+                  key={container.id}
+                  id={container.id}
+                  content={container.content}
+                  color={container.color}
+                  fontSize={container.fontSize}
+                  fontWeight={container.fontWeight}
+                />
               );
             }
           })}

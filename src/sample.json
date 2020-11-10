@@ -53,6 +53,16 @@
       },
       {
         "id": 1,
+        "type": "text",
+        "content": "I am a text in Container",
+        "color": "white",
+        "fontSize": 24,
+        "fontWeight": 600,
+        "letterSpacing": 2,
+        "textAlign": "center"
+      },
+      {
+        "id": 2,
         "type": "container",
         "components": [
           {
