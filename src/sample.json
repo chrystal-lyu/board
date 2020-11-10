@@ -14,7 +14,7 @@
   "page": {
     "width": "600",
     "textAlign": "center",
-    "components": [
+    "containers": [
       {
         "id": 0,
         "type": "container",

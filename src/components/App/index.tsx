@@ -13,21 +13,21 @@ const App: React.FC = () => {
       <CssBaseline />
       <Background>
         <Page width={sample.page.width}>
-          {sample.page.components.map((component) => {
-            if (component.type === "container") {
+          {sample.page.containers.map((container) => {
+            if (container.type === "container") {
               return (
-                <Container key={component.id} id={component.id}>
-                  {component.components.map((comp) => {
-                    switch (comp.type) {
+                <Container key={container.id} id={container.id}>
+                  {container.components.map((component) => {
+                    switch (component.type) {
                       case "text":
                         return (
                           <Text
-                            key={comp.id}
-                            id={comp.id}
-                            content={comp.content}
-                            color={comp.color}
-                            fontSize={comp.fontSize}
-                            fontWeight={comp.fontWeight}
+                            key={component.id}
+                            id={component.id}
+                            content={component.content}
+                            color={component.color}
+                            fontSize={component.fontSize}
+                            fontWeight={component.fontWeight}
                           />
                         );
                       default:

@@ -60,7 +60,7 @@ export type Text = {
   textAlign?: string;
 };
 
-export type Container = {
+export type Component = {
   id: number,
   type?: string;
   components?: Text[];
@@ -74,7 +74,7 @@ type StyleConfig = {
   stopPosition2?: number;
 };
 
-export type Components = Container[] | Text[];
+export type Containers = Component[] | Text[];
 
 export interface MainState {
   background: {
@@ -86,6 +86,6 @@ export interface MainState {
   page: {
     width?: string;
     textAlign?: string;
-    components?: Components;
+    containers?: Containers;
   };
 }
