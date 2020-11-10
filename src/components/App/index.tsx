@@ -13,16 +13,17 @@ const App: React.FC = () => {
       <CssBaseline />
       <Background>
         <Page width={sample.page.width}>
-          {sample.page.components.map((component, i) => {
+          {sample.page.components.map((component) => {
             if (component.type === "container") {
               return (
-                <Container key={i}>
-                  {component.components.map((comp, j) => {
+                <Container key={component.id} id={component.id}>
+                  {component.components.map((comp) => {
                     switch (comp.type) {
                       case "text":
                         return (
                           <Text
-                            key={j}
+                            key={comp.id}
+                            id={comp.id}
                             content={comp.content}
                             color={comp.color}
                             fontSize={comp.fontSize}

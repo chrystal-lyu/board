@@ -5,6 +5,7 @@ export const CHANGE_COLOR_STOP_2 = "CHANGE_COLOR_STOP_2";
 export const CHANGE_STOP_POSITION_2 = "CHANGE_STOP_POSITION_2";
 export const CHANGE_MAIN_BACKGROUND_STYLE = "CHANGE_MAIN_BACKGROUND_STYLE";
 export const CHANGE_PAGE_WIDTH = "CHANGE_PAGE_WIDTH";
+export const CHANGE_TEXT_CONTENT = "CHANGE_TEXT_CONTENT";
 
 export interface ChangeMainBgAction {
   type: typeof CHANGE_MAIN_BACKGROUND;
@@ -41,8 +42,16 @@ export interface ChangePageWidthAction {
   payload: string;
 }
 
-type Text = {
-  type: string;
+export interface ChangeTextContentAction {
+  type: typeof CHANGE_TEXT_CONTENT;
+  containerId?: number,
+  componentId?: number,
+  content: string;
+}
+
+export type Text = {
+  id: number,
+  type?: string;
   content?: string;
   color?: string;
   fontSize?: number;
@@ -51,9 +60,10 @@ type Text = {
   textAlign?: string;
 };
 
-type Container = {
-  type: string;
-  components: Text[];
+export type Container = {
+  id: number,
+  type?: string;
+  components?: Text[];
 };
 
 type StyleConfig = {
@@ -64,7 +74,7 @@ type StyleConfig = {
   stopPosition2?: number;
 };
 
-type Components = Container[] | Text[];
+export type Components = Container[] | Text[];
 
 export interface MainState {
   background: {

@@ -1,4 +1,5 @@
 export interface OwnProps {
+  id: number,
   content?: string;
   color?: string;
   fontSize?: number;

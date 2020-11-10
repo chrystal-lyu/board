@@ -6,6 +6,7 @@ import {
   CHANGE_STOP_POSITION_2,
   CHANGE_MAIN_BACKGROUND_STYLE,
   CHANGE_PAGE_WIDTH,
+  CHANGE_TEXT_CONTENT,
   ChangeMainBgAction,
   ChangeColorStop1Action,
   ChangeStopPosition1Action,
@@ -13,6 +14,7 @@ import {
   ChangeStopPosition2Action,
   ChangeMainBgStyleAction,
   ChangePageWidthAction,
+  ChangeTextContentAction,
 } from "./app.types";
 
 export const changeMainBg = (payload: string): ChangeMainBgAction => {
@@ -65,5 +67,18 @@ export const changeStopPosition2 = (
   return {
     type: CHANGE_STOP_POSITION_2,
     payload,
+  };
+};
+
+export const changeTextContent = (
+  containerId: number,
+  componentId: number,
+  content: string
+): ChangeTextContentAction => {
+  return {
+    type: CHANGE_TEXT_CONTENT,
+    containerId,
+    componentId,
+    content,
   };
 };

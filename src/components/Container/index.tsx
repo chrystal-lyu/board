@@ -5,8 +5,9 @@ import Editor from "../Editor";
 import useEditor from "../../hooks/useEditor";
 import useHover from "../../hooks/useHover";
 import { selectorBoxClass } from "../../utils";
+import { OwnProps } from "./types";
 
-const Container: React.FC = (props) => {
+const Container: React.FC<OwnProps> = (props) => {
   const [isShowing, show, hide] = useEditor();
   const [hovered, addHover, removeHover] = useHover();
 
@@ -21,7 +22,12 @@ const Container: React.FC = (props) => {
       <Box onMouseOver={removeHover} onMouseLeave={addHover}>
         {props.children}
       </Box>
-      <Editor title="Container" isShowing={isShowing} hide={hide} />
+      <Editor
+        title="Container"
+        isShowing={isShowing}
+        hide={hide}
+        containerId={props.id}
+      />
     </ContainerBox>
   );
 };
