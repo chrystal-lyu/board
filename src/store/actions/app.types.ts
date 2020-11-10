@@ -76,7 +76,7 @@ type StyleConfig = {
 
 export type Containers = Component[] | Text[];
 
-export interface MainState {
+export interface AppState {
   background: {
     style: {
       options: string;

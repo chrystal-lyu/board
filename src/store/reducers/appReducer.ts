@@ -17,11 +17,11 @@ import {
   ChangeMainBgStyleAction,
   ChangePageWidthAction,
   ChangeTextContentAction,
-  MainState,
+  AppState,
   Component,
 } from "../actions/app.types";
 
-const initialState: MainState = sample;
+const initialState: AppState = sample;
 
 const appReducer = (
   state = initialState,
@@ -34,7 +34,7 @@ const appReducer = (
     | ChangeMainBgStyleAction
     | ChangePageWidthAction
     | ChangeTextContentAction
-): MainState => {
+): AppState => {
   switch (action.type) {
     case CHANGE_MAIN_BACKGROUND:
       return produce(state, (draft) => {
