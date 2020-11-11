@@ -8,7 +8,7 @@ import {
 } from "../actions/edit.types";
 
 const initialState: EditState = {
-  containerId: 0,
+  containerId: null,
   componentId: null,
 };
 

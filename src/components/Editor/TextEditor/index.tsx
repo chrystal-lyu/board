@@ -1,11 +1,17 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Box, TextField, Slider, Select } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { SketchPicker } from "react-color";
 import { OwnProps } from "./types";
+import { changeTextContent } from "../../../store/actions"
+import { RootState } from "../../../store/reducers/rootReducer";
 
 const TextEditor: React.FC<OwnProps> = (props) => {
+  const dispatch = useDispatch();
   const [showColorSwatch, setShowColorSwatch] = useState(false);
+  const { containerId } = useSelector((state: RootState) => state.edit);
+  
   return (
     <Box>
       <Box my={4}>
@@ -18,6 +24,7 @@ const TextEditor: React.FC<OwnProps> = (props) => {
             value={props.content}
             label="Content"
             variant="standard"
+            onChange={(e)=> dispatch(changeTextContent(containerId, e.target.value))}
           />
         </Box>
       </Box>
@@ -32,7 +39,7 @@ const TextEditor: React.FC<OwnProps> = (props) => {
             </Typography>
             <TextField
               fullWidth
-              label="Background Color"
+              label="Color"
               variant="standard"
               value=""
               onFocus={() => setShowColorSwatch(true)}

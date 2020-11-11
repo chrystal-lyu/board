@@ -18,7 +18,7 @@ import {
   ChangePageWidthAction,
   ChangeTextContentAction,
   AppState,
-  Component,
+  Container,
 } from "../actions/app.types";
 
 const initialState: AppState = sample;
@@ -65,12 +65,25 @@ const appReducer = (
         draft.page.width = action.payload;
       });
     case CHANGE_TEXT_CONTENT:
-      return produce(state, (draft) => {
-        const containerIndex = draft.page.containers?.findIndex(
-          (container: Component) => container.id === action.containerId
-        );
-        console.log(containerIndex);
-      });
+      return {
+        ...state,
+        page: {
+          ...state.page,
+          containers: state.page.containers?.map((container: Container) => {
+            if (action.containerId === container.id) {
+              return {
+                ...container,
+                content: action.content,
+              };
+            } else {
+              return container;
+            }
+          }),
+        },
+      };
+    // return produce(state, (draft) => {
+    //   draft.page.containers?[action.containerId].content = action.content;
+    // })
     default:
       return state;
   }

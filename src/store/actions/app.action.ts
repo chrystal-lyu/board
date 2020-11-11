@@ -71,14 +71,14 @@ export const changeStopPosition2 = (
 };
 
 export const changeTextContent = (
-  containerId: number,
-  componentId: number,
+  containerId: number | null,
+  // componentId: number,
   content: string
 ): ChangeTextContentAction => {
   return {
     type: CHANGE_TEXT_CONTENT,
     containerId,
-    componentId,
+    // componentId,
     content,
   };
 };

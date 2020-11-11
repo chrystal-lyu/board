@@ -44,13 +44,13 @@ export interface ChangePageWidthAction {
 
 export interface ChangeTextContentAction {
   type: typeof CHANGE_TEXT_CONTENT;
-  containerId?: number,
-  componentId?: number,
+  containerId?: number | null;
+  componentId?: number | null;
   content: string;
 }
 
 export type Text = {
-  id: number,
+  id: number;
   type?: string;
   content?: string;
   color?: string;
@@ -61,7 +61,7 @@ export type Text = {
 };
 
 export type Component = {
-  id: number,
+  id: number;
   type?: string;
   components?: Text[];
 };
@@ -74,7 +74,7 @@ type StyleConfig = {
   stopPosition2?: number;
 };
 
-export type Containers = Component[] | Text[];
+export type Container = Text & Component;
 
 export interface AppState {
   background: {
@@ -86,6 +86,6 @@ export interface AppState {
   page: {
     width?: string;
     textAlign?: string;
-    containers?: Containers;
+    containers?: Container[];
   };
 }

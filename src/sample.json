@@ -63,6 +63,16 @@
       },
       {
         "id": 2,
+        "type": "text",
+        "content": "I am also a text in Container",
+        "color": "black",
+        "fontSize": 24,
+        "fontWeight": 600,
+        "letterSpacing": 2,
+        "textAlign": "center"
+      },
+      {
+        "id": 3,
         "type": "container",
         "components": [
           {
