@@ -45,6 +45,7 @@ const Text: React.FC<OwnProps> = (props) => {
         isShowing={isShowing}
         hide={hide}
         textContent={props.content}
+        textSize={props.fontSize}
       />
     </TextBox>
   );

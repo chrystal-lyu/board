@@ -6,6 +6,7 @@ export const CHANGE_STOP_POSITION_2 = "CHANGE_STOP_POSITION_2";
 export const CHANGE_MAIN_BACKGROUND_STYLE = "CHANGE_MAIN_BACKGROUND_STYLE";
 export const CHANGE_PAGE_WIDTH = "CHANGE_PAGE_WIDTH";
 export const CHANGE_TEXT_CONTENT = "CHANGE_TEXT_CONTENT";
+export const CHANGE_TEXT_SIZE = "CHANGE_TEXT_SIZE";
 
 export interface ChangeMainBgAction {
   type: typeof CHANGE_MAIN_BACKGROUND;
@@ -47,6 +48,13 @@ export interface ChangeTextContentAction {
   containerId?: number | null;
   componentId?: number | null;
   content: string;
+}
+
+export interface ChangeTextSizeAction {
+  type: typeof CHANGE_TEXT_SIZE;
+  containerId?: number | null;
+  componentId?: number | null;
+  size: number;
 }
 
 export type Text = {

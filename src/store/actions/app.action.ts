@@ -7,6 +7,7 @@ import {
   CHANGE_MAIN_BACKGROUND_STYLE,
   CHANGE_PAGE_WIDTH,
   CHANGE_TEXT_CONTENT,
+  CHANGE_TEXT_SIZE,
   ChangeMainBgAction,
   ChangeColorStop1Action,
   ChangeStopPosition1Action,
@@ -15,6 +16,7 @@ import {
   ChangeMainBgStyleAction,
   ChangePageWidthAction,
   ChangeTextContentAction,
+  ChangeTextSizeAction,
 } from "./app.types";
 
 export const changeMainBg = (payload: string): ChangeMainBgAction => {
@@ -80,5 +82,18 @@ export const changeTextContent = (
     containerId,
     componentId,
     content,
+  };
+};
+
+export const changeTextSize = (
+  containerId: number | null,
+  componentId: number | null,
+  size: number
+): ChangeTextSizeAction => {
+  return {
+    type: CHANGE_TEXT_SIZE,
+    containerId,
+    componentId,
+    size,
   };
 };

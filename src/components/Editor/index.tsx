@@ -30,6 +30,7 @@ const Editor: React.FC<OwnProps> = ({
   title,
   hide,
   textContent,
+  textSize,
 }) => {
   const dispatch = useDispatch();
   const { background, page } = useSelector((state: RootState) => state.app);
@@ -124,8 +125,8 @@ const Editor: React.FC<OwnProps> = ({
                 />
               </Box>
             )}
-            {textContent && (
-              <TextEditor content={textContent} />
+            {textContent !== undefined && (
+              <TextEditor content={textContent} size={textSize} />
             )}
           </Box>
         </Box>

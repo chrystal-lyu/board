@@ -9,6 +9,7 @@ import {
   CHANGE_MAIN_BACKGROUND_STYLE,
   CHANGE_PAGE_WIDTH,
   CHANGE_TEXT_CONTENT,
+  CHANGE_TEXT_SIZE,
   ChangeMainBgAction,
   ChangeColorStop1Action,
   ChangeColorStop2Action,
@@ -17,10 +18,10 @@ import {
   ChangeMainBgStyleAction,
   ChangePageWidthAction,
   ChangeTextContentAction,
+  ChangeTextSizeAction,
   AppState,
-  Container,
-  Component,
 } from "../actions/app.types";
+import { changeTextContent, changeTextSize } from "../../utils";
 
 const initialState: AppState = sample;
 
@@ -35,6 +36,7 @@ const appReducer = (
     | ChangeMainBgStyleAction
     | ChangePageWidthAction
     | ChangeTextContentAction
+    | ChangeTextSizeAction
 ): AppState => {
   switch (action.type) {
     case CHANGE_MAIN_BACKGROUND:
@@ -66,43 +68,9 @@ const appReducer = (
         draft.page.width = action.payload;
       });
     case CHANGE_TEXT_CONTENT:
-      return {
-        ...state,
-        page: {
-          ...state.page,
-          containers: state.page.containers?.map((container: Container) => {
-            if (
-              action.componentId === null &&
-              action.containerId === container.id
-            ) {
-              console.log("should change container level text");
-              return {
-                ...container,
-                content: action.content,
-              };
-            }
-            if (action.componentId !== null) {
-              return {
-                ...container,
-                components: container.components?.map(
-                  (component: Component) => {
-                    if (action.componentId === component.id) {
-                      return {
-                        ...component,
-                        content: action.content,
-                      };
-                    } else {
-                      return component;
-                    }
-                  }
-                ),
-              };
-            } else {
-              return container;
-            }
-          }),
-        },
-      };
+      return changeTextContent(state, action);
+    case CHANGE_TEXT_SIZE:
+      return changeTextSize(state, action);
     default:
       return state;
   }

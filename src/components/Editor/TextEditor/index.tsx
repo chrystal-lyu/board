@@ -4,14 +4,16 @@ import { Box, TextField, Slider, Select } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { SketchPicker } from "react-color";
 import { OwnProps } from "./types";
-import { changeTextContent } from "../../../store/actions"
+import { changeTextContent, changeTextSize } from "../../../store/actions";
 import { RootState } from "../../../store/reducers/rootReducer";
 
 const TextEditor: React.FC<OwnProps> = (props) => {
   const dispatch = useDispatch();
   const [showColorSwatch, setShowColorSwatch] = useState(false);
-  const { containerId, componentId } = useSelector((state: RootState) => state.edit);
-  
+  const { containerId, componentId } = useSelector(
+    (state: RootState) => state.edit
+  );
+
   return (
     <Box>
       <Box my={4}>
@@ -24,7 +26,11 @@ const TextEditor: React.FC<OwnProps> = (props) => {
             value={props.content}
             label="Content"
             variant="standard"
-            onChange={(e)=> dispatch(changeTextContent(containerId, componentId, e.target.value))}
+            onChange={(e) =>
+              dispatch(
+                changeTextContent(containerId, componentId, e.target.value)
+              )
+            }
           />
         </Box>
       </Box>
@@ -67,12 +73,18 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               Size
             </Typography>
             <Slider
-              defaultValue={600}
+              defaultValue={props.size}
+              value={props.size}
               aria-labelledby="size-slider"
-              min={300}
-              max={1200}
-              step={50}
+              min={8}
+              max={48}
+              step={2}
               valueLabelDisplay="auto"
+              onChange={(e, newValue) => {
+                dispatch(
+                  changeTextSize(containerId, componentId, newValue as number)
+                );
+              }}
             />
           </Box>
           <Box my={3}>
