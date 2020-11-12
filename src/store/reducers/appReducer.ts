@@ -19,6 +19,7 @@ import {
   ChangeTextContentAction,
   AppState,
   Container,
+  Component,
 } from "../actions/app.types";
 
 const initialState: AppState = sample;
@@ -70,10 +71,31 @@ const appReducer = (
         page: {
           ...state.page,
           containers: state.page.containers?.map((container: Container) => {
-            if (action.containerId === container.id) {
+            if (
+              action.componentId === null &&
+              action.containerId === container.id
+            ) {
+              console.log("should change container level text");
               return {
                 ...container,
                 content: action.content,
+              };
+            }
+            if (action.componentId !== null) {
+              return {
+                ...container,
+                components: container.components?.map(
+                  (component: Component) => {
+                    if (action.componentId === component.id) {
+                      return {
+                        ...component,
+                        content: action.content,
+                      };
+                    } else {
+                      return component;
+                    }
+                  }
+                ),
               };
             } else {
               return container;
@@ -81,9 +103,6 @@ const appReducer = (
           }),
         },
       };
-    // return produce(state, (draft) => {
-    //   draft.page.containers?[action.containerId].content = action.content;
-    // })
     default:
       return state;
   }

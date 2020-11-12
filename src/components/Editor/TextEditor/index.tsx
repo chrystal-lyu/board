@@ -10,7 +10,7 @@ import { RootState } from "../../../store/reducers/rootReducer";
 const TextEditor: React.FC<OwnProps> = (props) => {
   const dispatch = useDispatch();
   const [showColorSwatch, setShowColorSwatch] = useState(false);
-  const { containerId } = useSelector((state: RootState) => state.edit);
+  const { containerId, componentId } = useSelector((state: RootState) => state.edit);
   
   return (
     <Box>
@@ -24,7 +24,7 @@ const TextEditor: React.FC<OwnProps> = (props) => {
             value={props.content}
             label="Content"
             variant="standard"
-            onChange={(e)=> dispatch(changeTextContent(containerId, e.target.value))}
+            onChange={(e)=> dispatch(changeTextContent(containerId, componentId, e.target.value))}
           />
         </Box>
       </Box>
