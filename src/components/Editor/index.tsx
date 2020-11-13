@@ -24,6 +24,7 @@ import GradientPicker from "./GradientPicker";
 import TextEditor from "./TextEditor";
 import { OwnProps } from "./types";
 import { RootState } from "../../store/reducers/rootReducer";
+import ImageEditor from "./ImageEditor";
 
 const Editor: React.FC<OwnProps> = ({
   isShowing,
@@ -125,9 +126,10 @@ const Editor: React.FC<OwnProps> = ({
                 />
               </Box>
             )}
-            {textContent !== undefined && (
+            {title === "Text" && (
               <TextEditor content={textContent} size={textSize} />
             )}
+            {title === "Image" && <ImageEditor />}
           </Box>
         </Box>
         <Box m={4}>
