@@ -32,6 +32,7 @@ const Editor: React.FC<OwnProps> = ({
   hide,
   textContent,
   textSize,
+  imageUrl,
 }) => {
   const dispatch = useDispatch();
   const { background, page } = useSelector((state: RootState) => state.app);
@@ -129,7 +130,7 @@ const Editor: React.FC<OwnProps> = ({
             {title === "Text" && (
               <TextEditor content={textContent} size={textSize} />
             )}
-            {title === "Image" && <ImageEditor />}
+            {title === "Image" && <ImageEditor url={imageUrl} />}
           </Box>
         </Box>
         <Box m={4}>

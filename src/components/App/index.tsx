@@ -44,7 +44,7 @@ const App: React.FC = () => {
                             id={component.id}
                             parentId={container.id}
                             key={component.id}
-                            src={component.url}
+                            url={component.url}
                             shape={component.shape}
                             scale={component.scale}
                             crop={component.crop}
@@ -74,7 +74,7 @@ const App: React.FC = () => {
                   key={container.id}
                   id={null}
                   parentId={container.id}
-                  src={container.url}
+                  url={container.url}
                   shape={container.shape}
                   scale={container.scale}
                   crop={container.crop}

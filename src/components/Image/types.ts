@@ -1,7 +1,7 @@
 export interface OwnProps {
   id: number | null;
   parentId: number | null;
-  src?: string;
+  url?: string;
   shape?: string;
   scale?: number;
   crop?: {

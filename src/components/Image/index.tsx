@@ -16,8 +16,13 @@ const Image: React.FC<OwnProps> = (props) => {
       onMouseOver={addHover}
       onMouseOut={removeHover}
     >
-      <Img src={props.src} />
-      <Editor title="Image" isShowing={isShowing} hide={hide} />
+      <Img src={props.url} />
+      <Editor
+        title="Image"
+        isShowing={isShowing}
+        hide={hide}
+        imageUrl={props.url}
+      />
     </ImageContainer>
   );
 };

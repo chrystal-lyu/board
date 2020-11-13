@@ -6,17 +6,21 @@ import { UploadContainer, UploadButton } from "./index.style";
 
 const ImageEditor: React.FC<OwnProps> = (props) => {
   const [selectedFile, setSelectedFile] = useState<File>();
-  const [preview, setPreview] = useState<string | undefined>(undefined);
+  const [preview, setPreview] = useState<string | undefined>();
 
   useEffect(() => {
-    if (!selectedFile) {
+    if (props.url) {
+      setPreview(props.url);
+      return;
+    }
+    if (!selectedFile && !props.url) {
       setPreview(undefined);
       return;
     }
     const objectUrl: string = URL.createObjectURL(selectedFile);
     setPreview(objectUrl);
     return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedFile]);
+  }, [selectedFile, props]);
 
   const onSelectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) {
@@ -49,7 +53,6 @@ const ImageEditor: React.FC<OwnProps> = (props) => {
                   Upload
                 </Button>
               </label>
-              {/* {selectedFile && <img width={200} height={200} src={preview} />} */}
             </UploadButton>
           </UploadContainer>
         </Box>

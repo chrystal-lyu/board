@@ -6,4 +6,5 @@ export interface OwnProps {
   hide(e: React.MouseEvent): void;
   textContent?: string;
   textSize?: number;
+  imageUrl?: string;
 }
