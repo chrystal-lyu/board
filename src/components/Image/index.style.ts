@@ -1,10 +1,20 @@
 import styled from "styled-components";
+import { SelectorBox } from "../../styles/global";
 
-export const ImageContainer = styled.div`
+export const ImageContainer = styled(SelectorBox)`
   position: relative;
-  overflow: hidden;
   max-width: 100%;
   display: block;
+
+  &.hover::before {
+    content: "image";
+    text-transform: uppercase;
+    color: #33ada9;
+    font-size: 0.5rem;
+    position: absolute;
+    top: -15px;
+    left: 0;
+  }
 `;
 
 export const Img = styled.img`
