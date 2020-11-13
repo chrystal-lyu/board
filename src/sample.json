@@ -35,8 +35,8 @@
             "type": "text",
             "content": "Jane Doe",
             "color": "white",
-            "fontSize": 24,
-            "fontWeight": 600,
+            "fontSize": 48,
+            "fontWeight": 400,
             "letterSpacing": 2,
             "textAlign": "center"
           },
@@ -44,8 +44,8 @@
             "id": 2,
             "type": "text",
             "content": "A Full Stack Developer",
-            "color": "black",
-            "fontSize": 14,
+            "color": "rgba(255, 255, 255, 0.56)",
+            "fontSize": 26,
             "fontWeight": 400,
             "letterSpacing": 0,
             "textAlign": "center"
@@ -128,6 +128,16 @@
           "topLeft": [0, 0],
           "bottomRight": [200, 200]
         }
+      },
+      {
+        "id": 5,
+        "type": "text",
+        "content": "© Jane Doe. All rights reserved.",
+        "color": "rgba(255, 255, 255, 0.56)",
+        "fontSize": 18,
+        "fontWeight": 400,
+        "letterSpacing": 0,
+        "textAlign": "center"
       }
     ]
   }

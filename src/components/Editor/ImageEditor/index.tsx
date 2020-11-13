@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { OwnProps } from "./types";
-import { PhotoCamera } from "@material-ui/icons";
-import {
-  Box,
-  TextField,
-  Slider,
-  Select,
-  Typography,
-  IconButton,
-} from "@material-ui/core";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import { Box, Button, Slider, Select, Typography } from "@material-ui/core";
+import { UploadContainer, UploadButton } from "./index.style";
 
 const ImageEditor: React.FC<OwnProps> = (props) => {
   const [selectedFile, setSelectedFile] = useState<File>();
@@ -29,35 +23,35 @@ const ImageEditor: React.FC<OwnProps> = (props) => {
       setSelectedFile(undefined);
       return;
     }
-    console.log(e.target.files);
     setSelectedFile(e.target.files[0]);
   };
+
   return (
     <Box>
       <Box my={4}>
-        <Typography variant="h6" id="text-content" gutterBottom>
-          Image Upload
-        </Typography>
         <Box my={3} aria-labelledby="text-content">
-          <TextField
-            fullWidth
-            value={props.url}
-            label="Content"
-            variant="standard"
-          />
-          <input
-            accept="image/*"
-            style={{ display: "none" }}
-            id="icon-button-photo"
-            onChange={onSelectFile}
-            type="file"
-          />
-          <label htmlFor="icon-button-photo">
-            <IconButton color="primary" component="span">
-              <PhotoCamera />
-            </IconButton>
-          </label>
-          {selectedFile && <img width={200} height={200} src={preview} />}
+          <UploadContainer url={preview}>
+            <input
+              accept="image/*"
+              style={{ display: "none" }}
+              id="icon-button-photo"
+              onChange={onSelectFile}
+              type="file"
+            />
+            <UploadButton>
+              <label htmlFor="icon-button-photo">
+                <Button
+                  component="span"
+                  color="primary"
+                  variant="contained"
+                  startIcon={<CloudUploadIcon />}
+                >
+                  Upload
+                </Button>
+              </label>
+              {/* {selectedFile && <img width={200} height={200} src={preview} />} */}
+            </UploadButton>
+          </UploadContainer>
         </Box>
         <Typography variant="h6" id="text-appearance" gutterBottom>
           Appearance

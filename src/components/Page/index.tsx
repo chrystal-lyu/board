@@ -16,7 +16,6 @@ const Page: React.FC<OwnProps> = (props) => {
   return (
     <PageBox
       p={2}
-      height="100vh"
       width={page.width}
       onClick={show}
       className={selectorBoxClass(isShowing, hovered)}
@@ -26,11 +25,7 @@ const Page: React.FC<OwnProps> = (props) => {
       <Box onMouseOver={removeHover} onMouseLeave={addHover}>
         {props.children}
       </Box>
-      <Editor
-        title="Page"
-        isShowing={isShowing}
-        hide={hide}
-      />
+      <Editor title="Page" isShowing={isShowing} hide={hide} />
     </PageBox>
   );
 };
