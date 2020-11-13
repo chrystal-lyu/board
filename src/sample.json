@@ -21,6 +21,17 @@
         "components": [
           {
             "id": 0,
+            "type": "image",
+            "url": "https://deadline.com/wp-content/uploads/2019/08/mulan.jpg",
+            "shape": "circle",
+            "scale": 1,
+            "crop": {
+              "topLeft": [0, 0],
+              "bottomRight": [200, 200]
+            }
+          },
+          {
+            "id": 1,
             "type": "text",
             "content": "Jane Doe",
             "color": "white",
@@ -30,7 +41,7 @@
             "textAlign": "center"
           },
           {
-            "id": 1,
+            "id": 2,
             "type": "text",
             "content": "A Full Stack Developer",
             "color": "black",
@@ -40,7 +51,7 @@
             "textAlign": "center"
           },
           {
-            "id": 2, 
+            "id": 3,
             "type": "text",
             "content": "Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum.",
             "color": "white",
@@ -106,6 +117,17 @@
             "textAlign": "center"
           }
         ]
+      },
+      {
+        "id": 4,
+        "type": "image",
+        "url": "https://deadline.com/wp-content/uploads/2019/08/mulan.jpg",
+        "shape": "circle",
+        "scale": 1,
+        "crop": {
+          "topLeft": [0, 0],
+          "bottomRight": [200, 200]
+        }
       }
     ]
   }

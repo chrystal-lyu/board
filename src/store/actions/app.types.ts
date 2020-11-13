@@ -57,6 +57,14 @@ export interface ChangeTextSizeAction {
   size: number;
 }
 
+type StyleConfig = {
+  color?: string;
+  colorStop1?: string;
+  stopPosition1?: number;
+  colorStop2?: string;
+  stopPosition2?: number;
+};
+
 export type Text = {
   id: number;
   type?: string;
@@ -68,21 +76,27 @@ export type Text = {
   textAlign?: string;
 };
 
+export type Image = {
+  id: number;
+  type?: string;
+  url?: string;
+  shape?: string;
+  scale?: number;
+  crop?: {
+    topLeft: number[];
+    bottomRight: number[];
+  };
+};
+
+export type Components = Text & Image;
+
 export type Component = {
   id: number;
   type?: string;
-  components?: Text[];
+  components?: Components[];
 };
 
-type StyleConfig = {
-  color?: string;
-  colorStop1?: string;
-  stopPosition1?: number;
-  colorStop2?: string;
-  stopPosition2?: number;
-};
-
-export type Container = Text & Component;
+export type Container = Text & Component & Image;
 
 export interface AppState {
   background: {
