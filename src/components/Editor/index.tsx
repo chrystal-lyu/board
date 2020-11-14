@@ -9,6 +9,8 @@ import {
   changeMainBgStyle,
   changePageWidth,
   changeContainerBackground,
+  changeContainerBorderRadius,
+  changeContainerDropShadow,
 } from "../../store/actions";
 import {
   Box,
@@ -39,6 +41,8 @@ const Editor: React.FC<OwnProps> = ({
   imageShape,
   containerId,
   containerBgColor,
+  containerBorderRadius,
+  containerDropShadow,
 }) => {
   const dispatch = useDispatch();
   const { background, page } = useSelector((state: RootState) => state.app);
@@ -156,9 +160,16 @@ const Editor: React.FC<OwnProps> = ({
                     label="Drop Shadow"
                     control={
                       <Checkbox
-                        checked={false}
-                        name="checkedB"
+                        checked={containerDropShadow}
                         color="primary"
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                          dispatch(
+                            changeContainerDropShadow(
+                              containerId,
+                              e.target.checked
+                            )
+                          );
+                        }}
                       />
                     }
                   />
@@ -168,11 +179,16 @@ const Editor: React.FC<OwnProps> = ({
                     Border Radius
                   </Typography>
                   <Slider
-                    defaultValue={6}
+                    defaultValue={containerBorderRadius}
                     min={0}
-                    max={20}
-                    step={1}
+                    max={50}
+                    step={2}
                     valueLabelDisplay="auto"
+                    onChange={(e, newValue) =>
+                      dispatch(
+                        changeContainerBorderRadius(containerId, newValue as number)
+                      )
+                    }
                   />
                 </Box>
               </Box>

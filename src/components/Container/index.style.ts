@@ -40,7 +40,7 @@ export const ContainerWrapper = styled.div`
       : "none"};
 
   border-radius: ${(props: Props) =>
-    props.borderRadius ? `${props.borderRadius}px` : "16px"};
+    (props.borderRadius !== undefined) ? `${props.borderRadius}px` : "16px"};
 
   background-color: ${(props: Props) =>
     props.backgroundColor ? props.backgroundColor : "none"};

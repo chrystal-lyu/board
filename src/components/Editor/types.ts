@@ -9,4 +9,6 @@ export interface OwnProps {
   imageUrl?: string;
   imageShape?: string;
   containerBgColor?: string;
+  containerBorderRadius?: number;
+  containerDropShadow?: boolean;
 }

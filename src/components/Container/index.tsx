@@ -41,6 +41,8 @@ const Container: React.FC<OwnProps> = (props) => {
         hide={hide}
         containerId={props.id}
         containerBgColor={props.backgroundColor}
+        containerBorderRadius={props.borderRadius}
+        containerDropShadow={props.dropShadow}
       />
     </ContainerBox>
   );
