@@ -5,6 +5,7 @@ export const CHANGE_COLOR_STOP_2 = "CHANGE_COLOR_STOP_2";
 export const CHANGE_STOP_POSITION_2 = "CHANGE_STOP_POSITION_2";
 export const CHANGE_MAIN_BACKGROUND_STYLE = "CHANGE_MAIN_BACKGROUND_STYLE";
 export const CHANGE_PAGE_WIDTH = "CHANGE_PAGE_WIDTH";
+export const CHANGE_CONTAINER_BACKGROUND = "CHANGE_CONTAINER_BACKGROUND";
 export const CHANGE_TEXT_CONTENT = "CHANGE_TEXT_CONTENT";
 export const CHANGE_TEXT_SIZE = "CHANGE_TEXT_SIZE";
 export const CHANGE_IMAGE_URL = "CHANGE_IMAGE_URL";
@@ -43,6 +44,12 @@ export interface ChangeMainBgStyleAction {
 export interface ChangePageWidthAction {
   type: typeof CHANGE_PAGE_WIDTH;
   payload: string;
+}
+
+export interface ChangeContainerBackgroundAction {
+  type: typeof CHANGE_CONTAINER_BACKGROUND;
+  containerId: number;
+  color: string;
 }
 
 export interface ChangeTextContentAction {

@@ -8,6 +8,7 @@ import {
   CHANGE_STOP_POSITION_2,
   CHANGE_MAIN_BACKGROUND_STYLE,
   CHANGE_PAGE_WIDTH,
+  CHANGE_CONTAINER_BACKGROUND,
   CHANGE_TEXT_CONTENT,
   CHANGE_TEXT_SIZE,
   CHANGE_IMAGE_URL,
@@ -19,6 +20,7 @@ import {
   ChangeStopPosition2Action,
   ChangeMainBgStyleAction,
   ChangePageWidthAction,
+  ChangeContainerBackgroundAction,
   ChangeTextContentAction,
   ChangeTextSizeAction,
   ChangeImageUrlAction,
@@ -30,6 +32,7 @@ import {
   changeImageShape,
   changeTextContent,
   changeTextSize,
+  changeContainerBackground,
 } from "../../utils";
 
 const initialState: AppState = sample;
@@ -44,6 +47,7 @@ const appReducer = (
     | ChangeStopPosition2Action
     | ChangeMainBgStyleAction
     | ChangePageWidthAction
+    | ChangeContainerBackgroundAction
     | ChangeTextContentAction
     | ChangeTextSizeAction
     | ChangeImageUrlAction
@@ -78,6 +82,8 @@ const appReducer = (
       return produce(state, (draft) => {
         draft.page.width = action.payload;
       });
+    case CHANGE_CONTAINER_BACKGROUND:
+      return changeContainerBackground(state, action);
     case CHANGE_TEXT_CONTENT:
       return changeTextContent(state, action);
     case CHANGE_TEXT_SIZE:

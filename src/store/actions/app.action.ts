@@ -6,6 +6,7 @@ import {
   CHANGE_STOP_POSITION_2,
   CHANGE_MAIN_BACKGROUND_STYLE,
   CHANGE_PAGE_WIDTH,
+  CHANGE_CONTAINER_BACKGROUND,
   CHANGE_TEXT_CONTENT,
   CHANGE_TEXT_SIZE,
   CHANGE_IMAGE_URL,
@@ -17,6 +18,7 @@ import {
   ChangeStopPosition2Action,
   ChangeMainBgStyleAction,
   ChangePageWidthAction,
+  ChangeContainerBackgroundAction,
   ChangeTextContentAction,
   ChangeTextSizeAction,
   ChangeImageUrlAction,
@@ -73,6 +75,17 @@ export const changeStopPosition2 = (
   return {
     type: CHANGE_STOP_POSITION_2,
     payload,
+  };
+};
+
+export const changeContainerBackground = (
+  containerId: number,
+  color: string
+): ChangeContainerBackgroundAction => {
+  return {
+    type: CHANGE_CONTAINER_BACKGROUND,
+    containerId,
+    color,
   };
 };
 
