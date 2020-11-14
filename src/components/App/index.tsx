@@ -40,8 +40,14 @@ const App: React.FC = () => {
                             parentId={container.id}
                             content={component.content}
                             color={component.color}
+                            fontFamily={component.fontFamily}
                             fontSize={component.fontSize}
                             fontWeight={component.fontWeight}
+                            lineHeight={component.lineHeight}
+                            letterSpacing={component.letterSpacing}
+                            margin={component.margin}
+                            textTransform={component.textTransform}
+                            textAlign={component.textAlign}
                           />
                         );
                       case "image":
@@ -70,8 +76,14 @@ const App: React.FC = () => {
                   parentId={container.id}
                   content={container.content}
                   color={container.color}
+                  fontFamily={container.fontFamily}
                   fontSize={container.fontSize}
                   fontWeight={container.fontWeight}
+                  lineHeight={container.lineHeight}
+                  letterSpacing={container.letterSpacing}
+                  margin={container.margin}
+                  textTransform={container.textTransform}
+                  textAlign={container.textAlign}
                 />
               );
             } else if (container.type === "image") {

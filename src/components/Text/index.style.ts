@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { SelectorBox } from "../../styles/global";
 
 export const TextBox = styled(SelectorBox)`
+  padding: 0;
   &.hover::before {
     content: "text";
     text-transform: uppercase;
@@ -14,9 +15,13 @@ export const TextBox = styled(SelectorBox)`
 `;
 
 export const TextWrapper = styled.div`
-  color: ${(props) => props.color};
+  color: ${(props) => props.theme.color};
+  font-family: ${(props) => props.theme.fontFamily};
   font-size: ${(props) => props.theme.fontSize}px;
   font-weight: ${(props) => props.theme.fontWeight};
-  letter-spacing: ${(props) => props.theme.letterSpacing};
+  line-height: ${(props) => `${props.theme.lineHeight}px`};;
+  letter-spacing: ${(props) => `${props.theme.letterSpacing}px`};
+  margin: ${(props) => `${props.theme.margin}px 0`};
+  text-transform: ${(props) => props.theme.textTransform};
   text-align: ${(props) => props.theme.textAlign};
 `;

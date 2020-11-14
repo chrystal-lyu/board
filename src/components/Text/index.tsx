@@ -18,9 +18,14 @@ const Text: React.FC<OwnProps> = (props) => {
   const [isShowing, show, hide] = useEditor();
   const [hovered, addHover, removeHover] = useHover();
   const theme = {
+    color: props.color,
+    fontFamily: props.fontFamily,
     fontSize: props.fontSize,
     fontWeight: props.fontWeight,
+    lineHeight: props.lineHeight,
     letterSpacing: props.letterSpacing,
+    margin: props.margin,
+    textTransform: props.textTransform,
     textAlign: props.textAlign,
   };
   const handleClick = (e: React.MouseEvent) => {
