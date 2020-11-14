@@ -1,6 +1,6 @@
 export interface OwnProps {
-  containerId?: number;
-  componentId?: number;
+  containerId: number | null;
+  componentId?: number | null;
   title?: string;
   isShowing?: boolean;
   hide(e: React.MouseEvent): void;
@@ -8,4 +8,5 @@ export interface OwnProps {
   textSize?: number;
   imageUrl?: string;
   imageShape?: string;
+  containerBgColor?: string;
 }

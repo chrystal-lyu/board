@@ -79,7 +79,7 @@ export const changeStopPosition2 = (
 };
 
 export const changeContainerBackground = (
-  containerId: number,
+  containerId: number | null,
   color: string
 ): ChangeContainerBackgroundAction => {
   return {

@@ -8,6 +8,7 @@ import {
   changeStopPosition2,
   changeMainBgStyle,
   changePageWidth,
+  changeContainerBackground,
 } from "../../store/actions";
 import {
   Box,
@@ -34,6 +35,8 @@ const Editor: React.FC<OwnProps> = ({
   textSize,
   imageUrl,
   imageShape,
+  containerId,
+  containerBgColor,
 }) => {
   const dispatch = useDispatch();
   const { background, page } = useSelector((state: RootState) => state.app);
@@ -48,6 +51,9 @@ const Editor: React.FC<OwnProps> = ({
             value={config.color}
             handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               dispatch(changeMainBg(e.target.value))
+            }
+            handlePickerChange={(value: string) =>
+              dispatch(changeMainBg(value))
             }
           />
         );
@@ -124,6 +130,21 @@ const Editor: React.FC<OwnProps> = ({
                   valueLabelDisplay="auto"
                   onChange={(e, newValue) =>
                     dispatch(changePageWidth(newValue.toString()))
+                  }
+                />
+              </Box>
+            )}
+            {title === "Container" && (
+              <Box>
+                <ColorPicker
+                  value={containerBgColor}
+                  handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    dispatch(
+                      changeContainerBackground(containerId, e.target.value)
+                    )
+                  }
+                  handlePickerChange={(value: string) =>
+                    dispatch(changeContainerBackground(containerId, value))
                   }
                 />
               </Box>

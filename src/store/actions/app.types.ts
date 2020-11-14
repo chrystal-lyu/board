@@ -48,7 +48,7 @@ export interface ChangePageWidthAction {
 
 export interface ChangeContainerBackgroundAction {
   type: typeof CHANGE_CONTAINER_BACKGROUND;
-  containerId: number;
+  containerId: number | null;
   color: string;
 }
 

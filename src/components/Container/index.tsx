@@ -36,6 +36,7 @@ const Container: React.FC<OwnProps> = (props) => {
         isShowing={isShowing}
         hide={hide}
         containerId={props.id}
+        containerBgColor={props.backgroundColor}
       />
     </ContainerBox>
   );

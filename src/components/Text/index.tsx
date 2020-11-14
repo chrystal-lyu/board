@@ -46,6 +46,7 @@ const Text: React.FC<OwnProps> = (props) => {
         hide={hide}
         textContent={props.content}
         textSize={props.fontSize}
+        containerId={props.parentId}
       />
     </TextBox>
   );

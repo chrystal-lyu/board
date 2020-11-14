@@ -36,6 +36,7 @@ const Image: React.FC<OwnProps> = (props) => {
         hide={hide}
         imageUrl={props.url}
         imageShape={props.shape}
+        containerId={props.parentId}
       />
     </ImageContainer>
   );
