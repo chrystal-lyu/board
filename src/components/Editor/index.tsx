@@ -18,6 +18,8 @@ import {
   FormControl,
   InputLabel,
   Select,
+  FormControlLabel,
+  Checkbox,
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ColorPicker from "./ColorPicker";
@@ -146,6 +148,18 @@ const Editor: React.FC<OwnProps> = ({
                     }
                     handlePickerChange={(value: string) =>
                       dispatch(changeContainerBackground(containerId, value))
+                    }
+                  />
+                </Box>
+                <Box my={3}>
+                  <FormControlLabel
+                    label="Drop Shadow"
+                    control={
+                      <Checkbox
+                        checked={false}
+                        name="checkedB"
+                        color="primary"
+                      />
                     }
                   />
                 </Box>
