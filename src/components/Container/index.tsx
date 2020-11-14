@@ -27,7 +27,7 @@ const Container: React.FC<OwnProps> = (props) => {
       onMouseOut={removeHover}
     >
       <ContainerWrapper backgroundColor={props.backgroundColor}>
-        <Box onMouseOver={removeHover} onMouseLeave={addHover}>
+        <Box onMouseOver={removeHover} onMouseOut={addHover}>
           {props.children}
         </Box>
       </ContainerWrapper>
