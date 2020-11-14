@@ -9,6 +9,7 @@ import {
   CHANGE_TEXT_CONTENT,
   CHANGE_TEXT_SIZE,
   CHANGE_IMAGE_URL,
+  CHANGE_IMAGE_SHAPE,
   ChangeMainBgAction,
   ChangeColorStop1Action,
   ChangeStopPosition1Action,
@@ -19,6 +20,7 @@ import {
   ChangeTextContentAction,
   ChangeTextSizeAction,
   ChangeImageUrlAction,
+  ChangeImageShapeAction,
 } from "./app.types";
 
 export const changeMainBg = (payload: string): ChangeMainBgAction => {
@@ -103,12 +105,25 @@ export const changeTextSize = (
 export const changeImageUrl = (
   containerId: number | null,
   componentId: number | null,
-  url: string,
+  url: string
 ): ChangeImageUrlAction => {
   return {
     type: CHANGE_IMAGE_URL,
     containerId,
     componentId,
     url,
+  };
+};
+
+export const changeImageShape = (
+  containerId: number | null,
+  componentId: number | null,
+  shape: string
+): ChangeImageShapeAction => {
+  return {
+    type: CHANGE_IMAGE_SHAPE,
+    containerId,
+    componentId,
+    shape,
   };
 };

@@ -31,4 +31,5 @@ export const Img = styled.img`
   max-width: 100%;
   display: inline-block;
   vertical-align: top;
+  transition: .2s all;
 `;

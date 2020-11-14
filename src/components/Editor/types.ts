@@ -7,4 +7,5 @@ export interface OwnProps {
   textContent?: string;
   textSize?: number;
   imageUrl?: string;
+  imageShape?: string;
 }

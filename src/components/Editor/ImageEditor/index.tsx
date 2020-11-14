@@ -4,7 +4,7 @@ import { OwnProps } from "./types";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import { Box, Button, Slider, Select, Typography } from "@material-ui/core";
 import { UploadContainer, UploadButton } from "./index.style";
-import { changeImageUrl } from "../../../store/actions";
+import { changeImageUrl, changeImageShape } from "../../../store/actions";
 import { RootState } from "../../../store/reducers/rootReducer";
 
 const ImageEditor: React.FC<OwnProps> = (props) => {
@@ -67,7 +67,16 @@ const ImageEditor: React.FC<OwnProps> = (props) => {
               Shape
             </Typography>
             <Box>
-              <Select native value="circle" style={{ display: "block" }}>
+              <Select
+                native
+                value={props.shape}
+                style={{ display: "block" }}
+                onChange={(e) => {
+                  dispatch(
+                    changeImageShape(containerId, componentId, e.target.value as string)
+                  );
+                }}
+              >
                 <option value="rectangular">Rectangular</option>
                 <option value="circle">Circle</option>
               </Select>

@@ -8,6 +8,7 @@ export const CHANGE_PAGE_WIDTH = "CHANGE_PAGE_WIDTH";
 export const CHANGE_TEXT_CONTENT = "CHANGE_TEXT_CONTENT";
 export const CHANGE_TEXT_SIZE = "CHANGE_TEXT_SIZE";
 export const CHANGE_IMAGE_URL = "CHANGE_IMAGE_URL";
+export const CHANGE_IMAGE_SHAPE = "CHANGE_IMAGE_SHAPE";
 
 export interface ChangeMainBgAction {
   type: typeof CHANGE_MAIN_BACKGROUND;
@@ -63,6 +64,13 @@ export interface ChangeImageUrlAction {
   containerId?: number | null;
   componentId?: number | null;
   url: string;
+}
+
+export interface ChangeImageShapeAction {
+  type: typeof CHANGE_IMAGE_SHAPE;
+  containerId?: number | null;
+  componentId?: number | null;
+  shape: string;
 }
 
 type StyleConfig = {
