@@ -117,6 +117,8 @@ export type Component = {
   id: number;
   type?: string;
   backgroundColor?: string;
+  borderRadius?: number;
+  dropShadow?: boolean;
   components?: Components[];
 };
 

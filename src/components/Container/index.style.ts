@@ -3,6 +3,10 @@ import { SelectorBox } from "../../styles/global";
 
 interface Props {
   backgroundColor?: string;
+  borderRadius?: number;
+  padding?: number;
+  marginY?: number;
+  dropShadow?: boolean;
 }
 
 export const ContainerBox = styled(SelectorBox)`
@@ -30,7 +34,19 @@ export const ContainerBox = styled(SelectorBox)`
 `;
 
 export const ContainerWrapper = styled.div`
-  border-radius: 1rem;
+  box-shadow: ${(props: Props) =>
+    props.dropShadow
+      ? "rgba(61, 31, 38, 0.35) 0rem 1rem 2.625rem 0rem;"
+      : "none"};
+
+  border-radius: ${(props: Props) =>
+    props.borderRadius ? `${props.borderRadius}px` : "16px"};
+
   background-color: ${(props: Props) =>
-    props.backgroundColor ? props.backgroundColor : "transparent"};
+    props.backgroundColor ? props.backgroundColor : "none"};
+
+  padding: ${(props: Props) => (props.padding ? props.padding : "16px")};
+
+  margin: ${(props: Props) =>
+    props.marginY ? `${props.marginY} 0` : "16px 0"};
 `;

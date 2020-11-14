@@ -18,7 +18,9 @@
       {
         "id": 0,
         "type": "container",
-        "background": "transparent",
+        "backgroundColor": "#ffffff00",
+        "borderRadius": 0,
+        "dropShadow": false,
         "components": [
           {
             "id": 0,
@@ -87,6 +89,8 @@
         "id": 3,
         "type": "container",
         "backgroundColor": "white",
+        "borderRadius": 16,
+        "dropShadow": true,
         "components": [
           {
             "id": 0,

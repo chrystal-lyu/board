@@ -27,6 +27,8 @@ const App: React.FC = () => {
                   key={container.id}
                   id={container.id}
                   backgroundColor={container.backgroundColor}
+                  borderRadius={container.borderRadius}
+                  dropShadow={container.dropShadow}
                 >
                   {(container as ComponentType).components?.map((component) => {
                     switch (component.type) {

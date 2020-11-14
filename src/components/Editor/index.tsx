@@ -135,18 +135,32 @@ const Editor: React.FC<OwnProps> = ({
               </Box>
             )}
             {title === "Container" && (
-              <Box>
-                <ColorPicker
-                  value={containerBgColor}
-                  handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    dispatch(
-                      changeContainerBackground(containerId, e.target.value)
-                    )
-                  }
-                  handlePickerChange={(value: string) =>
-                    dispatch(changeContainerBackground(containerId, value))
-                  }
-                />
+              <Box my={4}>
+                <Box my={3}>
+                  <ColorPicker
+                    value={containerBgColor}
+                    handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      dispatch(
+                        changeContainerBackground(containerId, e.target.value)
+                      )
+                    }
+                    handlePickerChange={(value: string) =>
+                      dispatch(changeContainerBackground(containerId, value))
+                    }
+                  />
+                </Box>
+                <Box my={3}>
+                  <Typography variant="subtitle2" gutterBottom>
+                    Border Radius
+                  </Typography>
+                  <Slider
+                    defaultValue={6}
+                    min={0}
+                    max={20}
+                    step={1}
+                    valueLabelDisplay="auto"
+                  />
+                </Box>
               </Box>
             )}
             {title === "Text" && (
