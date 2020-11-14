@@ -29,7 +29,7 @@ const Image: React.FC<OwnProps> = (props) => {
       onMouseOver={addHover}
       onMouseOut={removeHover}
     >
-      <Img src={props.url} />
+      <Img src={props.url} shape={props.shape}/>
       <Editor
         title="Image"
         isShowing={isShowing}

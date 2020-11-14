@@ -53,7 +53,7 @@
           {
             "id": 3,
             "type": "text",
-            "content": "Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum.",
+            "content": "Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum. Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum.",
             "color": "white",
             "fontSize": 14,
             "fontWeight": 400,
@@ -122,7 +122,7 @@
         "id": 4,
         "type": "image",
         "url": "https://deadline.com/wp-content/uploads/2019/08/mulan.jpg",
-        "shape": "circle",
+        "shape": "rectangular",
         "scale": 1,
         "crop": {
           "topLeft": [0, 0],
