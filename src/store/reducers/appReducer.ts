@@ -9,6 +9,8 @@ import {
   CHANGE_MAIN_BACKGROUND_STYLE,
   CHANGE_PAGE_WIDTH,
   CHANGE_CONTAINER_BACKGROUND,
+  CHANGE_CONTAINER_BORDER_RADIUS,
+  CHANGE_CONTAINER_DROP_SHADOW,
   CHANGE_TEXT_CONTENT,
   CHANGE_TEXT_SIZE,
   CHANGE_IMAGE_URL,
@@ -21,6 +23,8 @@ import {
   ChangeMainBgStyleAction,
   ChangePageWidthAction,
   ChangeContainerBackgroundAction,
+  ChangeContainerDropShadowAction,
+  ChangeContainerBorderRadiusAction,
   ChangeTextContentAction,
   ChangeTextSizeAction,
   ChangeImageUrlAction,
@@ -33,6 +37,8 @@ import {
   changeTextContent,
   changeTextSize,
   changeContainerBackground,
+  changeContainerBorderRadius,
+  changeContainerDropShadow,
 } from "../../utils";
 
 const initialState: AppState = sample;
@@ -48,6 +54,8 @@ const appReducer = (
     | ChangeMainBgStyleAction
     | ChangePageWidthAction
     | ChangeContainerBackgroundAction
+    | ChangeContainerBorderRadiusAction
+    | ChangeContainerDropShadowAction
     | ChangeTextContentAction
     | ChangeTextSizeAction
     | ChangeImageUrlAction
@@ -84,6 +92,10 @@ const appReducer = (
       });
     case CHANGE_CONTAINER_BACKGROUND:
       return changeContainerBackground(state, action);
+    case CHANGE_CONTAINER_BORDER_RADIUS:
+      return changeContainerBorderRadius(state, action);
+    case CHANGE_CONTAINER_DROP_SHADOW:
+      return changeContainerDropShadow(state, action);
     case CHANGE_TEXT_CONTENT:
       return changeTextContent(state, action);
     case CHANGE_TEXT_SIZE:

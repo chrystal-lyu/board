@@ -7,6 +7,8 @@ import {
   CHANGE_MAIN_BACKGROUND_STYLE,
   CHANGE_PAGE_WIDTH,
   CHANGE_CONTAINER_BACKGROUND,
+  CHANGE_CONTAINER_BORDER_RADIUS,
+  CHANGE_CONTAINER_DROP_SHADOW,
   CHANGE_TEXT_CONTENT,
   CHANGE_TEXT_SIZE,
   CHANGE_IMAGE_URL,
@@ -19,6 +21,8 @@ import {
   ChangeMainBgStyleAction,
   ChangePageWidthAction,
   ChangeContainerBackgroundAction,
+  ChangeContainerBorderRadiusAction,
+  ChangeContainerDropShadowAction,
   ChangeTextContentAction,
   ChangeTextSizeAction,
   ChangeImageUrlAction,
@@ -86,6 +90,28 @@ export const changeContainerBackground = (
     type: CHANGE_CONTAINER_BACKGROUND,
     containerId,
     color,
+  };
+};
+
+export const changeContainerBorderRadius = (
+  containerId: number | null,
+  borderRadius: number
+): ChangeContainerBorderRadiusAction => {
+  return {
+    type: CHANGE_CONTAINER_BORDER_RADIUS,
+    containerId,
+    borderRadius,
+  };
+};
+
+export const changeContainerDropShadow = (
+  containerId: number | null,
+  dropShadow: boolean
+): ChangeContainerDropShadowAction => {
+  return {
+    type: CHANGE_CONTAINER_DROP_SHADOW,
+    containerId,
+    dropShadow,
   };
 };
 
