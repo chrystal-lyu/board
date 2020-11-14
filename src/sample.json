@@ -38,9 +38,13 @@
             "type": "text",
             "content": "Jane Doe",
             "color": "white",
+            "fontFamily": "Georgia",
             "fontSize": 48,
             "fontWeight": 400,
-            "letterSpacing": 2,
+            "lineHeight": 58,
+            "letterSpacing": 1,
+            "margin": 10,
+            "textTransform": "uppercase",
             "textAlign": "center"
           },
           {
@@ -48,9 +52,13 @@
             "type": "text",
             "content": "A Full Stack Developer",
             "color": "rgba(255, 255, 255, 0.56)",
+            "fontFamily": "fantasy",
             "fontSize": 26,
             "fontWeight": 400,
+            "lineHeight": 36,
             "letterSpacing": 0,
+            "margin": 10,
+            "textTransform": "unset",
             "textAlign": "center"
           },
           {
@@ -58,9 +66,13 @@
             "type": "text",
             "content": "Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum. Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum.",
             "color": "white",
+            "fontFamily": "Georgia",
             "fontSize": 14,
             "fontWeight": 400,
+            "lineHeight": 20,
             "letterSpacing": 0,
+            "margin": 10,
+            "textTransform": "unset",
             "textAlign": "center"
           }
         ]
@@ -70,9 +82,13 @@
         "type": "text",
         "content": "I am a text in Container",
         "color": "white",
+        "fontFamily": "Georgia",
         "fontSize": 24,
         "fontWeight": 600,
-        "letterSpacing": 2,
+        "lineHeight": 28,
+        "letterSpacing": 0,
+        "margin": 10,
+        "textTransform": "unset",
         "textAlign": "center"
       },
       {
@@ -80,9 +96,13 @@
         "type": "text",
         "content": "I am also a text in Container",
         "color": "black",
+        "fontFamily": "fantasy",
         "fontSize": 24,
         "fontWeight": 600,
-        "letterSpacing": 2,
+        "lineHeight": 28,
+        "letterSpacing": 0,
+        "margin": 10,
+        "textTransform": "unset",
         "textAlign": "center"
       },
       {
@@ -97,9 +117,13 @@
             "type": "text",
             "content": "Contact Info",
             "color": "rgba(0, 0, 0, 0.56)",
-            "fontSize": 24,
-            "fontWeight": 600,
-            "letterSpacing": 2,
+            "fontFamily": "Georgia",
+            "fontSize": 32,
+            "fontWeight": 400,
+            "lineHeight": 32,
+            "letterSpacing": 1,
+            "margin": 10,
+            "textTransform": "uppercase",
             "textAlign": "center"
           },
           {
@@ -107,9 +131,13 @@
             "type": "text",
             "content": "syyssie@gmail.com",
             "color": "rgba(0, 0, 0, 0.26)",
+            "fontFamily": "Georgia",
             "fontSize": 14,
             "fontWeight": 400,
+            "lineHeight": 28,
             "letterSpacing": 0,
+            "margin": 10,
+            "textTransform": "unset",
             "textAlign": "center"
           },
           {
@@ -117,9 +145,13 @@
             "type": "text",
             "content": "Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum. Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum. Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum.",
             "color": "rgba(0, 0, 0, 0.26)",
+            "fontFamily": "Georgia",
             "fontSize": 14,
             "fontWeight": 400,
+            "lineHeight": 28,
             "letterSpacing": 0,
+            "margin": 10,
+            "textTransform": "unset",
             "textAlign": "center"
           }
         ]
@@ -140,9 +172,13 @@
         "type": "text",
         "content": "© Jane Doe. All rights reserved.",
         "color": "rgba(255, 255, 255, 0.56)",
-        "fontSize": 18,
+        "fontFamily": "Georgia",
+        "fontSize": 14,
         "fontWeight": 400,
+        "lineHeight": 28,
         "letterSpacing": 0,
+        "margin": 10,
+        "textTransform": "unset",
         "textAlign": "center"
       }
     ]
