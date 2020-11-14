@@ -7,6 +7,7 @@ export const CHANGE_MAIN_BACKGROUND_STYLE = "CHANGE_MAIN_BACKGROUND_STYLE";
 export const CHANGE_PAGE_WIDTH = "CHANGE_PAGE_WIDTH";
 export const CHANGE_TEXT_CONTENT = "CHANGE_TEXT_CONTENT";
 export const CHANGE_TEXT_SIZE = "CHANGE_TEXT_SIZE";
+export const CHANGE_IMAGE_URL = "CHANGE_IMAGE_URL";
 
 export interface ChangeMainBgAction {
   type: typeof CHANGE_MAIN_BACKGROUND;
@@ -55,6 +56,13 @@ export interface ChangeTextSizeAction {
   containerId?: number | null;
   componentId?: number | null;
   size: number;
+}
+
+export interface ChangeImageUrlAction {
+  type: typeof CHANGE_IMAGE_URL;
+  containerId?: number | null;
+  componentId?: number | null;
+  url: string;
 }
 
 type StyleConfig = {

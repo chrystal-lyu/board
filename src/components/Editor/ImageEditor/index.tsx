@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { OwnProps } from "./types";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import { Box, Button, Slider, Select, Typography } from "@material-ui/core";
 import { UploadContainer, UploadButton } from "./index.style";
+import { changeImageUrl } from "../../../store/actions";
+import { RootState } from "../../../store/reducers/rootReducer";
 
 const ImageEditor: React.FC<OwnProps> = (props) => {
   const [selectedFile, setSelectedFile] = useState<File>();
-  const [preview, setPreview] = useState<string | undefined>();
-
-  useEffect(() => {
-    if (props.url) {
-      setPreview(props.url);
-      return;
-    }
-    if (!selectedFile && !props.url) {
-      setPreview(undefined);
-      return;
-    }
-    const objectUrl: string = URL.createObjectURL(selectedFile);
-    setPreview(objectUrl);
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedFile, props]);
+  const [preview, setPreview] = useState<string | undefined>(props.url);
+  const dispatch = useDispatch();
+  const { containerId, componentId } = useSelector(
+    (state: RootState) => state.edit
+  );
 
   const onSelectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) {
@@ -30,11 +23,20 @@ const ImageEditor: React.FC<OwnProps> = (props) => {
     setSelectedFile(e.target.files[0]);
   };
 
+  useEffect(() => {
+    if (selectedFile) {
+      const objectUrl: string = URL.createObjectURL(selectedFile);
+      setPreview(objectUrl);
+      dispatch(changeImageUrl(containerId, componentId, objectUrl));
+      return () => URL.revokeObjectURL(objectUrl);
+    }
+  }, [selectedFile, containerId, componentId, dispatch]);
+
   return (
     <Box>
       <Box my={4}>
         <Box my={3} aria-labelledby="text-content">
-          <UploadContainer url={preview}>
+          <UploadContainer url={preview as string}>
             <input
               accept="image/*"
               style={{ display: "none" }}

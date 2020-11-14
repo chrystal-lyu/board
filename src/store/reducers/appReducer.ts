@@ -10,6 +10,7 @@ import {
   CHANGE_PAGE_WIDTH,
   CHANGE_TEXT_CONTENT,
   CHANGE_TEXT_SIZE,
+  CHANGE_IMAGE_URL,
   ChangeMainBgAction,
   ChangeColorStop1Action,
   ChangeColorStop2Action,
@@ -19,9 +20,10 @@ import {
   ChangePageWidthAction,
   ChangeTextContentAction,
   ChangeTextSizeAction,
+  ChangeImageUrlAction,
   AppState,
 } from "../actions/app.types";
-import { changeTextContent, changeTextSize } from "../../utils";
+import { changeImageUrl, changeTextContent, changeTextSize } from "../../utils";
 
 const initialState: AppState = sample;
 
@@ -37,6 +39,7 @@ const appReducer = (
     | ChangePageWidthAction
     | ChangeTextContentAction
     | ChangeTextSizeAction
+    | ChangeImageUrlAction
 ): AppState => {
   switch (action.type) {
     case CHANGE_MAIN_BACKGROUND:
@@ -71,6 +74,8 @@ const appReducer = (
       return changeTextContent(state, action);
     case CHANGE_TEXT_SIZE:
       return changeTextSize(state, action);
+    case CHANGE_IMAGE_URL:
+      return changeImageUrl(state, action);
     default:
       return state;
   }
