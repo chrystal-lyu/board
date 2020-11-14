@@ -18,6 +18,7 @@
       {
         "id": 0,
         "type": "container",
+        "background": "transparent",
         "components": [
           {
             "id": 0,
@@ -85,12 +86,13 @@
       {
         "id": 3,
         "type": "container",
+        "backgroundColor": "white",
         "components": [
           {
             "id": 0,
             "type": "text",
             "content": "Contact Info",
-            "color": "white",
+            "color": "rgba(0, 0, 0, 0.56)",
             "fontSize": 24,
             "fontWeight": 600,
             "letterSpacing": 2,
@@ -100,7 +102,7 @@
             "id": 1,
             "type": "text",
             "content": "syyssie@gmail.com",
-            "color": "black",
+            "color": "rgba(0, 0, 0, 0.26)",
             "fontSize": 14,
             "fontWeight": 400,
             "letterSpacing": 0,
@@ -109,8 +111,8 @@
           {
             "id": 2,
             "type": "text",
-            "content": "Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum.",
-            "color": "white",
+            "content": "Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum. Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum. Magna lorem enim sapien, blandit eu, ante orci luctus et ultrices posuere cubilia luctus elit eget interdum.",
+            "color": "rgba(0, 0, 0, 0.26)",
             "fontSize": 14,
             "fontWeight": 400,
             "letterSpacing": 0,

@@ -23,7 +23,11 @@ const App: React.FC = () => {
               (container as ComponentType).components
             ) {
               return (
-                <Container key={container.id} id={container.id}>
+                <Container
+                  key={container.id}
+                  id={container.id}
+                  backgroundColor={container.backgroundColor}
+                >
                   {(container as ComponentType).components?.map((component) => {
                     switch (component.type) {
                       case "text":

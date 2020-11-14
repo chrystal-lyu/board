@@ -109,6 +109,7 @@ export type Components = Text & Image;
 export type Component = {
   id: number;
   type?: string;
+  backgroundColor?: string;
   components?: Components[];
 };
 

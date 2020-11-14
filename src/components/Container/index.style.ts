@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { SelectorBox } from "../../styles/global";
 
+interface Props {
+  backgroundColor?: string;
+}
+
 export const ContainerBox = styled(SelectorBox)`
   div {
     display: flex;
@@ -8,6 +12,10 @@ export const ContainerBox = styled(SelectorBox)`
     width: 100%;
     align-items: center;
     justify-content: center;
+  }
+
+  &:first-child {
+    margin-top: 20px;
   }
 
   &.hover::before {
@@ -19,4 +27,10 @@ export const ContainerBox = styled(SelectorBox)`
     top: -15px;
     left: 0;
   }
+`;
+
+export const ContainerWrapper = styled.div`
+  border-radius: 1rem;
+  background-color: ${(props: Props) =>
+    props.backgroundColor ? props.backgroundColor : "transparent"};
 `;
