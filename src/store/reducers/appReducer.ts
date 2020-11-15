@@ -15,6 +15,12 @@ import {
   CHANGE_TEXT_COLOR,
   CHANGE_TEXT_SIZE,
   CHANGE_TEXT_FONT,
+  CHANGE_TEXT_WEIGHT,
+  CHANGE_TEXT_HEIGHT,
+  CHANGE_TEXT_SPACING,
+  CHANGE_TEXT_MARGIN,
+  CHANGE_TEXT_TRANSFORM,
+  CHANGE_TEXT_ALIGN,
   CHANGE_IMAGE_URL,
   CHANGE_IMAGE_SHAPE,
   ChangeMainBgAction,
@@ -31,6 +37,12 @@ import {
   ChangeTextColorAction,
   ChangeTextSizeAction,
   ChangeTextFontAction,
+  ChangeTextWeightAction,
+  ChangeTextHeightAction,
+  ChangeTextSpacingAction,
+  ChangeTextMarginAction,
+  ChangeTextTransformAction,
+  ChangeTextAlignAction,
   ChangeImageUrlAction,
   ChangeImageShapeAction,
   AppState,
@@ -45,6 +57,12 @@ import {
   changeContainerBackground,
   changeContainerBorderRadius,
   changeContainerDropShadow,
+  changeTextWeight,
+  changeTextHeight,
+  changeTextSpacing,
+  changeTextMargin,
+  changeTextTransform,
+  changeTextAlign,
 } from "../../utils";
 
 const initialState: AppState = sample;
@@ -66,6 +84,12 @@ const appReducer = (
     | ChangeTextColorAction
     | ChangeTextSizeAction
     | ChangeTextFontAction
+    | ChangeTextWeightAction
+    | ChangeTextHeightAction
+    | ChangeTextSpacingAction
+    | ChangeTextMarginAction
+    | ChangeTextTransformAction
+    | ChangeTextAlignAction
     | ChangeImageUrlAction
     | ChangeImageShapeAction
 ): AppState => {
@@ -112,6 +136,18 @@ const appReducer = (
       return changeTextSize(state, action);
     case CHANGE_TEXT_FONT:
       return changeTextFont(state, action);
+    case CHANGE_TEXT_WEIGHT:
+      return changeTextWeight(state, action);
+    case CHANGE_TEXT_HEIGHT:
+      return changeTextHeight(state, action);
+    case CHANGE_TEXT_SPACING:
+      return changeTextSpacing(state, action);
+    case CHANGE_TEXT_MARGIN:
+      return changeTextMargin(state, action);
+    case CHANGE_TEXT_TRANSFORM:
+      return changeTextTransform(state, action);
+    case CHANGE_TEXT_ALIGN:
+      return changeTextAlign(state, action);
     case CHANGE_IMAGE_URL:
       return changeImageUrl(state, action);
     case CHANGE_IMAGE_SHAPE:
