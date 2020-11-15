@@ -13,6 +13,12 @@ import {
   CHANGE_TEXT_COLOR,
   CHANGE_TEXT_SIZE,
   CHANGE_TEXT_FONT,
+  CHANGE_TEXT_WEIGHT,
+  CHANGE_TEXT_HEIGHT,
+  CHANGE_TEXT_SPACING,
+  CHANGE_TEXT_MARGIN,
+  CHANGE_TEXT_TRANSFORM,
+  CHANGE_TEXT_ALIGN,
   CHANGE_IMAGE_URL,
   CHANGE_IMAGE_SHAPE,
   ChangeMainBgAction,
@@ -29,6 +35,12 @@ import {
   ChangeTextColorAction,
   ChangeTextSizeAction,
   ChangeTextFontAction,
+  ChangeTextWeightAction,
+  ChangeTextHeightAction,
+  ChangeTextSpacingAction,
+  ChangeTextMarginAction,
+  ChangeTextTransformAction,
+  ChangeTextAlignAction,
   ChangeImageUrlAction,
   ChangeImageShapeAction,
 } from "./app.types";
@@ -168,6 +180,84 @@ export const changeTextFont = (
     containerId,
     componentId,
     font,
+  };
+};
+
+export const changeTextWeight = (
+  containerId: number | null,
+  componentId: number | null,
+  weight: number,
+): ChangeTextWeightAction => {
+  return {
+    type: CHANGE_TEXT_WEIGHT,
+    containerId,
+    componentId,
+    weight,
+  };
+};
+
+export const changeTextHeight = (
+  containerId: number | null,
+  componentId: number | null,
+  height: number
+): ChangeTextHeightAction => {
+  return {
+    type: CHANGE_TEXT_HEIGHT,
+    containerId,
+    componentId,
+    height,
+  };
+};
+
+export const changeTextSpacing= (
+  containerId: number | null,
+  componentId: number | null,
+  spacing: number
+): ChangeTextSpacingAction => {
+  return {
+    type: CHANGE_TEXT_SPACING,
+    containerId,
+    componentId,
+    spacing,
+  };
+};
+
+export const changeTextMargin = (
+  containerId: number | null,
+  componentId: number | null,
+  margin: number
+): ChangeTextMarginAction => {
+  return {
+    type: CHANGE_TEXT_MARGIN,
+    containerId,
+    componentId,
+    margin,
+  };
+};
+
+export const changeTextTransform = (
+  containerId: number | null,
+  componentId: number | null,
+  transform: string
+): ChangeTextTransformAction => {
+  return {
+    type: CHANGE_TEXT_TRANSFORM,
+    containerId,
+    componentId,
+    transform,
+  };
+};
+
+export const changeTextAlign = (
+  containerId: number | null,
+  componentId: number | null,
+  align: string
+): ChangeTextAlignAction => {
+  return {
+    type: CHANGE_TEXT_ALIGN,
+    containerId,
+    componentId,
+    align,
   };
 };
 

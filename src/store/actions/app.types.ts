@@ -12,6 +12,12 @@ export const CHANGE_TEXT_CONTENT = "CHANGE_TEXT_CONTENT";
 export const CHANGE_TEXT_COLOR = "CHANGE_TEXT_COLOR";
 export const CHANGE_TEXT_SIZE = "CHANGE_TEXT_SIZE";
 export const CHANGE_TEXT_FONT = "CHANGE_TEXT_FONT";
+export const CHANGE_TEXT_WEIGHT = "CHANGE_TEXT_WEIGHT";
+export const CHANGE_TEXT_HEIGHT = "CHANGE_TEXT_HEIGHT";
+export const CHANGE_TEXT_SPACING = "CHANGE_TEXT_SPACING";
+export const CHANGE_TEXT_MARGIN = "CHANGE_TEXT_MARGIN";
+export const CHANGE_TEXT_TRANSFORM = "CHANGE_TEXT_TRANSFORM";
+export const CHANGE_TEXT_ALIGN ="CHANGE_TEXT_ALIGN";
 export const CHANGE_IMAGE_URL = "CHANGE_IMAGE_URL";
 export const CHANGE_IMAGE_SHAPE = "CHANGE_IMAGE_SHAPE";
 
@@ -94,6 +100,48 @@ export interface ChangeTextFontAction {
   containerId?: number | null;
   componentId?: number | null;
   font: string;
+}
+
+export interface ChangeTextWeightAction {
+  type: typeof CHANGE_TEXT_WEIGHT;
+  containerId?: number | null;
+  componentId?: number | null;
+  weight: number;
+}
+
+export interface ChangeTextHeightAction {
+  type: typeof CHANGE_TEXT_HEIGHT;
+  containerId?: number | null;
+  componentId?: number | null;
+  height: number;
+}
+
+export interface ChangeTextSpacingAction {
+  type: typeof CHANGE_TEXT_SPACING;
+  containerId?: number | null;
+  componentId?: number | null;
+  spacing: number;
+}
+
+export interface ChangeTextMarginAction {
+  type: typeof CHANGE_TEXT_MARGIN;
+  containerId?: number | null;
+  componentId?: number | null;
+  margin: number;
+}
+
+export interface ChangeTextTransformAction {
+  type: typeof CHANGE_TEXT_TRANSFORM;
+  containerId?: number | null;
+  componentId?: number | null;
+  transform: string;
+}
+
+export interface ChangeTextAlignAction {
+  type: typeof CHANGE_TEXT_ALIGN;
+  containerId?: number | null;
+  componentId?: number | null;
+  align: string;
 }
 
 export interface ChangeImageUrlAction {
