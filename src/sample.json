@@ -45,7 +45,7 @@
             "letterSpacing": 1,
             "margin": 10,
             "textTransform": "uppercase",
-            "textAlign": "center"
+            "textAlign": "auto"
           },
           {
             "id": 2,
@@ -59,7 +59,7 @@
             "letterSpacing": 0,
             "margin": 10,
             "textTransform": "unset",
-            "textAlign": "center"
+            "textAlign": "auto"
           },
           {
             "id": 3,
@@ -73,7 +73,7 @@
             "letterSpacing": 0,
             "margin": 10,
             "textTransform": "unset",
-            "textAlign": "center"
+            "textAlign": "auto"
           }
         ]
       },
@@ -89,7 +89,7 @@
         "letterSpacing": 0,
         "margin": 10,
         "textTransform": "unset",
-        "textAlign": "center"
+        "textAlign": "auto"
       },
       {
         "id": 2,
@@ -103,7 +103,7 @@
         "letterSpacing": 0,
         "margin": 10,
         "textTransform": "unset",
-        "textAlign": "center"
+        "textAlign": "auto"
       },
       {
         "id": 3,
@@ -124,7 +124,7 @@
             "letterSpacing": 1,
             "margin": 10,
             "textTransform": "uppercase",
-            "textAlign": "center"
+            "textAlign": "auto"
           },
           {
             "id": 1,
@@ -138,7 +138,7 @@
             "letterSpacing": 0,
             "margin": 10,
             "textTransform": "unset",
-            "textAlign": "center"
+            "textAlign": "auto"
           },
           {
             "id": 2,
@@ -152,7 +152,7 @@
             "letterSpacing": 0,
             "margin": 10,
             "textTransform": "unset",
-            "textAlign": "center"
+            "textAlign": "auto"
           }
         ]
       },
@@ -179,7 +179,7 @@
         "letterSpacing": 0,
         "margin": 10,
         "textTransform": "unset",
-        "textAlign": "center"
+        "textAlign": "auto"
       }
     ]
   }
