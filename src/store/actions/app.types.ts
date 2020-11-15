@@ -11,6 +11,7 @@ export const CHANGE_CONTAINER_DROP_SHADOW = "CHANGE_CONTAINER_DROP_SHADOW";
 export const CHANGE_TEXT_CONTENT = "CHANGE_TEXT_CONTENT";
 export const CHANGE_TEXT_COLOR = "CHANGE_TEXT_COLOR";
 export const CHANGE_TEXT_SIZE = "CHANGE_TEXT_SIZE";
+export const CHANGE_TEXT_FONT = "CHANGE_TEXT_FONT";
 export const CHANGE_IMAGE_URL = "CHANGE_IMAGE_URL";
 export const CHANGE_IMAGE_SHAPE = "CHANGE_IMAGE_SHAPE";
 
@@ -86,6 +87,13 @@ export interface ChangeTextSizeAction {
   containerId?: number | null;
   componentId?: number | null;
   size: number;
+}
+
+export interface ChangeTextFontAction {
+  type: typeof CHANGE_TEXT_FONT;
+  containerId?: number | null;
+  componentId?: number | null;
+  font: string;
 }
 
 export interface ChangeImageUrlAction {

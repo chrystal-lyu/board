@@ -14,6 +14,7 @@ import {
   CHANGE_TEXT_CONTENT,
   CHANGE_TEXT_COLOR,
   CHANGE_TEXT_SIZE,
+  CHANGE_TEXT_FONT,
   CHANGE_IMAGE_URL,
   CHANGE_IMAGE_SHAPE,
   ChangeMainBgAction,
@@ -29,6 +30,7 @@ import {
   ChangeTextContentAction,
   ChangeTextColorAction,
   ChangeTextSizeAction,
+  ChangeTextFontAction,
   ChangeImageUrlAction,
   ChangeImageShapeAction,
   AppState,
@@ -39,6 +41,7 @@ import {
   changeTextContent,
   changeTextColor,
   changeTextSize,
+  changeTextFont,
   changeContainerBackground,
   changeContainerBorderRadius,
   changeContainerDropShadow,
@@ -62,6 +65,7 @@ const appReducer = (
     | ChangeTextContentAction
     | ChangeTextColorAction
     | ChangeTextSizeAction
+    | ChangeTextFontAction
     | ChangeImageUrlAction
     | ChangeImageShapeAction
 ): AppState => {
@@ -106,6 +110,8 @@ const appReducer = (
       return changeTextColor(state, action);
     case CHANGE_TEXT_SIZE:
       return changeTextSize(state, action);
+    case CHANGE_TEXT_FONT:
+      return changeTextFont(state, action);
     case CHANGE_IMAGE_URL:
       return changeImageUrl(state, action);
     case CHANGE_IMAGE_SHAPE:

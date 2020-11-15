@@ -4,7 +4,11 @@ import { Box, TextField, Slider, Select } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { SketchPicker } from "react-color";
 import { OwnProps } from "./types";
-import { changeTextContent, changeTextSize } from "../../../store/actions";
+import {
+  changeTextContent,
+  changeTextSize,
+  changeTextFont,
+} from "../../../store/actions";
 import { RootState } from "../../../store/reducers/rootReducer";
 
 const TextEditor: React.FC<OwnProps> = (props) => {
@@ -64,7 +68,20 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               Font
             </Typography>
             <Box>
-              <Select native value={props.font} style={{ display: "block" }}>
+              <Select
+                native
+                value={props.font}
+                style={{ display: "block" }}
+                onChange={(e) => {
+                  dispatch(
+                    changeTextFont(
+                      containerId,
+                      componentId,
+                      e.target.value as string
+                    )
+                  );
+                }}
+              >
                 <option value="arial">Arial</option>
                 <option value="georgia">Georgia</option>
                 <option value="fantasy">Fantasy</option>

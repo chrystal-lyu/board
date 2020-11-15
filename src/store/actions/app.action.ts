@@ -12,6 +12,7 @@ import {
   CHANGE_TEXT_CONTENT,
   CHANGE_TEXT_COLOR,
   CHANGE_TEXT_SIZE,
+  CHANGE_TEXT_FONT,
   CHANGE_IMAGE_URL,
   CHANGE_IMAGE_SHAPE,
   ChangeMainBgAction,
@@ -27,6 +28,7 @@ import {
   ChangeTextContentAction,
   ChangeTextColorAction,
   ChangeTextSizeAction,
+  ChangeTextFontAction,
   ChangeImageUrlAction,
   ChangeImageShapeAction,
 } from "./app.types";
@@ -153,6 +155,19 @@ export const changeTextSize = (
     containerId,
     componentId,
     size,
+  };
+};
+
+export const changeTextFont = (
+  containerId: number | null,
+  componentId: number | null,
+  font: string
+): ChangeTextFontAction => {
+  return {
+    type: CHANGE_TEXT_FONT,
+    containerId,
+    componentId,
+    font,
   };
 };
 

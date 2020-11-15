@@ -2,6 +2,7 @@ export * from "./selectorBoxClass";
 export * from "./changeTextContent";
 export * from "./changeTextColor";
 export * from "./changeTextSize";
+export * from "./changeTextFont";
 export * from "./changeImageUrl";
 export * from "./changeImageShape";
 export * from "./changeContainerBackground";
