@@ -67,7 +67,7 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               <Select native value={props.font} style={{ display: "block" }}>
                 <option value="arial">Arial</option>
                 <option value="georgia">Georgia</option>
-                <option value="georgia">Fantasy</option>
+                <option value="fantasy">Fantasy</option>
               </Select>
             </Box>
           </Box>
