@@ -11,6 +11,7 @@ import {
   changeContainerBackground,
   changeContainerBorderRadius,
   changeContainerDropShadow,
+  changeTextColor,
 } from "../../store/actions";
 import {
   Box,
@@ -47,13 +48,14 @@ const Editor: React.FC<OwnProps> = ({
   textAlign,
   imageUrl,
   imageShape,
-  containerId,
+  // containerId,
   containerBgColor,
   containerBorderRadius,
   containerDropShadow,
 }) => {
   const dispatch = useDispatch();
   const { background, page } = useSelector((state: RootState) => state.app);
+  const { containerId, componentId } = useSelector((state: RootState) => state.edit)
   const { config } = background.style;
   const { options } = background.style;
 
@@ -209,6 +211,14 @@ const Editor: React.FC<OwnProps> = ({
                 content={textContent}
                 size={textSize}
                 color={textColor}
+                handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  dispatch(
+                    changeTextColor(containerId, componentId, e.target.value)
+                  )
+                }
+                handlePickerChange={(value: string) =>
+                  dispatch(changeTextColor(containerId, componentId, value))
+                }
                 font={textFontFamily}
                 weight={textWeight}
                 height={textLineHeight}

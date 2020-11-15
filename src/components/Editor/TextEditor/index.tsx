@@ -48,11 +48,13 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               label="Color"
               variant="standard"
               value={props.color}
+              onChange={props.handleChange}
               onFocus={() => setShowColorSwatch(true)}
             />
             {showColorSwatch && (
               <SketchPicker
                 color=""
+                onChange={(color) => props.handlePickerChange(color.hex)}
                 onChangeComplete={() => setShowColorSwatch(false)}
               />
             )}
