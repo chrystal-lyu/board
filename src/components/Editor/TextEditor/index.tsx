@@ -8,6 +8,12 @@ import {
   changeTextContent,
   changeTextSize,
   changeTextFont,
+  changeTextWeight,
+  changeTextHeight,
+  changeTextSpacing,
+  changeTextMargin,
+  changeTextTransform,
+  changeTextAlign,
 } from "../../../store/actions";
 import { RootState } from "../../../store/reducers/rootReducer";
 
@@ -116,8 +122,13 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               aria-labelledby="size-slider"
               min={300}
               max={600}
-              step={50}
+              step={100}
               valueLabelDisplay="auto"
+              onChange={(e, newValue) => {
+                dispatch(
+                  changeTextWeight(containerId, componentId, newValue as number)
+                );
+              }}
             />
           </Box>
           <Box my={3}>
@@ -131,6 +142,11 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               max={50}
               step={1}
               valueLabelDisplay="auto"
+              onChange={(e, newValue) => {
+                dispatch(
+                  changeTextHeight(containerId, componentId, newValue as number)
+                );
+              }}
             />
           </Box>
           <Box my={3}>
@@ -144,6 +160,15 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               max={10}
               step={1}
               valueLabelDisplay="auto"
+              onChange={(e, newValue) => {
+                dispatch(
+                  changeTextSpacing(
+                    containerId,
+                    componentId,
+                    newValue as number
+                  )
+                );
+              }}
             />
           </Box>
           <Box my={3}>
@@ -157,6 +182,11 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               max={20}
               step={1}
               valueLabelDisplay="auto"
+              onChange={(e, newValue) => {
+                dispatch(
+                  changeTextMargin(containerId, componentId, newValue as number)
+                );
+              }}
             />
           </Box>
           <Box my={3}>
@@ -168,6 +198,15 @@ const TextEditor: React.FC<OwnProps> = (props) => {
                 native
                 value={props.transform}
                 style={{ display: "block" }}
+                onChange={(e) => {
+                  dispatch(
+                    changeTextTransform(
+                      containerId,
+                      componentId,
+                      e.target.value as string
+                    )
+                  );
+                }}
               >
                 <option value="unset">Unset</option>
                 <option value="lowercase">Lowercase</option>
@@ -181,7 +220,20 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               Alignment
             </Typography>
             <Box>
-              <Select native value={props.align} style={{ display: "block" }}>
+              <Select
+                native
+                value={props.align}
+                style={{ display: "block" }}
+                onChange={(e) => {
+                  dispatch(
+                    changeTextAlign(
+                      containerId,
+                      componentId,
+                      e.target.value as string
+                    )
+                  );
+                }}
+              >
                 <option value="auto">Auto</option>
                 <option value="left">Left</option>
                 <option value="center">Center</option>
