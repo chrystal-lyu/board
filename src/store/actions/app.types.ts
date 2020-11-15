@@ -9,6 +9,7 @@ export const CHANGE_CONTAINER_BACKGROUND = "CHANGE_CONTAINER_BACKGROUND";
 export const CHANGE_CONTAINER_BORDER_RADIUS = "CHANGE_CONTAINER_BORDER_RADIUS";
 export const CHANGE_CONTAINER_DROP_SHADOW = "CHANGE_CONTAINER_DROP_SHADOW";
 export const CHANGE_TEXT_CONTENT = "CHANGE_TEXT_CONTENT";
+export const CHANGE_TEXT_COLOR = "CHANGE_TEXT_COLOR";
 export const CHANGE_TEXT_SIZE = "CHANGE_TEXT_SIZE";
 export const CHANGE_IMAGE_URL = "CHANGE_IMAGE_URL";
 export const CHANGE_IMAGE_SHAPE = "CHANGE_IMAGE_SHAPE";
@@ -71,6 +72,13 @@ export interface ChangeTextContentAction {
   containerId?: number | null;
   componentId?: number | null;
   content: string;
+}
+
+export interface ChangeTextColorAction {
+  type: typeof CHANGE_TEXT_COLOR;
+  containerId?: number | null;
+  componentId?: number | null;
+  color: string;
 }
 
 export interface ChangeTextSizeAction {

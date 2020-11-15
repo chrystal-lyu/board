@@ -12,6 +12,7 @@ import {
   CHANGE_CONTAINER_BORDER_RADIUS,
   CHANGE_CONTAINER_DROP_SHADOW,
   CHANGE_TEXT_CONTENT,
+  CHANGE_TEXT_COLOR,
   CHANGE_TEXT_SIZE,
   CHANGE_IMAGE_URL,
   CHANGE_IMAGE_SHAPE,
@@ -26,6 +27,7 @@ import {
   ChangeContainerDropShadowAction,
   ChangeContainerBorderRadiusAction,
   ChangeTextContentAction,
+  ChangeTextColorAction,
   ChangeTextSizeAction,
   ChangeImageUrlAction,
   ChangeImageShapeAction,
@@ -35,6 +37,7 @@ import {
   changeImageUrl,
   changeImageShape,
   changeTextContent,
+  changeTextColor,
   changeTextSize,
   changeContainerBackground,
   changeContainerBorderRadius,
@@ -57,6 +60,7 @@ const appReducer = (
     | ChangeContainerBorderRadiusAction
     | ChangeContainerDropShadowAction
     | ChangeTextContentAction
+    | ChangeTextColorAction
     | ChangeTextSizeAction
     | ChangeImageUrlAction
     | ChangeImageShapeAction
@@ -98,6 +102,8 @@ const appReducer = (
       return changeContainerDropShadow(state, action);
     case CHANGE_TEXT_CONTENT:
       return changeTextContent(state, action);
+    case CHANGE_TEXT_COLOR:
+      return changeTextColor(state, action);
     case CHANGE_TEXT_SIZE:
       return changeTextSize(state, action);
     case CHANGE_IMAGE_URL:

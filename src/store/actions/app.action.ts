@@ -10,6 +10,7 @@ import {
   CHANGE_CONTAINER_BORDER_RADIUS,
   CHANGE_CONTAINER_DROP_SHADOW,
   CHANGE_TEXT_CONTENT,
+  CHANGE_TEXT_COLOR,
   CHANGE_TEXT_SIZE,
   CHANGE_IMAGE_URL,
   CHANGE_IMAGE_SHAPE,
@@ -24,6 +25,7 @@ import {
   ChangeContainerBorderRadiusAction,
   ChangeContainerDropShadowAction,
   ChangeTextContentAction,
+  ChangeTextColorAction,
   ChangeTextSizeAction,
   ChangeImageUrlAction,
   ChangeImageShapeAction,
@@ -125,6 +127,19 @@ export const changeTextContent = (
     containerId,
     componentId,
     content,
+  };
+};
+
+export const changeTextColor = (
+  containerId: number | null,
+  componentId: number | null,
+  color: string
+): ChangeTextColorAction => {
+  return {
+    type: CHANGE_TEXT_COLOR,
+    containerId,
+    componentId,
+    color,
   };
 };
 
