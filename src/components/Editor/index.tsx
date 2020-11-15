@@ -36,7 +36,15 @@ const Editor: React.FC<OwnProps> = ({
   title,
   hide,
   textContent,
+  textColor,
+  textFontFamily,
   textSize,
+  textWeight,
+  textLineHeight,
+  textLetterSpacing,
+  textMargin,
+  textTransform,
+  textAlign,
   imageUrl,
   imageShape,
   containerId,
@@ -186,7 +194,10 @@ const Editor: React.FC<OwnProps> = ({
                     valueLabelDisplay="auto"
                     onChange={(e, newValue) =>
                       dispatch(
-                        changeContainerBorderRadius(containerId, newValue as number)
+                        changeContainerBorderRadius(
+                          containerId,
+                          newValue as number
+                        )
                       )
                     }
                   />
@@ -194,7 +205,18 @@ const Editor: React.FC<OwnProps> = ({
               </Box>
             )}
             {title === "Text" && (
-              <TextEditor content={textContent} size={textSize} />
+              <TextEditor
+                content={textContent}
+                size={textSize}
+                color={textColor}
+                font={textFontFamily}
+                weight={textWeight}
+                height={textLineHeight}
+                spacing={textLetterSpacing}
+                margin={textMargin}
+                transform={textTransform}
+                align={textAlign}
+              />
             )}
             {title === "Image" && (
               <ImageEditor url={imageUrl} shape={imageShape} />

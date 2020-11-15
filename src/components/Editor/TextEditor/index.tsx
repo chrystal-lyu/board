@@ -47,7 +47,7 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               fullWidth
               label="Color"
               variant="standard"
-              value=""
+              value={props.color}
               onFocus={() => setShowColorSwatch(true)}
             />
             {showColorSwatch && (
@@ -62,9 +62,10 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               Font
             </Typography>
             <Box>
-              <Select native value="arial" style={{ display: "block" }}>
+              <Select native value={props.font} style={{ display: "block" }}>
                 <option value="arial">Arial</option>
                 <option value="georgia">Georgia</option>
+                <option value="georgia">Fantasy</option>
               </Select>
             </Box>
           </Box>
@@ -92,10 +93,10 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               Weight
             </Typography>
             <Slider
-              defaultValue={600}
+              value={props.weight}
               aria-labelledby="size-slider"
               min={300}
-              max={1200}
+              max={600}
               step={50}
               valueLabelDisplay="auto"
             />
@@ -105,11 +106,11 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               Line Height
             </Typography>
             <Slider
-              defaultValue={600}
+              value={props.height}
               aria-labelledby="size-slider"
-              min={300}
-              max={1200}
-              step={50}
+              min={props.size}
+              max={50}
+              step={1}
               valueLabelDisplay="auto"
             />
           </Box>
@@ -118,11 +119,11 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               Letter Spacing
             </Typography>
             <Slider
-              defaultValue={600}
+              value={props.spacing}
               aria-labelledby="size-slider"
-              min={300}
-              max={1200}
-              step={50}
+              min={0}
+              max={10}
+              step={1}
               valueLabelDisplay="auto"
             />
           </Box>
@@ -131,11 +132,11 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               Margin
             </Typography>
             <Slider
-              defaultValue={600}
+              value={props.margin}
               aria-labelledby="size-slider"
-              min={300}
-              max={1200}
-              step={50}
+              min={0}
+              max={20}
+              step={1}
               valueLabelDisplay="auto"
             />
           </Box>
@@ -144,11 +145,15 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               Case Appearance
             </Typography>
             <Box>
-              <Select native value="normal" style={{ display: "block" }}>
-                <option value="normal">Normal</option>
+              <Select
+                native
+                value={props.transform}
+                style={{ display: "block" }}
+              >
+                <option value="unset">Unset</option>
                 <option value="lowercase">Lowercase</option>
                 <option value="uppercase">Uppercase</option>
-                <option value="smallcaps">Small Caps</option>
+                <option value="capitalize">Capitalize</option>
               </Select>
             </Box>
           </Box>
@@ -157,7 +162,7 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               Alignment
             </Typography>
             <Box>
-              <Select native value="auto" style={{ display: "block" }}>
+              <Select native value={props.align} style={{ display: "block" }}>
                 <option value="auto">Auto</option>
                 <option value="left">Left</option>
                 <option value="center">Center</option>

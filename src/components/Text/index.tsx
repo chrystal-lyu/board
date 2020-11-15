@@ -50,7 +50,15 @@ const Text: React.FC<OwnProps> = (props) => {
         isShowing={isShowing}
         hide={hide}
         textContent={props.content}
+        textColor={props.color}
+        textFontFamily={props.fontFamily}
         textSize={props.fontSize}
+        textWeight={props.fontWeight}
+        textLineHeight={props.lineHeight}
+        textLetterSpacing={props.letterSpacing}
+        textMargin={props.margin}
+        textTransform={props.textTransform}
+        textAlign={props.textAlign}
         containerId={props.parentId}
       />
     </TextBox>
