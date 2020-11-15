@@ -10,14 +10,6 @@ interface Props {
 }
 
 export const ContainerBox = styled(SelectorBox)`
-  div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-
   &:first-child {
     margin-top: 20px;
   }

@@ -36,7 +36,6 @@ const Text: React.FC<OwnProps> = (props) => {
 
   return (
     <TextBox
-      p={2}
       onClick={handleClick}
       className={selectorBoxClass(isShowing, hovered)}
       onMouseOver={addHover}
