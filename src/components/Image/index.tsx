@@ -4,6 +4,7 @@ import { OwnProps } from "./types";
 import useEditor from "../../hooks/useEditor";
 import useHover from "../../hooks/useHover";
 import Editor from "../Editor";
+import Component from "../Component";
 import { selectorBoxClass } from "../../utils";
 import { ImageContainer, Img } from "./index.style";
 import {
@@ -23,22 +24,24 @@ const Image: React.FC<OwnProps> = (props) => {
   };
 
   return (
-    <ImageContainer
-      onClick={handleClick}
-      className={selectorBoxClass(isShowing, hovered)}
-      onMouseOver={addHover}
-      onMouseOut={removeHover}
-    >
-      <Img src={props.url} shape={props.shape}/>
-      <Editor
-        title="Image"
-        isShowing={isShowing}
-        hide={hide}
-        imageUrl={props.url}
-        imageShape={props.shape}
-        containerId={props.parentId}
-      />
-    </ImageContainer>
+    <Component index={props.id as number}>
+      <ImageContainer
+        onClick={handleClick}
+        className={selectorBoxClass(isShowing, hovered)}
+        onMouseOver={addHover}
+        onMouseOut={removeHover}
+      >
+        <Img src={props.url} shape={props.shape} />
+        <Editor
+          title="Image"
+          isShowing={isShowing}
+          hide={hide}
+          imageUrl={props.url}
+          imageShape={props.shape}
+          containerId={props.parentId}
+        />
+      </ImageContainer>
+    </Component>
   );
 };
 
