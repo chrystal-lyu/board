@@ -10,6 +10,7 @@ import Menu from "../Menu";
 import Background from "../Background";
 import Page from "../Page";
 import Container from "../Container";
+import EmptyContainer from "../EmptyContainer";
 import Text from "../Text";
 import Image from "../Image";
 
@@ -23,6 +24,11 @@ const App: React.FC = () => {
         <Background>
           <Page width={app.page.width}>
             {app.page.containers?.map((container) => {
+              if (
+                container.type === "container" &&
+                (container as ComponentType).components?.length === 0
+              )
+                return <EmptyContainer key={container.id} id={container.id} />;
               if (
                 container.type === "container" &&
                 (container as ComponentType).components

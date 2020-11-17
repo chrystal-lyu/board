@@ -4,7 +4,7 @@ import { XYCoord } from "dnd-core";
 import { OwnProps } from "./types";
 
 const style = {
-  border: "1px dashed gray",
+  // border: "1px dashed gray",
   cursor: "move",
 };
 
