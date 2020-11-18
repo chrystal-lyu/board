@@ -87,7 +87,7 @@ const ImageEditor: React.FC<OwnProps> = (props) => {
               Scale
             </Typography>
             <Slider
-              defaultValue={10}
+              value={10}
               aria-labelledby="size-slider"
               min={8}
               max={48}

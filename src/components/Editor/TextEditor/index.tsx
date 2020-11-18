@@ -99,7 +99,6 @@ const TextEditor: React.FC<OwnProps> = (props) => {
               Size
             </Typography>
             <Slider
-              defaultValue={props.size}
               value={props.size}
               aria-labelledby="size-slider"
               min={8}

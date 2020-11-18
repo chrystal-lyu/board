@@ -138,7 +138,7 @@ const Editor: React.FC<OwnProps> = ({
                   Width
                 </Typography>
                 <Slider
-                  defaultValue={Number(page.width)}
+                  value={Number(page.width)}
                   aria-labelledby="continuous-slider"
                   min={300}
                   max={1200}
@@ -189,7 +189,7 @@ const Editor: React.FC<OwnProps> = ({
                     Border Radius
                   </Typography>
                   <Slider
-                    defaultValue={containerBorderRadius}
+                    value={containerBorderRadius}
                     min={0}
                     max={50}
                     step={2}
