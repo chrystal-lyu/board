@@ -6,7 +6,6 @@ import { Box } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { RootState } from "../../store/reducers/rootReducer";
 import { Component as ComponentType } from "../../store/actions/app.types";
-import Menu from "../Menu";
 import Background from "../Background";
 import Page from "../Page";
 import Container from "../Container";
@@ -20,7 +19,6 @@ const App: React.FC = () => {
     <DndProvider backend={HTML5Backend}>
       <Box height="100vh">
         <CssBaseline />
-        <Menu />
         <Background>
           <Page width={app.page.width}>
             {app.page.containers?.map((container) => {

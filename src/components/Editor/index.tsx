@@ -25,6 +25,7 @@ import {
   Checkbox,
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import Menu from "../Menu";
 import ColorPicker from "./ColorPicker";
 import GradientPicker from "./GradientPicker";
 import TextEditor from "./TextEditor";
@@ -55,7 +56,9 @@ const Editor: React.FC<OwnProps> = ({
 }) => {
   const dispatch = useDispatch();
   const { background, page } = useSelector((state: RootState) => state.app);
-  const { containerId, componentId } = useSelector((state: RootState) => state.edit)
+  const { containerId, componentId } = useSelector(
+    (state: RootState) => state.edit
+  );
   const { config } = background.style;
   const { options } = background.style;
 
@@ -107,6 +110,9 @@ const Editor: React.FC<OwnProps> = ({
         onClose={hide}
         BackdropProps={{ invisible: true }}
       >
+        {(title === "Background" ||
+          title === "Page" ||
+          title === "Container") && <Menu />}
         <Box m={4} width={300}>
           <Typography variant="h5" gutterBottom>
             {title}

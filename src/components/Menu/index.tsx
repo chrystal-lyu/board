@@ -27,7 +27,7 @@ const Menu: React.FC = () => {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <AddIcon color="action" fontSize="large" />
+        <AddIcon color="primary" fontSize="large" />
       </IconButton>
 
       <MuiMenu
