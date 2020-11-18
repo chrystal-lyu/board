@@ -25,6 +25,7 @@ import {
   Checkbox,
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import DeleteIcon from "@material-ui/icons/Delete";
 import Menu from "../Menu";
 import ColorPicker from "./ColorPicker";
 import GradientPicker from "./GradientPicker";
@@ -239,7 +240,7 @@ const Editor: React.FC<OwnProps> = ({
             )}
           </Box>
         </Box>
-        <Box m={4}>
+        <Box m={2}>
           <Button
             fullWidth={true}
             color="primary"
@@ -248,6 +249,19 @@ const Editor: React.FC<OwnProps> = ({
           >
             DONE
           </Button>
+        </Box>
+        <Box m={2}>
+          {title !== "Background" && title !== "Page" && (
+            <Button
+              fullWidth={true}
+              variant="contained"
+              color="secondary"
+              startIcon={<DeleteIcon />}
+              onClick={(e) => hide(e)}
+            >
+              Delete
+            </Button>
+          )}
         </Box>
       </Drawer>
     </React.Fragment>
