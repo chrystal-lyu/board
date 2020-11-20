@@ -1,18 +1,39 @@
 import React from "react";
-import AddIcon from '@material-ui/icons/Add';
+import { useDispatch } from "react-redux";
+import AddIcon from "@material-ui/icons/Add";
+import { OwnProps } from "./types";
 import { Menu as MuiMenu, MenuItem, IconButton } from "@material-ui/core";
 import { MenuContainer } from "./index.style";
+import { addContainer } from "../../store/actions";
+// import { RootState } from "../../store/reducers/rootReducer";
 
 const options = ["Text", "Image", "Container"];
 
 const ITEM_HEIGHT = 48;
 
-const Menu: React.FC = () => {
+const Menu: React.FC<OwnProps> = (props) => {
+  const dispatch = useDispatch();
+  // const { containerId, componentId } = useSelector(
+  //   (state: RootState) => state.edit
+  // );
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuItemClick = (
+    e: React.MouseEvent<HTMLElement>,
+    type: string
+  ) => {
+    if (props.title === "Container") {
+      console.log("should add", type, "to container");
+    } else {
+      console.log("should add", type, "to page");
+      dispatch(addContainer(type))
+    }
+    setAnchorEl(null);
   };
 
   const handleClose = () => {
@@ -46,8 +67,8 @@ const Menu: React.FC = () => {
         {options.map((option) => (
           <MenuItem
             key={option}
-            selected={option === "Pyxis"}
-            onClick={handleClose}
+            disabled={props.title === "Container" && option === "Container"}
+            onClick={(event) => handleMenuItemClick(event, option)}
           >
             {option}
           </MenuItem>

@@ -24,6 +24,7 @@ import {
   CHANGE_IMAGE_URL,
   CHANGE_IMAGE_SHAPE,
   REMOVE_CONTAINER,
+  ADD_CONTAINER,
   ChangeMainBgAction,
   ChangeColorStop1Action,
   ChangeColorStop2Action,
@@ -47,6 +48,7 @@ import {
   ChangeImageUrlAction,
   ChangeImageShapeAction,
   RemoveContainerAction,
+  AddContainerAction,
   AppState,
 } from "../actions/app.types";
 import {
@@ -95,6 +97,7 @@ const appReducer = (
     | ChangeImageUrlAction
     | ChangeImageShapeAction
     | RemoveContainerAction
+    | AddContainerAction
 ): AppState => {
   switch (action.type) {
     case CHANGE_MAIN_BACKGROUND:
@@ -157,8 +160,54 @@ const appReducer = (
       return changeImageShape(state, action);
     case REMOVE_CONTAINER:
       return produce(state, (draft) => {
-        draft.page.containers = draft.page.containers.filter(item => item.id !== action.containerId)
-      })
+        draft.page.containers = draft.page.containers.filter(
+          (item) => item.id !== action.containerId
+        );
+      });
+    case ADD_CONTAINER:
+      console.log("action", action);
+      return produce(state, (draft) => {
+        const newContainer = {
+          id: 7,
+          type: "container",
+          backgroundColor: "#ffffff",
+          borderRadius: 16,
+          dropShadow: false,
+          components: [],
+        };
+        const newText = {
+          id: 7,
+          type: "text",
+          content: "I am a text in Container",
+          color: "white",
+          fontFamily: "georgia",
+          fontSize: 24,
+          fontWeight: 600,
+          lineHeight: 28,
+          letterSpacing: 0,
+          margin: 10,
+          textTransform: "unset",
+          textAlign: "auto",
+        };
+        const newImage = {
+          id: 7,
+          type: "image",
+          url: "https://deadline.com/wp-content/uploads/2019/08/mulan.jpg",
+          shape: "circle",
+          scale: 1,
+          crop: {
+            topLeft: [0, 0],
+            bottomRight: [200, 200],
+          },
+        };
+        if (action.containerType === "Container") {
+          draft.page.containers.push(newContainer);
+        } else if (action.containerType === "Text") {
+          draft.page.containers.push(newText);
+        } else if (action.containerType === "Image") {
+          draft.page.containers.push(newImage);
+        }
+      });
     default:
       return state;
   }

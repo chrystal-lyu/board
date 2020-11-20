@@ -22,6 +22,7 @@ export const CHANGE_IMAGE_URL = "CHANGE_IMAGE_URL";
 export const CHANGE_IMAGE_SHAPE = "CHANGE_IMAGE_SHAPE";
 
 export const REMOVE_CONTAINER = "REMOVE_CONTAINER";
+export const ADD_CONTAINER = "ADD_CONTAINER";
 
 export interface ChangeMainBgAction {
   type: typeof CHANGE_MAIN_BACKGROUND;
@@ -163,6 +164,11 @@ export interface ChangeImageShapeAction {
 export interface RemoveContainerAction {
   type: typeof REMOVE_CONTAINER;
   containerId: number;
+}
+
+export interface AddContainerAction {
+  type: typeof ADD_CONTAINER;
+  containerType: string;
 }
 
 type StyleConfig = {

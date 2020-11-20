@@ -113,7 +113,7 @@ const Editor: React.FC<OwnProps> = ({
       >
         {(title === "Background" ||
           title === "Page" ||
-          title === "Container") && <Menu />}
+          title === "Container") && <Menu title={title} />}
         <Box m={4} width={300}>
           <Typography variant="h5" gutterBottom>
             {title}
