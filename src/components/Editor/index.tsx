@@ -12,6 +12,7 @@ import {
   changeContainerBorderRadius,
   changeContainerDropShadow,
   changeTextColor,
+  removeContainer,
 } from "../../store/actions";
 import {
   Box,
@@ -50,7 +51,6 @@ const Editor: React.FC<OwnProps> = ({
   textAlign,
   imageUrl,
   imageShape,
-  // containerId,
   containerBgColor,
   containerBorderRadius,
   containerDropShadow,
@@ -257,7 +257,7 @@ const Editor: React.FC<OwnProps> = ({
               variant="contained"
               color="secondary"
               startIcon={<DeleteIcon />}
-              onClick={(e) => hide(e)}
+              onClick={() => dispatch(removeContainer(containerId as number))}
             >
               Delete
             </Button>

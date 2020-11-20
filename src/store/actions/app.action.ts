@@ -21,6 +21,7 @@ import {
   CHANGE_TEXT_ALIGN,
   CHANGE_IMAGE_URL,
   CHANGE_IMAGE_SHAPE,
+  REMOVE_CONTAINER,
   ChangeMainBgAction,
   ChangeColorStop1Action,
   ChangeStopPosition1Action,
@@ -43,6 +44,7 @@ import {
   ChangeTextAlignAction,
   ChangeImageUrlAction,
   ChangeImageShapeAction,
+  RemoveContainerAction,
 } from "./app.types";
 
 export const changeMainBg = (payload: string): ChangeMainBgAction => {
@@ -186,7 +188,7 @@ export const changeTextFont = (
 export const changeTextWeight = (
   containerId: number | null,
   componentId: number | null,
-  weight: number,
+  weight: number
 ): ChangeTextWeightAction => {
   return {
     type: CHANGE_TEXT_WEIGHT,
@@ -209,7 +211,7 @@ export const changeTextHeight = (
   };
 };
 
-export const changeTextSpacing= (
+export const changeTextSpacing = (
   containerId: number | null,
   componentId: number | null,
   spacing: number
@@ -284,5 +286,12 @@ export const changeImageShape = (
     containerId,
     componentId,
     shape,
+  };
+};
+
+export const removeContainer = (containerId: number) => {
+  return {
+    type: REMOVE_CONTAINER,
+    containerId,
   };
 };

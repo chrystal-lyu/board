@@ -17,9 +17,11 @@ export const CHANGE_TEXT_HEIGHT = "CHANGE_TEXT_HEIGHT";
 export const CHANGE_TEXT_SPACING = "CHANGE_TEXT_SPACING";
 export const CHANGE_TEXT_MARGIN = "CHANGE_TEXT_MARGIN";
 export const CHANGE_TEXT_TRANSFORM = "CHANGE_TEXT_TRANSFORM";
-export const CHANGE_TEXT_ALIGN ="CHANGE_TEXT_ALIGN";
+export const CHANGE_TEXT_ALIGN = "CHANGE_TEXT_ALIGN";
 export const CHANGE_IMAGE_URL = "CHANGE_IMAGE_URL";
 export const CHANGE_IMAGE_SHAPE = "CHANGE_IMAGE_SHAPE";
+
+export const REMOVE_CONTAINER = "REMOVE_CONTAINER";
 
 export interface ChangeMainBgAction {
   type: typeof CHANGE_MAIN_BACKGROUND;
@@ -158,6 +160,11 @@ export interface ChangeImageShapeAction {
   shape: string;
 }
 
+export interface RemoveContainerAction {
+  type: typeof REMOVE_CONTAINER;
+  containerId: number;
+}
+
 type StyleConfig = {
   color?: string;
   colorStop1?: string;
@@ -216,6 +223,6 @@ export interface AppState {
   page: {
     width?: string;
     textAlign?: string;
-    containers?: Container[];
+    containers: Container[];
   };
 }

@@ -23,6 +23,7 @@ import {
   CHANGE_TEXT_ALIGN,
   CHANGE_IMAGE_URL,
   CHANGE_IMAGE_SHAPE,
+  REMOVE_CONTAINER,
   ChangeMainBgAction,
   ChangeColorStop1Action,
   ChangeColorStop2Action,
@@ -45,6 +46,7 @@ import {
   ChangeTextAlignAction,
   ChangeImageUrlAction,
   ChangeImageShapeAction,
+  RemoveContainerAction,
   AppState,
 } from "../actions/app.types";
 import {
@@ -92,6 +94,7 @@ const appReducer = (
     | ChangeTextAlignAction
     | ChangeImageUrlAction
     | ChangeImageShapeAction
+    | RemoveContainerAction
 ): AppState => {
   switch (action.type) {
     case CHANGE_MAIN_BACKGROUND:
@@ -152,6 +155,10 @@ const appReducer = (
       return changeImageUrl(state, action);
     case CHANGE_IMAGE_SHAPE:
       return changeImageShape(state, action);
+    case REMOVE_CONTAINER:
+      return produce(state, (draft) => {
+        draft.page.containers = draft.page.containers.filter(item => item.id !== action.containerId)
+      })
     default:
       return state;
   }
