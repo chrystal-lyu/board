@@ -65,7 +65,7 @@ const Editor: React.FC<OwnProps> = ({
   const { options } = background.style;
 
   const handleDelete = () => {
-    if (componentId === null) {
+    if (title === "Container" || componentId === null) {
       dispatch(removeContainer(containerId as string));
     } else {
       dispatch(removeComponent(containerId as string, componentId as string));
