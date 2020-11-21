@@ -3,7 +3,9 @@ import { SelectorBox } from "../../styles/global";
 
 export const PageBox = styled(SelectorBox)`
   width: ${(props) => props.width}px;
+  padding: 5rem 3rem;
   margin: 0 auto;
+  text-align: center;
 
   &.hover::before {
     content: "page";

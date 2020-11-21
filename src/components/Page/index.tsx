@@ -22,13 +22,14 @@ const Page: React.FC<OwnProps> = (props) => {
       onMouseOver={addHover}
       onMouseOut={removeHover}
     >
-      <Box onMouseOver={removeHover} onMouseLeave={addHover}>
+      <Box onMouseOver={removeHover} onMouseOut={addHover}>
         {props.children}
       </Box>
       <Editor
         title="Page"
         isShowing={isShowing}
         hide={hide}
+        containerId={null}
       />
     </PageBox>
   );

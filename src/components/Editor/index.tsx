@@ -8,36 +8,68 @@ import {
   changeStopPosition2,
   changeMainBgStyle,
   changePageWidth,
+  changeContainerBackground,
+  changeContainerBorderRadius,
+  changeContainerDropShadow,
+  changeTextColor,
+  removeContainer,
+  removeComponent,
 } from "../../store/actions";
 import {
   Box,
   Button,
   Drawer,
-  TextField,
   Slider,
   FormControl,
   InputLabel,
   Select,
+  FormControlLabel,
+  Checkbox,
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Menu from "../Menu";
 import ColorPicker from "./ColorPicker";
 import GradientPicker from "./GradientPicker";
+import TextEditor from "./TextEditor";
 import { OwnProps } from "./types";
 import { RootState } from "../../store/reducers/rootReducer";
+import ImageEditor from "./ImageEditor";
 
 const Editor: React.FC<OwnProps> = ({
   isShowing,
   title,
   hide,
   textContent,
+  textColor,
+  textFontFamily,
+  textSize,
+  textWeight,
+  textLineHeight,
+  textLetterSpacing,
+  textMargin,
+  textTransform,
+  textAlign,
+  imageUrl,
+  imageShape,
+  containerBgColor,
+  containerBorderRadius,
+  containerDropShadow,
 }) => {
   const dispatch = useDispatch();
   const { background, page } = useSelector((state: RootState) => state.app);
+  const { containerId, componentId } = useSelector(
+    (state: RootState) => state.edit
+  );
   const { config } = background.style;
   const { options } = background.style;
 
-  const valuetext = (value: number) => {
-    return `${value}px`;
+  const handleDelete = () => {
+    if (componentId === null) {
+      dispatch(removeContainer(containerId as string));
+    } else {
+      dispatch(removeComponent(containerId as string, componentId as string));
+    }
   };
 
   const renderBackgroundOptions = () => {
@@ -48,6 +80,9 @@ const Editor: React.FC<OwnProps> = ({
             value={config.color}
             handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               dispatch(changeMainBg(e.target.value))
+            }
+            handlePickerChange={(value: string) =>
+              dispatch(changeMainBg(value))
             }
           />
         );
@@ -85,8 +120,13 @@ const Editor: React.FC<OwnProps> = ({
         onClose={hide}
         BackdropProps={{ invisible: true }}
       >
-        <Box m={2} width={300}>
-          <h1>{title}</h1>
+        {(title === "Background" ||
+          title === "Page" ||
+          title === "Container") && <Menu title={title} />}
+        <Box m={4} width={300}>
+          <Typography variant="h5" gutterBottom>
+            {title}
+          </Typography>
           <Box>
             {title === "Background" && (
               <Box>
@@ -108,22 +148,13 @@ const Editor: React.FC<OwnProps> = ({
                 {renderBackgroundOptions()}
               </Box>
             )}
-            {textContent && (
-              <TextField
-                fullWidth
-                value={textContent}
-                label="Content"
-                variant="outlined"
-              />
-            )}
-            {page.width && (
+            {title === "Page" && (
               <Box width={300}>
                 <Typography id="continuous-slider" gutterBottom>
                   Width
                 </Typography>
                 <Slider
-                  defaultValue={Number(page.width)}
-                  getAriaValueText={valuetext}
+                  value={Number(page.width)}
                   aria-labelledby="continuous-slider"
                   min={300}
                   max={1200}
@@ -134,6 +165,87 @@ const Editor: React.FC<OwnProps> = ({
                   }
                 />
               </Box>
+            )}
+            {title === "Container" && (
+              <Box my={4}>
+                <Box my={3}>
+                  <ColorPicker
+                    value={containerBgColor}
+                    handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      dispatch(
+                        changeContainerBackground(containerId, e.target.value)
+                      )
+                    }
+                    handlePickerChange={(value: string) =>
+                      dispatch(changeContainerBackground(containerId, value))
+                    }
+                  />
+                </Box>
+                <Box my={3}>
+                  <FormControlLabel
+                    label="Drop Shadow"
+                    control={
+                      <Checkbox
+                        checked={containerDropShadow}
+                        color="primary"
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                          dispatch(
+                            changeContainerDropShadow(
+                              containerId,
+                              e.target.checked
+                            )
+                          );
+                        }}
+                      />
+                    }
+                  />
+                </Box>
+                <Box my={3}>
+                  <Typography variant="subtitle2" gutterBottom>
+                    Border Radius
+                  </Typography>
+                  <Slider
+                    value={containerBorderRadius}
+                    min={0}
+                    max={50}
+                    step={2}
+                    valueLabelDisplay="auto"
+                    onChange={(e, newValue) =>
+                      dispatch(
+                        changeContainerBorderRadius(
+                          containerId,
+                          newValue as number
+                        )
+                      )
+                    }
+                  />
+                </Box>
+              </Box>
+            )}
+            {title === "Text" && (
+              <TextEditor
+                content={textContent}
+                size={textSize}
+                color={textColor}
+                handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  dispatch(
+                    changeTextColor(containerId, componentId, e.target.value)
+                  )
+                }
+                handlePickerChange={(value: string) =>
+                  dispatch(changeTextColor(containerId, componentId, value))
+                }
+                font={textFontFamily}
+                weight={textWeight}
+                height={textLineHeight}
+                spacing={textLetterSpacing}
+                margin={textMargin}
+                transform={textTransform}
+                align={textAlign}
+              />
+            )}
+            {title === "Image" && (
+              <ImageEditor url={imageUrl} shape={imageShape} />
             )}
           </Box>
         </Box>
@@ -146,6 +258,19 @@ const Editor: React.FC<OwnProps> = ({
           >
             DONE
           </Button>
+        </Box>
+        <Box m={2}>
+          {title !== "Background" && title !== "Page" && (
+            <Button
+              fullWidth={true}
+              variant="contained"
+              color="secondary"
+              startIcon={<DeleteIcon />}
+              onClick={handleDelete}
+            >
+              Delete
+            </Button>
+          )}
         </Box>
       </Drawer>
     </React.Fragment>

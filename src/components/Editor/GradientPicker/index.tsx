@@ -38,7 +38,7 @@ const GradientPicker: React.FC<OwnProps> = (props) => {
           {props.stopPosition1}%
         </Typography>
         <Slider
-          defaultValue={props.stopPosition1}
+          value={props.stopPosition1}
           aria-labelledby="continuous-slider-1"
           min={0}
           max={100}
@@ -71,7 +71,7 @@ const GradientPicker: React.FC<OwnProps> = (props) => {
           {props.stopPosition2}%
         </Typography>
         <Slider
-          defaultValue={props.stopPosition2}
+          value={props.stopPosition2}
           aria-labelledby="continuous-slider-2"
           min={0}
           max={100}
