@@ -36,7 +36,7 @@ const Text: React.FC<OwnProps> = (props) => {
   };
 
   return (
-    <Component index={props.id as number}>
+    <Component index={props.id as string}>
       <TextBox
         onClick={handleClick}
         className={selectorBoxClass(isShowing, hovered)}

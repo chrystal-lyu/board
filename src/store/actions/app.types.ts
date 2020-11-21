@@ -61,109 +61,109 @@ export interface ChangePageWidthAction {
 
 export interface ChangeContainerBackgroundAction {
   type: typeof CHANGE_CONTAINER_BACKGROUND;
-  containerId: number | null;
+  containerId: string | null;
   color: string;
 }
 
 export interface ChangeContainerBorderRadiusAction {
   type: typeof CHANGE_CONTAINER_BORDER_RADIUS;
-  containerId: number | null;
+  containerId: string | null;
   borderRadius: number;
 }
 
 export interface ChangeContainerDropShadowAction {
   type: typeof CHANGE_CONTAINER_DROP_SHADOW;
-  containerId: number | null;
+  containerId: string | null;
   dropShadow: boolean;
 }
 
 export interface ChangeTextContentAction {
   type: typeof CHANGE_TEXT_CONTENT;
-  containerId?: number | null;
-  componentId?: number | null;
+  containerId?: string | null;
+  componentId?: string | null;
   content: string;
 }
 
 export interface ChangeTextColorAction {
   type: typeof CHANGE_TEXT_COLOR;
-  containerId?: number | null;
-  componentId?: number | null;
+  containerId?: string | null;
+  componentId?: string | null;
   color: string;
 }
 
 export interface ChangeTextSizeAction {
   type: typeof CHANGE_TEXT_SIZE;
-  containerId?: number | null;
-  componentId?: number | null;
+  containerId?: string | null;
+  componentId?: string | null;
   size: number;
 }
 
 export interface ChangeTextFontAction {
   type: typeof CHANGE_TEXT_FONT;
-  containerId?: number | null;
-  componentId?: number | null;
+  containerId?: string | null;
+  componentId?: string | null;
   font: string;
 }
 
 export interface ChangeTextWeightAction {
   type: typeof CHANGE_TEXT_WEIGHT;
-  containerId?: number | null;
-  componentId?: number | null;
+  containerId?: string | null;
+  componentId?: string | null;
   weight: number;
 }
 
 export interface ChangeTextHeightAction {
   type: typeof CHANGE_TEXT_HEIGHT;
-  containerId?: number | null;
-  componentId?: number | null;
+  containerId?: string | null;
+  componentId?: string | null;
   height: number;
 }
 
 export interface ChangeTextSpacingAction {
   type: typeof CHANGE_TEXT_SPACING;
-  containerId?: number | null;
-  componentId?: number | null;
+  containerId?: string | null;
+  componentId?: string | null;
   spacing: number;
 }
 
 export interface ChangeTextMarginAction {
   type: typeof CHANGE_TEXT_MARGIN;
-  containerId?: number | null;
-  componentId?: number | null;
+  containerId?: string | null;
+  componentId?: string | null;
   margin: number;
 }
 
 export interface ChangeTextTransformAction {
   type: typeof CHANGE_TEXT_TRANSFORM;
-  containerId?: number | null;
-  componentId?: number | null;
+  containerId?: string | null;
+  componentId?: string | null;
   transform: string;
 }
 
 export interface ChangeTextAlignAction {
   type: typeof CHANGE_TEXT_ALIGN;
-  containerId?: number | null;
-  componentId?: number | null;
+  containerId?: string | null;
+  componentId?: string | null;
   align: string;
 }
 
 export interface ChangeImageUrlAction {
   type: typeof CHANGE_IMAGE_URL;
-  containerId?: number | null;
-  componentId?: number | null;
+  containerId?: string | null;
+  componentId?: string | null;
   url: string;
 }
 
 export interface ChangeImageShapeAction {
   type: typeof CHANGE_IMAGE_SHAPE;
-  containerId?: number | null;
-  componentId?: number | null;
+  containerId?: string | null;
+  componentId?: string | null;
   shape: string;
 }
 
 export interface RemoveContainerAction {
   type: typeof REMOVE_CONTAINER;
-  containerId: number;
+  containerId: string;
 }
 
 export interface AddContainerAction {
@@ -180,7 +180,7 @@ type StyleConfig = {
 };
 
 export type Text = {
-  id: number;
+  id: string;
   type?: string;
   content?: string;
   color?: string;
@@ -195,7 +195,7 @@ export type Text = {
 };
 
 export type Image = {
-  id: number;
+  id: string;
   type?: string;
   url?: string;
   shape?: string;
@@ -209,7 +209,7 @@ export type Image = {
 export type Components = Text & Image;
 
 export type Component = {
-  id: number;
+  id: string;
   type?: string;
   backgroundColor?: string;
   borderRadius?: number;

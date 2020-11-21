@@ -1,6 +1,6 @@
 export interface OwnProps {
-  containerId: number | null;
-  componentId?: number | null;
+  containerId: string | null;
+  componentId?: string | null;
   title?: string;
   isShowing?: boolean;
   hide(e: React.MouseEvent): void;

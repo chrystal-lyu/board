@@ -103,7 +103,7 @@ export const changeStopPosition2 = (
 };
 
 export const changeContainerBackground = (
-  containerId: number | null,
+  containerId: string | null,
   color: string
 ): ChangeContainerBackgroundAction => {
   return {
@@ -114,7 +114,7 @@ export const changeContainerBackground = (
 };
 
 export const changeContainerBorderRadius = (
-  containerId: number | null,
+  containerId: string | null,
   borderRadius: number
 ): ChangeContainerBorderRadiusAction => {
   return {
@@ -125,7 +125,7 @@ export const changeContainerBorderRadius = (
 };
 
 export const changeContainerDropShadow = (
-  containerId: number | null,
+  containerId: string | null,
   dropShadow: boolean
 ): ChangeContainerDropShadowAction => {
   return {
@@ -136,8 +136,8 @@ export const changeContainerDropShadow = (
 };
 
 export const changeTextContent = (
-  containerId: number | null,
-  componentId: number | null,
+  containerId: string | null,
+  componentId: string | null,
   content: string
 ): ChangeTextContentAction => {
   return {
@@ -149,8 +149,8 @@ export const changeTextContent = (
 };
 
 export const changeTextColor = (
-  containerId: number | null,
-  componentId: number | null,
+  containerId: string | null,
+  componentId: string | null,
   color: string
 ): ChangeTextColorAction => {
   return {
@@ -162,8 +162,8 @@ export const changeTextColor = (
 };
 
 export const changeTextSize = (
-  containerId: number | null,
-  componentId: number | null,
+  containerId: string | null,
+  componentId: string | null,
   size: number
 ): ChangeTextSizeAction => {
   return {
@@ -175,8 +175,8 @@ export const changeTextSize = (
 };
 
 export const changeTextFont = (
-  containerId: number | null,
-  componentId: number | null,
+  containerId: string | null,
+  componentId: string | null,
   font: string
 ): ChangeTextFontAction => {
   return {
@@ -188,8 +188,8 @@ export const changeTextFont = (
 };
 
 export const changeTextWeight = (
-  containerId: number | null,
-  componentId: number | null,
+  containerId: string | null,
+  componentId: string | null,
   weight: number
 ): ChangeTextWeightAction => {
   return {
@@ -201,8 +201,8 @@ export const changeTextWeight = (
 };
 
 export const changeTextHeight = (
-  containerId: number | null,
-  componentId: number | null,
+  containerId: string | null,
+  componentId: string | null,
   height: number
 ): ChangeTextHeightAction => {
   return {
@@ -214,8 +214,8 @@ export const changeTextHeight = (
 };
 
 export const changeTextSpacing = (
-  containerId: number | null,
-  componentId: number | null,
+  containerId: string | null,
+  componentId: string | null,
   spacing: number
 ): ChangeTextSpacingAction => {
   return {
@@ -227,8 +227,8 @@ export const changeTextSpacing = (
 };
 
 export const changeTextMargin = (
-  containerId: number | null,
-  componentId: number | null,
+  containerId: string | null,
+  componentId: string | null,
   margin: number
 ): ChangeTextMarginAction => {
   return {
@@ -240,8 +240,8 @@ export const changeTextMargin = (
 };
 
 export const changeTextTransform = (
-  containerId: number | null,
-  componentId: number | null,
+  containerId: string | null,
+  componentId: string | null,
   transform: string
 ): ChangeTextTransformAction => {
   return {
@@ -253,8 +253,8 @@ export const changeTextTransform = (
 };
 
 export const changeTextAlign = (
-  containerId: number | null,
-  componentId: number | null,
+  containerId: string | null,
+  componentId: string | null,
   align: string
 ): ChangeTextAlignAction => {
   return {
@@ -266,8 +266,8 @@ export const changeTextAlign = (
 };
 
 export const changeImageUrl = (
-  containerId: number | null,
-  componentId: number | null,
+  containerId: string | null,
+  componentId: string | null,
   url: string
 ): ChangeImageUrlAction => {
   return {
@@ -279,8 +279,8 @@ export const changeImageUrl = (
 };
 
 export const changeImageShape = (
-  containerId: number | null,
-  componentId: number | null,
+  containerId: string | null,
+  componentId: string | null,
   shape: string
 ): ChangeImageShapeAction => {
   return {
@@ -291,7 +291,7 @@ export const changeImageShape = (
   };
 };
 
-export const removeContainer = (containerId: number): RemoveContainerAction => {
+export const removeContainer = (containerId: string): RemoveContainerAction => {
   return {
     type: REMOVE_CONTAINER,
     containerId,

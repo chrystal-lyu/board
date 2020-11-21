@@ -1,3 +1,3 @@
 export interface OwnProps {
-  id: number;
+  id: string;
 }

@@ -1,5 +1,5 @@
 export interface OwnProps {
-  id: number;
+  id: string;
   backgroundColor?: string;
   borderRadius?: number;
   dropShadow?: boolean;

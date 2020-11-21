@@ -1,5 +1,6 @@
 import sample from "../../sample.json";
 import produce from "immer";
+import { v4 as uuidv4 } from 'uuid';
 import {
   CHANGE_MAIN_BACKGROUND,
   CHANGE_COLOR_STOP_1,
@@ -166,9 +167,10 @@ const appReducer = (
       });
     case ADD_CONTAINER:
       console.log("action", action);
+      const itemId = uuidv4();
       return produce(state, (draft) => {
         const newContainer = {
-          id: 7,
+          id: itemId,
           type: "container",
           backgroundColor: "#ffffff",
           borderRadius: 16,
@@ -176,7 +178,7 @@ const appReducer = (
           components: [],
         };
         const newText = {
-          id: 7,
+          id: itemId,
           type: "text",
           content: "I am a text in Container",
           color: "white",
@@ -190,7 +192,7 @@ const appReducer = (
           textAlign: "auto",
         };
         const newImage = {
-          id: 7,
+          id: itemId,
           type: "image",
           url: "https://deadline.com/wp-content/uploads/2019/08/mulan.jpg",
           shape: "circle",

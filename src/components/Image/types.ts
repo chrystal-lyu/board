@@ -1,6 +1,6 @@
 export interface OwnProps {
-  id: number | null;
-  parentId: number | null;
+  id: string | null;
+  parentId: string | null;
   url?: string;
   shape?: string;
   scale?: number;

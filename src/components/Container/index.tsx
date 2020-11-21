@@ -20,7 +20,7 @@ const Container: React.FC<OwnProps> = (props) => {
   };
 
   return (
-    <Component index={props.id as number}>
+    <Component index={props.id as string}>
       <ContainerBox
         py={2}
         onClick={handleClick}

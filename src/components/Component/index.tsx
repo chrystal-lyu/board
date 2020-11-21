@@ -15,12 +15,12 @@ const ItemTypes = {
 export interface CardProps {
   id: number;
   text: string;
-  index: number;
+  index: string;
   moveCard: (dragIndex: number, hoverIndex: number) => void;
 }
 
 interface DragItem {
-  index: number;
+  index: string;
   id: string;
   type: string;
 }

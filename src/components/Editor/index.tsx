@@ -257,7 +257,7 @@ const Editor: React.FC<OwnProps> = ({
               variant="contained"
               color="secondary"
               startIcon={<DeleteIcon />}
-              onClick={() => dispatch(removeContainer(containerId as number))}
+              onClick={() => dispatch(removeContainer(containerId as string))}
             >
               Delete
             </Button>
