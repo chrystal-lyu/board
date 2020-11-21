@@ -1,11 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AddIcon from "@material-ui/icons/Add";
 import { OwnProps } from "./types";
 import { Menu as MuiMenu, MenuItem, IconButton } from "@material-ui/core";
 import { MenuContainer } from "./index.style";
-import { addContainer } from "../../store/actions";
-// import { RootState } from "../../store/reducers/rootReducer";
+import { addContainer, addComponent } from "../../store/actions";
+import { RootState } from "../../store/reducers/rootReducer";
 
 const options = ["Text", "Image", "Container"];
 
@@ -13,9 +13,7 @@ const ITEM_HEIGHT = 48;
 
 const Menu: React.FC<OwnProps> = (props) => {
   const dispatch = useDispatch();
-  // const { containerId, componentId } = useSelector(
-  //   (state: RootState) => state.edit
-  // );
+  const { containerId } = useSelector((state: RootState) => state.edit);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -28,10 +26,9 @@ const Menu: React.FC<OwnProps> = (props) => {
     type: string
   ) => {
     if (props.title === "Container") {
-      console.log("should add", type, "to container");
+      dispatch(addComponent(containerId as string, type));
     } else {
-      console.log("should add", type, "to page");
-      dispatch(addContainer(type))
+      dispatch(addContainer(type));
     }
     setAnchorEl(null);
   };
@@ -50,7 +47,6 @@ const Menu: React.FC<OwnProps> = (props) => {
       >
         <AddIcon color="primary" fontSize="large" />
       </IconButton>
-
       <MuiMenu
         id="long-menu"
         anchorEl={anchorEl}

@@ -1,6 +1,6 @@
 import sample from "../../sample.json";
 import produce from "immer";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import {
   CHANGE_MAIN_BACKGROUND,
   CHANGE_COLOR_STOP_1,
@@ -26,6 +26,8 @@ import {
   CHANGE_IMAGE_SHAPE,
   REMOVE_CONTAINER,
   ADD_CONTAINER,
+  REMOVE_COMPONENT,
+  ADD_COMPONENT,
   ChangeMainBgAction,
   ChangeColorStop1Action,
   ChangeColorStop2Action,
@@ -50,6 +52,8 @@ import {
   ChangeImageShapeAction,
   RemoveContainerAction,
   AddContainerAction,
+  RemoveComponentAction,
+  AddComponentAction,
   AppState,
 } from "../actions/app.types";
 import {
@@ -99,6 +103,8 @@ const appReducer = (
     | ChangeImageShapeAction
     | RemoveContainerAction
     | AddContainerAction
+    | RemoveComponentAction
+    | AddComponentAction
 ): AppState => {
   switch (action.type) {
     case CHANGE_MAIN_BACKGROUND:
@@ -166,7 +172,6 @@ const appReducer = (
         );
       });
     case ADD_CONTAINER:
-      console.log("action", action);
       const itemId = uuidv4();
       return produce(state, (draft) => {
         const newContainer = {
@@ -180,7 +185,7 @@ const appReducer = (
         const newText = {
           id: itemId,
           type: "text",
-          content: "I am a text in Container",
+          content: "I am a text",
           color: "white",
           fontFamily: "georgia",
           fontSize: 24,
@@ -208,6 +213,79 @@ const appReducer = (
           draft.page.containers.push(newText);
         } else if (action.containerType === "Image") {
           draft.page.containers.push(newImage);
+        }
+      });
+    case REMOVE_COMPONENT:
+      const data = state.page.containers;
+      const containerIndex = data.findIndex(
+        ({ id }) => id === action.containerId
+      );
+      if (containerIndex === -1) {
+        return state;
+      }
+      const container = data[containerIndex];
+      const updatedContainer = {
+        ...container,
+        components: container.components?.filter(
+          (component) => component.id !== action.componentId
+        ),
+      };
+      return {
+        ...state,
+        page: {
+          ...state.page,
+          containers: [
+            ...state.page.containers.slice(0, containerIndex),
+            updatedContainer,
+            ...state.page.containers.slice(containerIndex + 1),
+          ],
+        },
+      };
+    case ADD_COMPONENT:
+      const compId = uuidv4();
+      return produce(state, (draft) => {
+        const newContainer = {
+          id: compId,
+          type: "container",
+          backgroundColor: "#ffffff",
+          borderRadius: 16,
+          dropShadow: false,
+          components: [],
+        };
+        const newText = {
+          id: compId,
+          type: "text",
+          content: "I am a text",
+          color: "white",
+          fontFamily: "georgia",
+          fontSize: 24,
+          fontWeight: 600,
+          lineHeight: 28,
+          letterSpacing: 0,
+          margin: 10,
+          textTransform: "unset",
+          textAlign: "auto",
+        };
+        const newImage = {
+          id: compId,
+          type: "image",
+          url: "https://deadline.com/wp-content/uploads/2019/08/mulan.jpg",
+          shape: "circle",
+          scale: 1,
+          crop: {
+            topLeft: [0, 0],
+            bottomRight: [200, 200],
+          },
+        };
+        const index = draft.page.containers.findIndex(
+          (container) => container.id === action.containerId
+        );
+        if (action.componentType === "Container") {
+          draft.page.containers[index].components?.push(newContainer);
+        } else if (action.componentType === "Text") {
+          draft.page.containers[index].components?.push(newText);
+        } else if (action.componentType === "Image") {
+          draft.page.containers[index].components?.push(newImage);
         }
       });
     default:

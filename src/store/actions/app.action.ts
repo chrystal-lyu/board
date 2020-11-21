@@ -23,6 +23,8 @@ import {
   CHANGE_IMAGE_SHAPE,
   REMOVE_CONTAINER,
   ADD_CONTAINER,
+  REMOVE_COMPONENT,
+  ADD_COMPONENT,
   ChangeMainBgAction,
   ChangeColorStop1Action,
   ChangeStopPosition1Action,
@@ -47,6 +49,8 @@ import {
   ChangeImageShapeAction,
   RemoveContainerAction,
   AddContainerAction,
+  RemoveComponentAction,
+  AddComponentAction,
 } from "./app.types";
 
 export const changeMainBg = (payload: string): ChangeMainBgAction => {
@@ -302,5 +306,27 @@ export const addContainer = (containerType: string): AddContainerAction => {
   return {
     type: ADD_CONTAINER,
     containerType,
+  };
+};
+
+export const removeComponent = (
+  containerId: string,
+  componentId: string
+): RemoveComponentAction => {
+  return {
+    type: REMOVE_COMPONENT,
+    containerId,
+    componentId,
+  };
+};
+
+export const addComponent = (
+  containerId: string,
+  componentType: string
+): AddComponentAction => {
+  return {
+    type: ADD_COMPONENT,
+    containerId,
+    componentType,
   };
 };

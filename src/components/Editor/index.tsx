@@ -13,6 +13,7 @@ import {
   changeContainerDropShadow,
   changeTextColor,
   removeContainer,
+  removeComponent,
 } from "../../store/actions";
 import {
   Box,
@@ -62,6 +63,14 @@ const Editor: React.FC<OwnProps> = ({
   );
   const { config } = background.style;
   const { options } = background.style;
+
+  const handleDelete = () => {
+    if (componentId === null) {
+      dispatch(removeContainer(containerId as string));
+    } else {
+      dispatch(removeComponent(containerId as string, componentId as string));
+    }
+  };
 
   const renderBackgroundOptions = () => {
     switch (options) {
@@ -257,7 +266,7 @@ const Editor: React.FC<OwnProps> = ({
               variant="contained"
               color="secondary"
               startIcon={<DeleteIcon />}
-              onClick={() => dispatch(removeContainer(containerId as string))}
+              onClick={handleDelete}
             >
               Delete
             </Button>

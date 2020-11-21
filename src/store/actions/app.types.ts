@@ -23,6 +23,8 @@ export const CHANGE_IMAGE_SHAPE = "CHANGE_IMAGE_SHAPE";
 
 export const REMOVE_CONTAINER = "REMOVE_CONTAINER";
 export const ADD_CONTAINER = "ADD_CONTAINER";
+export const REMOVE_COMPONENT = "REMOVE_COMPONENT";
+export const ADD_COMPONENT = "ADD_COMPONENT";
 
 export interface ChangeMainBgAction {
   type: typeof CHANGE_MAIN_BACKGROUND;
@@ -169,6 +171,18 @@ export interface RemoveContainerAction {
 export interface AddContainerAction {
   type: typeof ADD_CONTAINER;
   containerType: string;
+}
+
+export interface RemoveComponentAction {
+  type: typeof REMOVE_COMPONENT;
+  containerId: string;
+  componentId: string;
+}
+
+export interface AddComponentAction {
+  type: typeof ADD_COMPONENT;
+  containerId: string;
+  componentType: string;
 }
 
 type StyleConfig = {

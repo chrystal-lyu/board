@@ -180,14 +180,6 @@
         "margin": 10,
         "textTransform": "unset",
         "textAlign": "auto"
-      },
-      {
-        "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcbc6",
-        "type": "container",
-        "backgroundColor": "#ffffff",
-        "borderRadius": 16,
-        "dropShadow": false,
-        "components": []
       }
     ]
   }
