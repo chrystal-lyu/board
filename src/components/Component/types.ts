@@ -1,3 +1,5 @@
 export interface OwnProps {
-  index: string;
+  id: number;
+  index: number;
+  moveCard: (dragIndex: number, hoverIndex: number) => void;
 }
