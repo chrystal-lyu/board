@@ -26,6 +26,8 @@ export const ADD_CONTAINER = "ADD_CONTAINER";
 export const REMOVE_COMPONENT = "REMOVE_COMPONENT";
 export const ADD_COMPONENT = "ADD_COMPONENT";
 
+export const REORDER_COMPONENT = "REORDER_COMPONENT";
+
 export interface ChangeMainBgAction {
   type: typeof CHANGE_MAIN_BACKGROUND;
   payload: string;
@@ -183,6 +185,13 @@ export interface AddComponentAction {
   type: typeof ADD_COMPONENT;
   containerId: string;
   componentType: string;
+}
+
+export interface ReorderComponentAction {
+  type: typeof REORDER_COMPONENT;
+  containerId: string;
+  dragIndex: number;
+  hoverIndex: number;
 }
 
 type StyleConfig = {

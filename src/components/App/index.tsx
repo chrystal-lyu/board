@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -13,76 +13,15 @@ import EmptyContainer from "../EmptyContainer";
 import Text from "../Text";
 import Image from "../Image";
 import Component from "../Component";
-import update from "immutability-helper";
 
 const App: React.FC = () => {
   const { app } = useSelector((state: RootState) => state);
-  const [cards, setCards] = useState([
-    {
-      id: 1,
-      text: "Write a cool JS library",
-    },
-    {
-      id: 2,
-      text: "Make it generic enough",
-    },
-    {
-      id: 3,
-      text: "Write README",
-    },
-    {
-      id: 4,
-      text: "Create some examples",
-    },
-    {
-      id: 5,
-      text:
-        "Spam in Twitter and IRC to promote it (note that this element is taller than the others) Spam in Twitter and IRC to promote it (note that this element is taller than the others)",
-    },
-    {
-      id: 6,
-      text: "???",
-    },
-    {
-      id: 7,
-      text: "PROFIT",
-    },
-  ]);
-  const moveCard = useCallback(
-    (dragIndex: number, hoverIndex: number) => {
-      const dragCard = cards[dragIndex];
-      setCards(
-        update(cards, {
-          $splice: [
-            [dragIndex, 1],
-            [hoverIndex, 0, dragCard],
-          ],
-        })
-      );
-    },
-    [cards]
-  );
   return (
     <DndProvider backend={HTML5Backend}>
       <Box height="100vh">
         <CssBaseline />
         <Background>
           <Page width={app.page.width}>
-            <div>
-              <h2>React DND</h2>
-              {cards.map((card, index) => {
-                return (
-                  <Component
-                    key={index}
-                    id={index}
-                    index={index}
-                    moveCard={moveCard}
-                  >
-                    {card.text}
-                  </Component>
-                );
-              })}
-            </div>
             {app.page.containers?.map((container) => {
               if (
                 container.type === "container" &&
@@ -110,7 +49,7 @@ const App: React.FC = () => {
                                 key={index}
                                 id={index}
                                 index={index}
-                                moveCard={moveCard}
+                                containerId={container.id}
                               >
                                 <Text
                                   key={component.id}
