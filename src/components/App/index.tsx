@@ -12,7 +12,7 @@ import Container from "../Container";
 import EmptyContainer from "../EmptyContainer";
 import Text from "../Text";
 import Image from "../Image";
-import Component from "../Component";
+import DraggableComponent from "../DraggableComponent";
 
 const App: React.FC = () => {
   const { app } = useSelector((state: RootState) => state);
@@ -45,7 +45,7 @@ const App: React.FC = () => {
                         switch (component.type) {
                           case "text":
                             return (
-                              <Component
+                              <DraggableComponent
                                 key={index}
                                 id={index}
                                 index={index}
@@ -66,7 +66,7 @@ const App: React.FC = () => {
                                   textTransform={component.textTransform}
                                   textAlign={component.textAlign}
                                 />
-                              </Component>
+                              </DraggableComponent>
                             );
                           case "image":
                             return (

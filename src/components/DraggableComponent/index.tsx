@@ -17,7 +17,7 @@ interface DragItem {
   id: string;
   type: string;
 }
-const Component: React.FC<OwnProps> = (props) => {
+const DraggableComponent: React.FC<OwnProps> = (props) => {
   const ref = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
   const [, drop] = useDrop({
@@ -89,4 +89,4 @@ const Component: React.FC<OwnProps> = (props) => {
   );
 };
 
-export default Component;
+export default DraggableComponent;
