@@ -1,11 +1,10 @@
 import React, { useRef } from "react";
-import { useDispatch } from "react-redux";
 import { useDrag, useDrop, DropTargetMonitor } from "react-dnd";
 import { OwnProps } from "./types";
 import { XYCoord } from "dnd-core";
-import { reorderComponent } from "../../store/actions";
 
 const style = {
+  border: "1px dashed red",
   cursor: "move",
 };
 const ItemTypes = {
@@ -16,9 +15,8 @@ interface DragItem {
   id: string;
   type: string;
 }
-const DraggableComponent: React.FC<OwnProps> = (props) => {
+const DraggableContainer: React.FC<OwnProps> = (props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const dispatch = useDispatch();
   const [, drop] = useDrop({
     accept: ItemTypes.CARD,
     hover(item: DragItem, monitor: DropTargetMonitor) {
@@ -27,7 +25,6 @@ const DraggableComponent: React.FC<OwnProps> = (props) => {
       }
       const dragIndex = item.index;
       const hoverIndex = props.index;
-      const containerId = props.containerId;
 
       // Don't replace items with themselves
       if (dragIndex === hoverIndex) {
@@ -62,7 +59,7 @@ const DraggableComponent: React.FC<OwnProps> = (props) => {
       }
 
       // Time to actually perform the action
-      dispatch(reorderComponent(containerId, dragIndex, hoverIndex));
+      // dispatch(reorderComponent(dragIndex, hoverIndex));
 
       // Note: we're mutating the monitor item here!
       // Generally it's better to avoid mutations,
@@ -88,4 +85,4 @@ const DraggableComponent: React.FC<OwnProps> = (props) => {
   );
 };
 
-export default DraggableComponent;
+export default DraggableContainer;

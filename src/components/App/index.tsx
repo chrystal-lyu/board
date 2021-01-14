@@ -70,15 +70,22 @@ const App: React.FC = () => {
                             );
                           case "image":
                             return (
-                              <Image
-                                id={component.id}
-                                parentId={container.id}
-                                key={component.id}
-                                url={component.url}
-                                shape={component.shape}
-                                scale={component.scale}
-                                crop={component.crop}
-                              />
+                              <DraggableComponent
+                                key={index}
+                                id={index}
+                                index={index}
+                                containerId={container.id}
+                              >
+                                <Image
+                                  id={component.id}
+                                  parentId={container.id}
+                                  key={component.id}
+                                  url={component.url}
+                                  shape={component.shape}
+                                  scale={component.scale}
+                                  crop={component.crop}
+                                />
+                              </DraggableComponent>
                             );
                           default:
                             return null;
