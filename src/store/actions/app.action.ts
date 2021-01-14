@@ -25,6 +25,7 @@ import {
   ADD_CONTAINER,
   REMOVE_COMPONENT,
   ADD_COMPONENT,
+  REORDER_COMPONENT,
   ChangeMainBgAction,
   ChangeColorStop1Action,
   ChangeStopPosition1Action,
@@ -51,6 +52,7 @@ import {
   AddContainerAction,
   RemoveComponentAction,
   AddComponentAction,
+  ReorderComponentAction,
 } from "./app.types";
 
 export const changeMainBg = (payload: string): ChangeMainBgAction => {
@@ -328,5 +330,18 @@ export const addComponent = (
     type: ADD_COMPONENT,
     containerId,
     componentType,
+  };
+};
+
+export const reorderComponent = (
+  containerId: string,
+  dragIndex: number,
+  hoverIndex: number
+): ReorderComponentAction => {
+  return {
+    type: REORDER_COMPONENT,
+    containerId,
+    dragIndex,
+    hoverIndex,
   };
 };

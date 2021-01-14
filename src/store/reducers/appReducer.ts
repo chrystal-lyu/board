@@ -1,6 +1,7 @@
 import sample from "../../sample.json";
 import produce from "immer";
 import { v4 as uuidv4 } from "uuid";
+import update from "immutability-helper";
 import {
   CHANGE_MAIN_BACKGROUND,
   CHANGE_COLOR_STOP_1,
@@ -28,6 +29,7 @@ import {
   ADD_CONTAINER,
   REMOVE_COMPONENT,
   ADD_COMPONENT,
+  REORDER_COMPONENT,
   ChangeMainBgAction,
   ChangeColorStop1Action,
   ChangeColorStop2Action,
@@ -54,7 +56,9 @@ import {
   AddContainerAction,
   RemoveComponentAction,
   AddComponentAction,
+  ReorderComponentAction,
   AppState,
+  Container,
 } from "../actions/app.types";
 import {
   changeImageUrl,
@@ -105,6 +109,7 @@ const appReducer = (
     | AddContainerAction
     | RemoveComponentAction
     | AddComponentAction
+    | ReorderComponentAction
 ): AppState => {
   switch (action.type) {
     case CHANGE_MAIN_BACKGROUND:
@@ -186,7 +191,7 @@ const appReducer = (
           id: itemId,
           type: "text",
           content: "I am a text",
-          color: "white",
+          color: "black",
           fontFamily: "georgia",
           fontSize: 24,
           fontWeight: 600,
@@ -256,7 +261,7 @@ const appReducer = (
           id: compId,
           type: "text",
           content: "I am a text",
-          color: "white",
+          color: "black",
           fontFamily: "georgia",
           fontSize: 24,
           fontWeight: 600,
@@ -288,6 +293,33 @@ const appReducer = (
           draft.page.containers[index].components?.push(newImage);
         }
       });
+    case REORDER_COMPONENT:
+      return {
+        ...state,
+        page: {
+          ...state.page,
+          containers: state.page.containers?.map((container: Container) => {
+            // container level change
+            if (
+              action.containerId === container.id &&
+              container.components !== undefined
+            ) {
+              const dragCard = container.components[action.dragIndex];
+              return {
+                ...container,
+                components: update(container.components, {
+                  $splice: [
+                    [action.dragIndex, 1],
+                    [action.hoverIndex, 0, dragCard],
+                  ],
+                }),
+              };
+            }
+            // default return
+            return container;
+          }),
+        },
+      };
     default:
       return state;
   }

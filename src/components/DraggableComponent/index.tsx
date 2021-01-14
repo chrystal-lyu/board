@@ -1,33 +1,24 @@
 import React, { useRef } from "react";
+import { useDispatch } from "react-redux";
 import { useDrag, useDrop, DropTargetMonitor } from "react-dnd";
-import { XYCoord } from "dnd-core";
 import { OwnProps } from "./types";
+import { XYCoord } from "dnd-core";
+import { reorderComponent } from "../../store/actions";
 
 const style = {
-  // border: "1px dashed gray",
   cursor: "move",
 };
-
 const ItemTypes = {
   CARD: "card",
 };
-
-export interface CardProps {
-  id: number;
-  text: string;
-  index: string;
-  moveCard: (dragIndex: number, hoverIndex: number) => void;
-}
-
 interface DragItem {
-  index: string;
+  index: number;
   id: string;
   type: string;
 }
-
-const Component: React.FC<OwnProps> = (props) => {
+const DraggableComponent: React.FC<OwnProps> = (props) => {
   const ref = useRef<HTMLDivElement>(null);
-
+  const dispatch = useDispatch();
   const [, drop] = useDrop({
     accept: ItemTypes.CARD,
     hover(item: DragItem, monitor: DropTargetMonitor) {
@@ -36,6 +27,7 @@ const Component: React.FC<OwnProps> = (props) => {
       }
       const dragIndex = item.index;
       const hoverIndex = props.index;
+      const containerId = props.containerId;
 
       // Don't replace items with themselves
       if (dragIndex === hoverIndex) {
@@ -70,7 +62,7 @@ const Component: React.FC<OwnProps> = (props) => {
       }
 
       // Time to actually perform the action
-      console.log("move component!");
+      dispatch(reorderComponent(containerId, dragIndex, hoverIndex));
 
       // Note: we're mutating the monitor item here!
       // Generally it's better to avoid mutations,
@@ -81,20 +73,19 @@ const Component: React.FC<OwnProps> = (props) => {
   });
 
   const [{ isDragging }, drag] = useDrag({
-    item: { type: ItemTypes.CARD, props },
+    item: { type: ItemTypes.CARD, id: props.id, index: props.index },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
   });
 
-  const opacity = isDragging ? 0 : 1;
+  const opacity = isDragging ? 1 : 1;
   drag(drop(ref));
-
   return (
-    <div className="component-wrapper" ref={ref} style={{ ...style, opacity }}>
+    <div ref={ref} style={{ ...style, opacity }}>
       {props.children}
     </div>
   );
 };
 
-export default Component;
+export default DraggableComponent;

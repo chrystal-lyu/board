@@ -12,6 +12,7 @@ import Container from "../Container";
 import EmptyContainer from "../EmptyContainer";
 import Text from "../Text";
 import Image from "../Image";
+import DraggableComponent from "../DraggableComponent";
 
 const App: React.FC = () => {
   const { app } = useSelector((state: RootState) => state);
@@ -40,37 +41,51 @@ const App: React.FC = () => {
                     dropShadow={container.dropShadow}
                   >
                     {(container as ComponentType).components?.map(
-                      (component) => {
+                      (component, index) => {
                         switch (component.type) {
                           case "text":
                             return (
-                              <Text
-                                key={component.id}
-                                id={component.id}
-                                parentId={container.id}
-                                content={component.content}
-                                color={component.color}
-                                fontFamily={component.fontFamily}
-                                fontSize={component.fontSize}
-                                fontWeight={component.fontWeight}
-                                lineHeight={component.lineHeight}
-                                letterSpacing={component.letterSpacing}
-                                margin={component.margin}
-                                textTransform={component.textTransform}
-                                textAlign={component.textAlign}
-                              />
+                              <DraggableComponent
+                                key={index}
+                                id={index}
+                                index={index}
+                                containerId={container.id}
+                              >
+                                <Text
+                                  key={component.id}
+                                  id={component.id}
+                                  parentId={container.id}
+                                  content={component.content}
+                                  color={component.color}
+                                  fontFamily={component.fontFamily}
+                                  fontSize={component.fontSize}
+                                  fontWeight={component.fontWeight}
+                                  lineHeight={component.lineHeight}
+                                  letterSpacing={component.letterSpacing}
+                                  margin={component.margin}
+                                  textTransform={component.textTransform}
+                                  textAlign={component.textAlign}
+                                />
+                              </DraggableComponent>
                             );
                           case "image":
                             return (
-                              <Image
-                                id={component.id}
-                                parentId={container.id}
-                                key={component.id}
-                                url={component.url}
-                                shape={component.shape}
-                                scale={component.scale}
-                                crop={component.crop}
-                              />
+                              <DraggableComponent
+                                key={index}
+                                id={index}
+                                index={index}
+                                containerId={container.id}
+                              >
+                                <Image
+                                  id={component.id}
+                                  parentId={container.id}
+                                  key={component.id}
+                                  url={component.url}
+                                  shape={component.shape}
+                                  scale={component.scale}
+                                  crop={component.crop}
+                                />
+                              </DraggableComponent>
                             );
                           default:
                             return null;

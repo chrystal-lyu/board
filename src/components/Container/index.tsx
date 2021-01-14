@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Box } from "@material-ui/core";
 import { ContainerBox, ContainerWrapper } from "./index.style";
 import Editor from "../Editor";
-import Component from "../Component";
 import useEditor from "../../hooks/useEditor";
 import useHover from "../../hooks/useHover";
 import { selectorBoxClass } from "../../utils";
@@ -20,34 +19,32 @@ const Container: React.FC<OwnProps> = (props) => {
   };
 
   return (
-    <Component index={props.id as string}>
-      <ContainerBox
-        py={2}
-        onClick={handleClick}
-        className={selectorBoxClass(isShowing, hovered)}
-        onMouseOver={addHover}
-        onMouseOut={removeHover}
+    <ContainerBox
+      py={2}
+      onClick={handleClick}
+      className={selectorBoxClass(isShowing, hovered)}
+      onMouseOver={addHover}
+      onMouseOut={removeHover}
+    >
+      <ContainerWrapper
+        backgroundColor={props.backgroundColor}
+        borderRadius={props.borderRadius}
+        dropShadow={props.dropShadow}
       >
-        <ContainerWrapper
-          backgroundColor={props.backgroundColor}
-          borderRadius={props.borderRadius}
-          dropShadow={props.dropShadow}
-        >
-          <Box onMouseOver={removeHover} onMouseOut={addHover}>
-            {props.children}
-          </Box>
-        </ContainerWrapper>
-        <Editor
-          title="Container"
-          isShowing={isShowing}
-          hide={hide}
-          containerId={props.id}
-          containerBgColor={props.backgroundColor}
-          containerBorderRadius={props.borderRadius}
-          containerDropShadow={props.dropShadow}
-        />
-      </ContainerBox>
-    </Component>
+        <Box onMouseOver={removeHover} onMouseOut={addHover}>
+          {props.children}
+        </Box>
+      </ContainerWrapper>
+      <Editor
+        title="Container"
+        isShowing={isShowing}
+        hide={hide}
+        containerId={props.id}
+        containerBgColor={props.backgroundColor}
+        containerBorderRadius={props.borderRadius}
+        containerDropShadow={props.dropShadow}
+      />
+    </ContainerBox>
   );
 };
 
